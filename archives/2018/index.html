@@ -732,4 +732,8 @@ It will not impact the appearance and can give developers a lot of support :)
         var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
 
         for (var i = 0; i < scriptList.length; ++i) {
-         
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viose
