@@ -3,6 +3,9 @@
   <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2018%2F09%2F26%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[欢迎来到我的博客]]></content>
+    <content type="text"><![CDATA[欢迎来到我的博客 1234567public class HelloWorld&#123; public static void main(String[] args) &#123; System.out.println(&quot;Hello,World!&quot;); &#125;&#125; 123456#include &lt;stdio.h&gt;int main()&#123; printf(&quot;Hello,World!&quot;); return 1;&#125; 12var sys = require(&quot;sys&quot;);sys.puts(&quot;Hello,World!&quot;); 1234567&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;body&gt;&lt;h1&gt;This is the first program!&lt;/h1&gt;&lt;p&gt;Hello,World!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;]]></content>
+      <tags>
+        <tag>other</tag>
+      </tags>
   </entry>
 </search>
