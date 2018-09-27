@@ -611,7 +611,7 @@ systemctl status unit.service
             repo: 'gitTalk',
             owner: 'tomhaoye',
             admin: ['tomhaoye'],
-            id: document.title,
+            id: document.title.substr(0,50),
             // facebook-like distraction free mode
             distractionFreeMode: false
         })
