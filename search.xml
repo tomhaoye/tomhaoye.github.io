@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[hexo踩坑记]]></title>
+    <url>%2F2018%2F09%2F27%2Fhexo%E8%B8%A9%E5%9D%91%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[hexo的搭建和使用十分的方便，搭配github page食用更佳。github上有很多绚丽的hexo主题，大家可以按需搭配。虽说hexo+github page搭建个人博客很方便快捷，但如果你需要较多的个性化定制，坑总是会踩的。本文主要遇到的各种坑以及记录简单的操作步骤，如果需要详细的安装部署教程请点击传送门离开。 安装hexo 如果你不知道或者未安装 npm ，点击此处了解以及下载。 npm i -g hexo-cli 说到npm我在后面挖到了一个坑，这个坑以前已经挖过，这里又遇到了，有必要记下来。如果你跟我一样是在使用Windows 10 + VirtualBox (VBox) + Vagrant + Laravel Homestead + 共享目录这样的环境做开发的，需要注意。 在上述环境中使用npm会有比较多意料之外的状况，大部分stackoverflow上都有解决方案，但这次遇到的error “ETXTBSY: text file is busy” on npm install弄了一段时间仍然没解决，把npm搞坏后还是换到windows环境去了。 虽然没解决，但还是推荐一下比较靠谱的解决方案。 快速搭建hexo init [folder] //初始化，新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站 cd folder //进入网站根目录，如果没有设置 folder ，则不需要该步骤 hexo g //generetor的缩写，生成静态文件。 hexo s //server的缩写，启动服务器。默认情况下，访问网址为： http://localhost:4000/。 主题。。。待续]]></content>
+      <categories>
+        <category>挖坑</category>
+      </categories>
+      <tags>
+        <tag>other</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Linux添加服务到开机自动启动]]></title>
     <url>%2F2018%2F09%2F27%2FLinux%E6%B7%BB%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%88%B0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8%2F</url>
     <content type="text"><![CDATA[Systemd 是 Linux 系统中最新的初始化系统，Systemd 服务文件以 .service 结尾。一些使用包管理工具安装的软件会自动建立 .service 服务文件，路径在 /lib/systemd/system/ 下，但自行建立及管理的文件建议放在 /etc/systemd/system/ 目录下。内容以 supervisor 为例： [Unit] Description=Supervisor process control system for UNIX Documentation=http://supervisord.org After=network.target [Service] ExecStart=/usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf ExecStop=/usr/bin/supervisorctl $OPTIONS shutdown ExecReload=/usr/bin/supervisorctl -c /etc/supervisor/supervisord.conf $OPTIONS reload KillMode=process Restart=on-failure RestartSec=50s [Install] WantedBy=multi-user.target 参数说明： [Unit] Description：描述服务 Documentation：参考资料 After：描述服务类别 [Service] Type：是后台运行的形式 ExecStart：服务的具体运行命令 ExecReload：重启命令 ExecStop：停止命令 KillMode：daemon终止时所关闭的程序 Restart：触发重启 RestartSec：重启等待时间 TimeoutSec：无法顺利启动强制关闭时间 注意：[Service]的启动、重启、停止命令全部要求使用绝对路径 [Install] 运行级别下服务安装的相关设置，可设置为多用户，即系统运行级别为3 如过想要某些服务开机启动，例如以 php-fpm 为例，编写service： sudo vi /etc/systemd/system/php7.1-fpm.service [Unit] Description=The PHP 7.1 FastCGI Process Manager Documentation=man:php-fpm7.1(8) After=network.target [Service] Type=notify PIDFile=/run/php/php7.1-fpm.pid ExecStart=/usr/sbin/php-fpm7.1 -R --nodaemonize --fpm-config /etc/php/7.1/fpm/php-fpm.conf ExecReload=/bin/kill -USR2 $MAINPID [Install] WantedBy=multi-user.target 随后如果 php-fpm 在运行则先将其关闭，运行： systemctl daemon-reload systemctl start php7.1-fpm.service 测试能够成功开启服务了，就可以将服务设置为开机启动： systemctl enable php7.1-fpm.service 常用命令systemctl daemon-reload systemctl list-units --type=service systemctl list-unit-files --type=service systemctl start unit.service systemctl stop unit.service systemctl restart unit.service systemctl enable unit.service systemctl disable unit.service systemctl is-enable unit.service systemctl is-active unit.service systemctl status unit.service]]></content>
@@ -16,7 +27,7 @@
     <url>%2F2018%2F09%2F27%2FIO%E6%A8%A1%E5%9E%8B%E7%AC%94%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[IO Model常见IO模型 blocking IO nonblocking IO IO mutiplexing(select &amp; poll) signal driven IO asynchronous IO(the POSIX aio_functions) 一个基本的IO，它会涉及到两个系统对象，一个就是系统内核，另一个是调用这个IO的对象。当一个read操作发生时，会经历以下阶段： 通过read系统调用向内核发起读请求 内核向硬件发送读指令，并等待读就绪 内核把将要读取的数据复制到描述符所指向的内核缓存区 将数据从内核缓存区拷贝到用户进程空间中 同步与异步 同步和异步关注的是消息通信机制 注：同步IO过程由进程处理，异步IO交由内核处理IO 阻塞与非阻塞 阻塞和非阻塞关注的是程序在等待调用结果时的状态 1，2，3，4属于同步IO，5属于异步IO AIO异步非阻塞IO，适用于连接数多且IO时间长的架构，如相册服务器，JDK7开始支持 NIO同步非阻塞IO，适用于连接数多且轻操作（IO?）的架构 BIO同步则色IO，适用于连接数少且固定的架构 一般来说，IO主要有两种情况（服务器）：一是来自网络的IO，二是文件的IO。windows提供异步IO，Linux提供epoll模型给网络IO，文件IO则提供AIO epoll,select/poll 本质上都是同步IO，自己处理IO过程，但是epoll优化了轮询操作，使用callback机制响应。 额外提供Edge Triggered，用户空间可能缓存IO状态，减少epoll-wait／epoll-pwait调用 level triggered &amp; edge triggered LT事件不会丢弃，只要读buffer里面有数据可以让用户读，就会不停的通知。而ET则只发在事件发生之时通知。 select缺点： 每次调用，都需要把fd集合从用户态拷贝到内核态，fd多事件开销大 每次都要遍历进入内核的fd，开销也很大 select支持fd数量太小，默认1024 poll与select只在fd集合的结构上面有区别 epoll对select缺点的改进 新事件注册到epoll句柄中，会把所有的fd拷贝进内核，而不是在epoll_wait时重复拷贝 为fd指定回调函数，设备就绪，调用回调函数唤醒等待者，并将fd加入就绪链表 最大的限制很大程度上跟系统内存大小有关 消息传递：mmap加速 总结 select、poll都需要轮询遍历所有fd，而epoll只需要读取就绪链表 select、poll每次调用都copy一次fd，并往设备队列上挂。而epoll只要copy一次fd，并只往自己的等待队列上挂一次即可]]></content>
       <categories>
-        <category>操作系统</category>
+        <category>笔记</category>
       </categories>
       <tags>
         <tag>OS</tag>
