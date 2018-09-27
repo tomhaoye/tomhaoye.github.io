@@ -46,7 +46,7 @@
     
     <title>
         
-            标签: other | 
+            PHP Standard Recommendation | 
         
         Geeyeek
     </title>
@@ -57,7 +57,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="乐享编程">
-    <meta name="keywords" content="后端开发 挖坑 算法 机器学习">
+    <meta name="keywords" content="后端开发 挖坑 算法 机器学习,PHP">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -218,7 +218,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Geeyeek">
-    <meta name="msapplication-starturl" content="https://tomhaoye.github.io/tags/other/">
+    <meta name="msapplication-starturl" content="https://tomhaoye.github.io/2018/09/27/PHP-Standard-Recommendation/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Geeyeek">
@@ -233,13 +233,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="https://tomhaoye.github.io/tags/other/">
+    <meta property="og:url" content="https://tomhaoye.github.io/2018/09/27/PHP-Standard-Recommendation/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="标签: other | Geeyeek">
+    <meta property="og:title" content="PHP Standard Recommendation | Geeyeek">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="乐享编程">
-    
+    <meta property="og:article:tag" content="PHP"> 
 
+    
+        <meta property="article:published_time" content="Thu Sep 27 2018 10:17:53 GMT+0800">
+        <meta property="article:modified_time" content="Thu Sep 27 2018 10:18:29 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -247,13 +250,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://tomhaoye.github.io/tags/other/index.html" />
+        <link rel="canonical" href="https://tomhaoye.github.io/2018/09/27/PHP-Standard-Recommendation/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://tomhaoye.github.io/2018/09/27/PHP-Standard-Recommendation/index.html",
+    "headline": "PHP Standard Recommendation",
+    "datePublished": "Thu Sep 27 2018 10:17:53 GMT+0800",
+    "dateModified": "Thu Sep 27 2018 10:18:29 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Geeyeek",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "欢迎来访Geeyeek的博客"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Geeyeek",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",PHP后端开发 挖坑 算法 机器学习",
+    "description": "乐享编程",
+}
+</script>
 
 
     
@@ -287,101 +320,335 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PSR-0-AutoLoading-Standard"><span class="post-toc-number">1.</span> <span class="post-toc-text">PSR-0(AutoLoading Standard)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PSR-1-Basic-Coding-Standard"><span class="post-toc-number">2.</span> <span class="post-toc-text">PSR-1(Basic Coding Standard)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PSR-2-Coding-Style-Guide"><span class="post-toc-number">3.</span> <span class="post-toc-text">PSR-2(Coding Style Guide)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PSR-3-Logger-Interface"><span class="post-toc-number">4.</span> <span class="post-toc-text">PSR-3(Logger Interface)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PSR-4-Improved-AutoLoading"><span class="post-toc-number">5.</span> <span class="post-toc-text">PSR-4(Improved AutoLoading)</span></a></li></ol>
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/09/26/hello-world/">Hello World</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-欢迎来到我的博客
-
-public class HelloWorld...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/09/26/hello-world/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Geeyeek's avatar">
-            </div>
-            <div>
-                <strong>Geeyeek</strong>
-                <span>9月 26, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/闲聊/">闲聊</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                PHP Standard Recommendation
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Geeyeek</strong>
+        <span>9月 27, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAACyklEQVR42u3aQW7cMBAEwP3/p51rgCDr7iG9kMnSybBkiUUfBtPD19eV1wsbGxsbGxsbGxv7kexXfH3z0r+e+ff55D353dmasbGxsc9m56T3mBaWPN9+5b/fwsbGxr6AnXxmpbC1pF3PYGNjY2MnxeN9+/G+VUjurqwZGxsbGzsvYC2pjaWwsbGxsddDpXbp7WAgL3gfzdKwsbGxH89u24Yn/PzR+TY2Njb2g9nttXkpo7hquHJsbGzsQ9ltGzALfZKtbOOn9pAoNjY29qns5BjNLGZqhwTJeGBpFI2NjY19ATsh5ZvyE8i2vGFjY2PfwJ7FQOth0AqjPQCEjY2NfRu7KAllico3NKFunm9jY2Nj/1p2G/rPovl2VNyubWm+jY2NjX0cuy0euzaxfSa5i42NjX0DOx+argf0OSbfxA2hEjY2NvYvZ+fFJh8qtAvNo/9ZwcPGxsa+jd3G9/kSZ7/PI6Rv3oCNjY19KHvvAGClOVlZw3C+jY2NjX0EuwUkBW9XRNW2OnWohI2NjX0Ee7as/ABNOxiehUrR+7GxsbEPZbd/3B6aWQn0VwoqNjY29m3slVZhaSkLha09+oONjY19KrvFJEHSbHicf2X2z8DGxsY+mz1bVhTKLx+gXB9FYGNjY9/GzqOiNpxaaSdmhRYbGxv7HvZ6cJ8gv0bXyugXGxsb+zZ2HuvnkVDeuuSxVPtmbGxs7NvY+QA4j3XaWD8fDCRvxsbGxj6bPWsM8q1ZGfe2MVbRimBjY2MfxJ6VhHxYm5eothy27Qo2Njb22exZK5K3JUX0U0ZU28YD2NjY2Eewc8yseciHDbMIaZilYWNjY1/JTopQe4izjavylgYbGxsbOx/07mowZsd0PtSKYGNjYz+YPRvurpe3/Pk8usLGxsa+jT0Lbtoltgd02tL4g/NtbGxs7Aez77mwsbGxsbGxsbGxH3P9AQxzC22bbEJKAAAAAElFTkSuQmCC">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/PHP/">PHP</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=PHP Standard Recommendation&url=https://tomhaoye.github.io/2018/09/27/PHP-Standard-Recommendation/index.html&pic=https://tomhaoye.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=PHP Standard Recommendation&url=https://tomhaoye.github.io/2018/09/27/PHP-Standard-Recommendation/index.html&via=Geeyeek" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://tomhaoye.github.io/2018/09/27/PHP-Standard-Recommendation/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://tomhaoye.github.io/2018/09/27/PHP-Standard-Recommendation/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Geeyeek&title=PHP Standard Recommendation&summary=乐享编程&pics=https://tomhaoye.github.io/img/favicon.png&url=https://tomhaoye.github.io/2018/09/27/PHP-Standard-Recommendation/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
     
 </div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>非官方规范。</p>
+<h2 id="PSR-0-AutoLoading-Standard"><a href="#PSR-0-AutoLoading-Standard" class="headerlink" title="PSR-0(AutoLoading Standard)"></a>PSR-0(AutoLoading Standard)</h2><p>(14年10月21日起标记为deprecated，由PSR-4代替)</p>
+<ul>
+<li>完全合格的命名空间和类名必须有以下结构<pre><code>&quot;\&lt;vendor name&gt;\(&lt;Namespace&gt;)*&lt;Class Name&gt;&quot;
+</code></pre></li>
+<li>每个命名空间必须有顶级命名空间<pre><code>(&quot;Vendor Name&quot;)
+</code></pre></li>
+<li>每个命名空间可以有任意多个子命名空间</li>
+<li>每个命名空间在被从文件系统加载时必须被转换为操作系统的路径分隔符</li>
+<li>每个”_“字符在类名中被转换为DIRECTORY_SEPARATOR。”_“在命名空间中没有明确含义</li>
+<li>符合命名标志的命名空间和类名必须以”.php”结尾来加载</li>
+<li>VendorName、命名空间、类名可以由大小写字母组成，其中命名空间和类名是大小写敏感的以保证多系统兼容</li>
+</ul>
+<h2 id="PSR-1-Basic-Coding-Standard"><a href="#PSR-1-Basic-Coding-Standard" class="headerlink" title="PSR-1(Basic Coding Standard)"></a>PSR-1(Basic Coding Standard)</h2><ul>
+<li>源文件必须只使用以下这两种标签<pre><code>&lt;?php 和 &lt;?=
+</code></pre></li>
+<li>源文件中php代码的编码格式必须只适用不带BOM的UTF－8（BOM——字节顺序标记）</li>
+<li>一个源文件建议只用来做声明（类、函数、常量等）或者只用来做一些引起副作用的操作（如输出信息，修改配置文件等），但不应该同时做这两件事</li>
+<li>命名空间和类必须遵守PSR-0</li>
+<li>类名必须使用StudlyCaps写法</li>
+<li>类中的常量必须只由大写字母和下划线组成</li>
+<li>方法名必须使用camelCase写法</li>
+</ul>
+<h2 id="PSR-2-Coding-Style-Guide"><a href="#PSR-2-Coding-Style-Guide" class="headerlink" title="PSR-2(Coding Style Guide)"></a>PSR-2(Coding Style Guide)</h2><ul>
+<li>代码必须遵循PSR-1</li>
+<li>代码必须使用4个空格进行缩进，而不是制表符</li>
+<li>一行代码的长度不应该有硬限制，软限制为120个字符，建议每行小于80</li>
+<li>在命名空间声明下必须空一行，use下同理</li>
+<li>类的左、右花括号必须各自成一行</li>
+<li>方法的左右花括号都必须各自成一行</li>
+<li>所有属性、方法必须有可见性声明；abstract和final必须在可见性声明前，static必须在可见性声明后</li>
+<li>在结构控制的关键字后必须空一格；函数调用后面不可有空格</li>
+<li>结构控制关键字左花括号必须同一行，右花括号必须放在代码主体下一行</li>
+<li>控制结构的左花括号之后不可有空格，右花括号之前也不可有空格</li>
+</ul>
+<h2 id="PSR-3-Logger-Interface"><a href="#PSR-3-Logger-Interface" class="headerlink" title="PSR-3(Logger Interface)"></a>PSR-3(Logger Interface)</h2><ul>
+<li>LoggerInterface暴露八个接口用来记录八个等级(debug,info,notice,warning,error,critical,alert,emergency)的日志</li>
+<li>第九个方法是log，接受日志等级操作为第一个参数。用一个日志等级常量来调用这个方法必须和直接调用指定等级方法的结果一致。用一格本规范中来定义且不为具体实现所知的日志等级来调用该方法必须跑出一个<pre><code>PSR\Log\InvalidArgumentException
+</code></pre>不推荐使用自定义的日志等级，除非你非常确认当前类库对其支持。</li>
+</ul>
+<h2 id="PSR-4-Improved-AutoLoading"><a href="#PSR-4-Improved-AutoLoading" class="headerlink" title="PSR-4(Improved AutoLoading)"></a>PSR-4(Improved AutoLoading)</h2><p>(兼容PSR-0)</p>
+<ul>
+<li>术语［类］是一个泛称，它包含类、接口、trait及其他类似结构</li>
+<li>完全限定类名应该如下范例<pre><code>&lt;NamespaceName&gt;(&lt;SubNamespace&gt;)*&lt;ClassName&gt;
+</code></pre></li>
+<li><ul>
+<li>完全合规类名必须有一格顶级命名空间</li>
+<li>完全合规类名可有多个子命名空间</li>
+<li>完全合规类名应该有一格终止类名</li>
+<li>下划线在完全合规类名中是没有特殊含义的</li>
+<li>字母在完全合规类名中可以是任何大小写组合</li>
+<li>所有类名必须以大小写敏感的方式引用</li>
+</ul>
+</li>
+<li>当完全合规类名载入文件时：<ul>
+<li>在完全合规类名中，连续的一个或几个子命名空间构成的命名空间前缀（不包括顶级命名空间分隔符），至少对应一格基础目录</li>
+<li>在［命名空间前缀］后的连续子命名空间名称对应一个［基础目录］下的子目录，其中的命名空间分隔符标示目录分隔符。子目录名称必须和子命名空间名大小写匹配</li>
+<li>终止类名对应一个以.php结尾的文件。文件名必须和终止类名大小写匹配</li>
+</ul>
+</li>
+<li>自动载入器的实现不可以抛出任何异常，不可以引发任何等级的错误，也不应该有返回值</li>
+</ul>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 Gitalk -->
+<div id="gitalk-comment">
+    <!-- Gitalk 评论框 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: '6bbcfba0d2dab1924162',
+            clientSecret: '04f0787c82d281169a3cee99b95cbdb949547d4b',
+            repo: 'gitTalk',
+            owner: 'tomhaoye',
+            admin: ['tomhaoye'],
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+   gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-comment {
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/09/27/IO模型笔记/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/09/26/hello-world/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -560,6 +827,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 

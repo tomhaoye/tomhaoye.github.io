@@ -46,7 +46,7 @@
     
     <title>
         
-            标签: other | 
+            Linux添加服务到开机自动启动 | 
         
         Geeyeek
     </title>
@@ -57,7 +57,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="乐享编程">
-    <meta name="keywords" content="后端开发 挖坑 算法 机器学习">
+    <meta name="keywords" content="后端开发 挖坑 算法 机器学习,Linux">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -218,7 +218,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Geeyeek">
-    <meta name="msapplication-starturl" content="https://tomhaoye.github.io/tags/other/">
+    <meta name="msapplication-starturl" content="https://tomhaoye.github.io/2018/09/27/Linux添加服务到开机自动启动/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Geeyeek">
@@ -233,13 +233,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="https://tomhaoye.github.io/tags/other/">
+    <meta property="og:url" content="https://tomhaoye.github.io/2018/09/27/Linux添加服务到开机自动启动/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="标签: other | Geeyeek">
+    <meta property="og:title" content="Linux添加服务到开机自动启动 | Geeyeek">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="乐享编程">
-    
+    <meta property="og:article:tag" content="Linux"> 
 
+    
+        <meta property="article:published_time" content="Thu Sep 27 2018 10:20:20 GMT+0800">
+        <meta property="article:modified_time" content="Thu Sep 27 2018 10:20:48 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -247,13 +250,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://tomhaoye.github.io/tags/other/index.html" />
+        <link rel="canonical" href="https://tomhaoye.github.io/2018/09/27/Linux添加服务到开机自动启动/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://tomhaoye.github.io/2018/09/27/Linux添加服务到开机自动启动/index.html",
+    "headline": "Linux添加服务到开机自动启动",
+    "datePublished": "Thu Sep 27 2018 10:20:20 GMT+0800",
+    "dateModified": "Thu Sep 27 2018 10:20:48 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Geeyeek",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "欢迎来访Geeyeek的博客"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Geeyeek",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",Linux后端开发 挖坑 算法 机器学习",
+    "description": "乐享编程",
+}
+</script>
 
 
     
@@ -287,101 +320,336 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#常用命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">常用命令</span></a></li></ol>
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/09/26/hello-world/">Hello World</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-欢迎来到我的博客
-
-public class HelloWorld...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/09/26/hello-world/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Geeyeek's avatar">
-            </div>
-            <div>
-                <strong>Geeyeek</strong>
-                <span>9月 26, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/闲聊/">闲聊</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                Linux添加服务到开机自动启动
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Geeyeek</strong>
+        <span>9月 27, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAADiklEQVR42u3aS44iMRAEUO5/6ZltSyMgItOmGel5hfi4XK8WSX4ef6wf64EABw4cOHDgwIEDB44v5njE69/v/3zn2af/XuvZ1Z/t9myH12dL7gUHDhw4cNzjeBOK9pd8eZOvKfPd2nvBgQMHDhy3OV4H1/2hZ/vk77f3ggMHDhw4voEjKreNErl8t5wGBw4cOHB8P8e+eLcJkLMyJQ4cOHDg+C2OoqBWJlTtbvtC4YdqpThw4MCB49BAwze//oX5Dhw4cODAcXQlpb12lCHf88D5ceDAgQPHUY7X6VM7lt2W8HK+10ldXqasM1ocOHDgwFFytKW3UwfaN7c2Q3U4cODAgeM2x5tQVA63nW0gzUJ18X0cOHDgwHGUow2f+XH36VyeWM6SSRw4cODA8Vsc7aBzG8jvheQoTcWBAwcOHBc48ibQJjAng2t5gW/WasKBAwcOHLc59g2n9nUe2pPAmaeRddsJBw4cOHCMONoxgmTIICn/5QMNeeEvT9tw4MCBA8c9jvZwm3CY47aFy1l7DAcOHDhw3OaYDRacGnFoy46nxvtw4MCBA8cNjlmzpw2WswGIPGC3DwMHDhw4cNzj2JTbZr+dpV7Jyplw4MCBA8c9jjbR2t9kG9o3g3F12wkHDhw4cKw5ZuGqDYf7YYV8/6LciQMHDhw4jnLkBbi8qJcXB9v2VdsYi1JKHDhw4MBxlCNpL82Kdzn6qZSvTSBx4MCBA8cNjnzILEmWTo2+tWQbUBw4cODAcZYjSYeSYNamapvgPWuJ4cCBAweOz3C0jZx98rZnzUPs8H8HDhw4cOBYc2zaSEm7aBYC82QsTwtx4MCBA8dnOJJRttmtnirqnRqwiNpOOHDgwIHjEEebILUhMy/wncKKTo4DBw4cOD7CcSPN2wf42djEm5PgwIEDB45rHG2hbVMKTH7bjke0ZDhw4MCB45McOVbeiJqF2/xhzE6CAwcOHDjOcrQrv3D7q7y5Nbti1HbCgQMHDhxrjke8ZoG5PeimpHg4hcOBAwcOHAuOJLjmzaEZ1owpH57AgQMHDhyf58iLa0lAnQ095EXA2R8FHDhw4MDxv3DMAva+XDgLvThw4MCB43s4NoW8vB1VhMk49BbzHThw4MCB4xBHnoC1ZbvVKFscOGePFgcOHDhw3OBoBxpmKd/mNjYP480OOHDgwIHjKIeFAwcOHDhw4MCBAweOL1t/AdkMv1BK9617AAAAAElFTkSuQmCC">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Linux/">Linux</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Linux添加服务到开机自动启动&url=https://tomhaoye.github.io/2018/09/27/Linux添加服务到开机自动启动/index.html&pic=https://tomhaoye.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Linux添加服务到开机自动启动&url=https://tomhaoye.github.io/2018/09/27/Linux添加服务到开机自动启动/index.html&via=Geeyeek" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://tomhaoye.github.io/2018/09/27/Linux添加服务到开机自动启动/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://tomhaoye.github.io/2018/09/27/Linux添加服务到开机自动启动/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Geeyeek&title=Linux添加服务到开机自动启动&summary=乐享编程&pics=https://tomhaoye.github.io/img/favicon.png&url=https://tomhaoye.github.io/2018/09/27/Linux添加服务到开机自动启动/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
     
 </div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>Systemd 是 Linux 系统中最新的初始化系统，Systemd 服务文件以 .service 结尾。一些使用包管理工具安装的软件会自动建立 .service 服务文件，路径在 /lib/systemd/system/ 下，但自行建立及管理的文件建议放在 /etc/systemd/system/ 目录下。内容以 supervisor 为例：</p>
+</blockquote>
+<pre><code>[Unit]
+Description=Supervisor process control system for UNIX
+Documentation=http://supervisord.org
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
+ExecStop=/usr/bin/supervisorctl $OPTIONS shutdown
+ExecReload=/usr/bin/supervisorctl -c /etc/supervisor/supervisord.conf $OPTIONS reload
+KillMode=process
+Restart=on-failure
+RestartSec=50s
+
+[Install]
+WantedBy=multi-user.target
+</code></pre><p>参数说明：</p>
+<pre><code>[Unit]
+Description：描述服务
+Documentation：参考资料
+After：描述服务类别
+
+[Service]
+Type：是后台运行的形式
+ExecStart：服务的具体运行命令
+ExecReload：重启命令
+ExecStop：停止命令
+KillMode：daemon终止时所关闭的程序
+Restart：触发重启
+RestartSec：重启等待时间
+TimeoutSec：无法顺利启动强制关闭时间
+注意：[Service]的启动、重启、停止命令全部要求使用绝对路径
+
+[Install]
+运行级别下服务安装的相关设置，可设置为多用户，即系统运行级别为3
+</code></pre><p>如过想要某些服务开机启动，例如以 php-fpm 为例，编写service：</p>
+<pre><code>sudo vi /etc/systemd/system/php7.1-fpm.service
+</code></pre><pre><code>[Unit]
+Description=The PHP 7.1 FastCGI Process Manager
+Documentation=man:php-fpm7.1(8)
+After=network.target
+
+[Service]
+Type=notify
+PIDFile=/run/php/php7.1-fpm.pid
+ExecStart=/usr/sbin/php-fpm7.1 -R --nodaemonize --fpm-config /etc/php/7.1/fpm/php-fpm.conf
+ExecReload=/bin/kill -USR2 $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+</code></pre><p>随后如果 php-fpm 在运行则先将其关闭，运行：</p>
+<pre><code>systemctl daemon-reload 
+systemctl start php7.1-fpm.service
+</code></pre><p>测试能够成功开启服务了，就可以将服务设置为开机启动：</p>
+<pre><code>systemctl enable php7.1-fpm.service
+</code></pre><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><pre><code>systemctl daemon-reload
+systemctl list-units --type=service
+systemctl list-unit-files --type=service
+
+systemctl start unit.service
+systemctl stop unit.service
+systemctl restart unit.service
+
+systemctl enable unit.service
+systemctl disable unit.service
+
+systemctl is-enable unit.service
+systemctl is-active unit.service
+systemctl status unit.service
+</code></pre>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 Gitalk -->
+<div id="gitalk-comment">
+    <!-- Gitalk 评论框 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: '6bbcfba0d2dab1924162',
+            clientSecret: '04f0787c82d281169a3cee99b95cbdb949547d4b',
+            repo: 'gitTalk',
+            owner: 'tomhaoye',
+            admin: ['tomhaoye'],
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+   gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-comment {
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/09/27/IO模型笔记/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -560,6 +828,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 

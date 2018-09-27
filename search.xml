@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux添加服务到开机自动启动]]></title>
+    <url>%2F2018%2F09%2F27%2FLinux%E6%B7%BB%E5%8A%A0%E6%9C%8D%E5%8A%A1%E5%88%B0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8%2F</url>
+    <content type="text"><![CDATA[Systemd 是 Linux 系统中最新的初始化系统，Systemd 服务文件以 .service 结尾。一些使用包管理工具安装的软件会自动建立 .service 服务文件，路径在 /lib/systemd/system/ 下，但自行建立及管理的文件建议放在 /etc/systemd/system/ 目录下。内容以 supervisor 为例： [Unit] Description=Supervisor process control system for UNIX Documentation=http://supervisord.org After=network.target [Service] ExecStart=/usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf ExecStop=/usr/bin/supervisorctl $OPTIONS shutdown ExecReload=/usr/bin/supervisorctl -c /etc/supervisor/supervisord.conf $OPTIONS reload KillMode=process Restart=on-failure RestartSec=50s [Install] WantedBy=multi-user.target 参数说明： [Unit] Description：描述服务 Documentation：参考资料 After：描述服务类别 [Service] Type：是后台运行的形式 ExecStart：服务的具体运行命令 ExecReload：重启命令 ExecStop：停止命令 KillMode：daemon终止时所关闭的程序 Restart：触发重启 RestartSec：重启等待时间 TimeoutSec：无法顺利启动强制关闭时间 注意：[Service]的启动、重启、停止命令全部要求使用绝对路径 [Install] 运行级别下服务安装的相关设置，可设置为多用户，即系统运行级别为3 如过想要某些服务开机启动，例如以 php-fpm 为例，编写service： sudo vi /etc/systemd/system/php7.1-fpm.service [Unit] Description=The PHP 7.1 FastCGI Process Manager Documentation=man:php-fpm7.1(8) After=network.target [Service] Type=notify PIDFile=/run/php/php7.1-fpm.pid ExecStart=/usr/sbin/php-fpm7.1 -R --nodaemonize --fpm-config /etc/php/7.1/fpm/php-fpm.conf ExecReload=/bin/kill -USR2 $MAINPID [Install] WantedBy=multi-user.target 随后如果 php-fpm 在运行则先将其关闭，运行： systemctl daemon-reload systemctl start php7.1-fpm.service 测试能够成功开启服务了，就可以将服务设置为开机启动： systemctl enable php7.1-fpm.service 常用命令systemctl daemon-reload systemctl list-units --type=service systemctl list-unit-files --type=service systemctl start unit.service systemctl stop unit.service systemctl restart unit.service systemctl enable unit.service systemctl disable unit.service systemctl is-enable unit.service systemctl is-active unit.service systemctl status unit.service]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[IO模型笔记]]></title>
+    <url>%2F2018%2F09%2F27%2FIO%E6%A8%A1%E5%9E%8B%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[IO Model常见IO模型 blocking IO nonblocking IO IO mutiplexing(select &amp; poll) signal driven IO asynchronous IO(the POSIX aio_functions) 一个基本的IO，它会涉及到两个系统对象，一个就是系统内核，另一个是调用这个IO的对象。当一个read操作发生时，会经历以下阶段： 通过read系统调用向内核发起读请求 内核向硬件发送读指令，并等待读就绪 内核把将要读取的数据复制到描述符所指向的内核缓存区 将数据从内核缓存区拷贝到用户进程空间中 同步与异步 同步和异步关注的是消息通信机制 注：同步IO过程由进程处理，异步IO交由内核处理IO 阻塞与非阻塞 阻塞和非阻塞关注的是程序在等待调用结果时的状态 1，2，3，4属于同步IO，5属于异步IO AIO异步非阻塞IO，适用于连接数多且IO时间长的架构，如相册服务器，JDK7开始支持 NIO同步非阻塞IO，适用于连接数多且轻操作（IO?）的架构 BIO同步则色IO，适用于连接数少且固定的架构 一般来说，IO主要有两种情况（服务器）：一是来自网络的IO，二是文件的IO。windows提供异步IO，Linux提供epoll模型给网络IO，文件IO则提供AIO epoll,select/poll 本质上都是同步IO，自己处理IO过程，但是epoll优化了轮询操作，使用callback机制响应。 额外提供Edge Triggered，用户空间可能缓存IO状态，减少epoll-wait／epoll-pwait调用 level triggered &amp; edge triggered LT事件不会丢弃，只要读buffer里面有数据可以让用户读，就会不停的通知。而ET则只发在事件发生之时通知。 select缺点： 每次调用，都需要把fd集合从用户态拷贝到内核态，fd多事件开销大 每次都要遍历进入内核的fd，开销也很大 select支持fd数量太小，默认1024 poll与select只在fd集合的结构上面有区别 epoll对select缺点的改进 新事件注册到epoll句柄中，会把所有的fd拷贝进内核，而不是在epoll_wait时重复拷贝 为fd指定回调函数，设备就绪，调用回调函数唤醒等待者，并将fd加入就绪链表 最大的限制很大程度上跟系统内存大小有关 消息传递：mmap加速 总结 select、poll都需要轮询遍历所有fd，而epoll只需要读取就绪链表 select、poll每次调用都copy一次fd，并往设备队列上挂。而epoll只要copy一次fd，并只往自己的等待队列上挂一次即可]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[PHP Standard Recommendation]]></title>
+    <url>%2F2018%2F09%2F27%2FPHP-Standard-Recommendation%2F</url>
+    <content type="text"><![CDATA[非官方规范。 PSR-0(AutoLoading Standard)(14年10月21日起标记为deprecated，由PSR-4代替) 完全合格的命名空间和类名必须有以下结构&quot;\&lt;vendor name&gt;\(&lt;Namespace&gt;)*&lt;Class Name&gt;&quot; 每个命名空间必须有顶级命名空间(&quot;Vendor Name&quot;) 每个命名空间可以有任意多个子命名空间 每个命名空间在被从文件系统加载时必须被转换为操作系统的路径分隔符 每个”_“字符在类名中被转换为DIRECTORY_SEPARATOR。”_“在命名空间中没有明确含义 符合命名标志的命名空间和类名必须以”.php”结尾来加载 VendorName、命名空间、类名可以由大小写字母组成，其中命名空间和类名是大小写敏感的以保证多系统兼容 PSR-1(Basic Coding Standard) 源文件必须只使用以下这两种标签&lt;?php 和 &lt;?= 源文件中php代码的编码格式必须只适用不带BOM的UTF－8（BOM——字节顺序标记） 一个源文件建议只用来做声明（类、函数、常量等）或者只用来做一些引起副作用的操作（如输出信息，修改配置文件等），但不应该同时做这两件事 命名空间和类必须遵守PSR-0 类名必须使用StudlyCaps写法 类中的常量必须只由大写字母和下划线组成 方法名必须使用camelCase写法 PSR-2(Coding Style Guide) 代码必须遵循PSR-1 代码必须使用4个空格进行缩进，而不是制表符 一行代码的长度不应该有硬限制，软限制为120个字符，建议每行小于80 在命名空间声明下必须空一行，use下同理 类的左、右花括号必须各自成一行 方法的左右花括号都必须各自成一行 所有属性、方法必须有可见性声明；abstract和final必须在可见性声明前，static必须在可见性声明后 在结构控制的关键字后必须空一格；函数调用后面不可有空格 结构控制关键字左花括号必须同一行，右花括号必须放在代码主体下一行 控制结构的左花括号之后不可有空格，右花括号之前也不可有空格 PSR-3(Logger Interface) LoggerInterface暴露八个接口用来记录八个等级(debug,info,notice,warning,error,critical,alert,emergency)的日志 第九个方法是log，接受日志等级操作为第一个参数。用一个日志等级常量来调用这个方法必须和直接调用指定等级方法的结果一致。用一格本规范中来定义且不为具体实现所知的日志等级来调用该方法必须跑出一个PSR\Log\InvalidArgumentException 不推荐使用自定义的日志等级，除非你非常确认当前类库对其支持。 PSR-4(Improved AutoLoading)(兼容PSR-0) 术语［类］是一个泛称，它包含类、接口、trait及其他类似结构 完全限定类名应该如下范例&lt;NamespaceName&gt;(&lt;SubNamespace&gt;)*&lt;ClassName&gt; 完全合规类名必须有一格顶级命名空间 完全合规类名可有多个子命名空间 完全合规类名应该有一格终止类名 下划线在完全合规类名中是没有特殊含义的 字母在完全合规类名中可以是任何大小写组合 所有类名必须以大小写敏感的方式引用 当完全合规类名载入文件时： 在完全合规类名中，连续的一个或几个子命名空间构成的命名空间前缀（不包括顶级命名空间分隔符），至少对应一格基础目录 在［命名空间前缀］后的连续子命名空间名称对应一个［基础目录］下的子目录，其中的命名空间分隔符标示目录分隔符。子目录名称必须和子命名空间名大小写匹配 终止类名对应一个以.php结尾的文件。文件名必须和终止类名大小写匹配 自动载入器的实现不可以抛出任何异常，不可以引发任何等级的错误，也不应该有返回值]]></content>
+      <categories>
+        <category>规范</category>
+      </categories>
+      <tags>
+        <tag>PHP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2018%2F09%2F26%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[欢迎来到我的博客 1234567public class HelloWorld&#123; public static void main(String[] args) &#123; System.out.println(&quot;Hello,World!&quot;); &#125;&#125; 123456#include &lt;stdio.h&gt;int main()&#123; printf(&quot;Hello,World!&quot;); return 1;&#125; 12var sys = require(&quot;sys&quot;);sys.puts(&quot;Hello,World!&quot;); 1234567&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;body&gt;&lt;h1&gt;This is the first program!&lt;/h1&gt;&lt;p&gt;Hello,World!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;]]></content>
+    <content type="text"><![CDATA[欢迎来到我的博客 public class HelloWorld { public static void main(String[] args) { System.out.println(&quot;Hello,World!&quot;); } } #include &lt;stdio.h&gt; int main() { printf(&quot;Hello,World!&quot;); return 1; } var sys = require(&quot;sys&quot;); sys.puts(&quot;Hello,World!&quot;); &lt;!DOCTYPE html&gt; &lt;html&gt; &lt;body&gt; &lt;h1&gt;This is the first program!&lt;/h1&gt; &lt;p&gt;Hello,World!&lt;/p&gt; &lt;/body&gt; &lt;/html&gt;]]></content>
+      <categories>
+        <category>闲聊</category>
+      </categories>
       <tags>
         <tag>other</tag>
       </tags>

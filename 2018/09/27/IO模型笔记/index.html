@@ -46,7 +46,7 @@
     
     <title>
         
-            标签: other | 
+            IO模型笔记 | 
         
         Geeyeek
     </title>
@@ -57,7 +57,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="乐享编程">
-    <meta name="keywords" content="后端开发 挖坑 算法 机器学习">
+    <meta name="keywords" content="后端开发 挖坑 算法 机器学习,OS">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -218,7 +218,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Geeyeek">
-    <meta name="msapplication-starturl" content="https://tomhaoye.github.io/tags/other/">
+    <meta name="msapplication-starturl" content="https://tomhaoye.github.io/2018/09/27/IO模型笔记/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Geeyeek">
@@ -233,13 +233,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="https://tomhaoye.github.io/tags/other/">
+    <meta property="og:url" content="https://tomhaoye.github.io/2018/09/27/IO模型笔记/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="标签: other | Geeyeek">
+    <meta property="og:title" content="IO模型笔记 | Geeyeek">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="乐享编程">
-    
+    <meta property="og:article:tag" content="OS"> 
 
+    
+        <meta property="article:published_time" content="Thu Sep 27 2018 10:19:15 GMT+0800">
+        <meta property="article:modified_time" content="Thu Sep 27 2018 10:19:39 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -247,13 +250,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://tomhaoye.github.io/tags/other/index.html" />
+        <link rel="canonical" href="https://tomhaoye.github.io/2018/09/27/IO模型笔记/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://tomhaoye.github.io/2018/09/27/IO模型笔记/index.html",
+    "headline": "IO模型笔记",
+    "datePublished": "Thu Sep 27 2018 10:19:15 GMT+0800",
+    "dateModified": "Thu Sep 27 2018 10:19:39 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Geeyeek",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "欢迎来访Geeyeek的博客"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Geeyeek",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",OS后端开发 挖坑 算法 机器学习",
+    "description": "乐享编程",
+}
+</script>
 
 
     
@@ -287,101 +320,324 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#IO-Model"><span class="post-toc-number">1.</span> <span class="post-toc-text">IO Model</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一个基本的IO，它会涉及到两个系统对象，一个就是系统内核，另一个是调用这个IO的对象。当一个read操作发生时，会经历以下阶段："><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">一个基本的IO，它会涉及到两个系统对象，一个就是系统内核，另一个是调用这个IO的对象。当一个read操作发生时，会经历以下阶段：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#同步与异步"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">同步与异步</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#阻塞与非阻塞"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">阻塞与非阻塞</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#epoll-select-poll"><span class="post-toc-number">1.0.4.</span> <span class="post-toc-text">epoll,select/poll</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#select缺点："><span class="post-toc-number">1.0.5.</span> <span class="post-toc-text">select缺点：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#epoll对select缺点的改进"><span class="post-toc-number">1.0.6.</span> <span class="post-toc-text">epoll对select缺点的改进</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-number">2.</span> <span class="post-toc-text">总结</span></a></li></ol>
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/09/26/hello-world/">Hello World</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-欢迎来到我的博客
-
-public class HelloWorld...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/09/26/hello-world/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Geeyeek's avatar">
-            </div>
-            <div>
-                <strong>Geeyeek</strong>
-                <span>9月 26, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/闲聊/">闲聊</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                IO模型笔记
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Geeyeek</strong>
+        <span>9月 27, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC3klEQVR42u3azU6CMRAFUN7/pXVrYoB7Ox8K7emKRGl76mKcn9vXkeuGjY2NjY2NjY2N/ZbsW7x+/v7jz3cP/rVbcpN7Z+V3xsbGxj6BnVy3fax8t3s/ffxA9Z2xsbGxD2C3QSvZZ+1b+W7JnbGxsbGxkwDWPtyTtCE4HRsbGxt7zs6TgXlQxMbGxsa+qqj0GJPvmewwb0VgY2Njn8O+ttH7N5/frr+NjY2N/U/sycqLTW156OsFCxsbG3tXdl7cmTQJri1X5Y+IjY2NfQJ7Lfy0o5ZtSMsbwxekItjY2NibsicJwyRETZ6maA9gY2Njb8RONp2HnDzVmZ9bF5WwsbGxN2JfFioGIz7t/sU9sbGxsTdlTxKM/LptiErOqofysbGxsQ9grwW2SZFobfRz7T7Y2NjYu7InpBaTB6S8aVGUrrCxsbE3Za+1CvKif/647ehPHTixsbGxN2VP2qvtKM9aczcvIRXDl9jY2NjbsfOAkaQZk0LVWiqyGMCwsbGxt2AnB09SjoSR75wPeo6KStjY2Ngfy85L/9G//lelEK8b2cHGxsbegp2nGY+vmweqvCXcBrzF9gA2Njb2h7OTcJIXgCZt3TYg5QUmbGxs7BPY15bv87HItQfNWxTY2NjY57AnAWntCfLEph0PikZ2sLGxsbdj5//Wrw1rztvA82QJGxsbe1d2EjbaEZlJ+tE2KkYzp9jY2NhbsCfhJynu5AGsDVT5nwobGxt7b3ayaV7QWftum6Ik4e1JewAbGxt7I3a7WsZa4Cnat/NUBBsbG/vD2bd4ta3cvOR07WhmNLKDjY2NvR07D1prSUU7ErTWiqgzMGxsbOzt2G0oKkrzlxb922EdbGxsbOx8ELMYhSyfdVKQwsbGxsZOGrdt87UtY81Px8bGxj6B3RZ92oA0KRLlD/HCWho2Njb2G7PXwkkS9ibDmkmgzffBxsbG3pV9zsLGxsbGxsbGxsZ+m/UNLOTt0NZ/eboAAAAASUVORK5CYII=">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/OS/">OS</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=IO模型笔记&url=https://tomhaoye.github.io/2018/09/27/IO模型笔记/index.html&pic=https://tomhaoye.github.io/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=IO模型笔记&url=https://tomhaoye.github.io/2018/09/27/IO模型笔记/index.html&via=Geeyeek" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://tomhaoye.github.io/2018/09/27/IO模型笔记/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://tomhaoye.github.io/2018/09/27/IO模型笔记/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Geeyeek&title=IO模型笔记&summary=乐享编程&pics=https://tomhaoye.github.io/img/favicon.png&url=https://tomhaoye.github.io/2018/09/27/IO模型笔记/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
     
 </div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="IO-Model"><a href="#IO-Model" class="headerlink" title="IO Model"></a>IO Model</h1><p>常见IO模型</p>
+<ul>
+<li>blocking IO</li>
+<li>nonblocking IO</li>
+<li>IO mutiplexing(select &amp; poll)</li>
+<li>signal driven IO</li>
+<li>asynchronous IO(the POSIX aio_functions)</li>
+</ul>
+<p><img src="http://oute9sm9w.bkt.clouddn.com/IO/12.jpeg"><br><img src="http://oute9sm9w.bkt.clouddn.com/IO/34.jpeg"><br><img src="http://oute9sm9w.bkt.clouddn.com/IO/5.jpeg"></p>
+<h3 id="一个基本的IO，它会涉及到两个系统对象，一个就是系统内核，另一个是调用这个IO的对象。当一个read操作发生时，会经历以下阶段："><a href="#一个基本的IO，它会涉及到两个系统对象，一个就是系统内核，另一个是调用这个IO的对象。当一个read操作发生时，会经历以下阶段：" class="headerlink" title="一个基本的IO，它会涉及到两个系统对象，一个就是系统内核，另一个是调用这个IO的对象。当一个read操作发生时，会经历以下阶段："></a>一个基本的IO，它会涉及到两个系统对象，一个就是系统内核，另一个是调用这个IO的对象。当一个read操作发生时，会经历以下阶段：</h3><ul>
+<li>通过read系统调用向内核发起读请求</li>
+<li>内核向硬件发送读指令，并等待读就绪</li>
+<li>内核把将要读取的数据复制到描述符所指向的内核缓存区</li>
+<li>将数据从内核缓存区拷贝到用户进程空间中</li>
+</ul>
+<h3 id="同步与异步"><a href="#同步与异步" class="headerlink" title="同步与异步"></a>同步与异步</h3><ul>
+<li>同步和异步关注的是消息通信机制</li>
+<li>注：同步IO过程由进程处理，异步IO交由内核处理IO</li>
+</ul>
+<h3 id="阻塞与非阻塞"><a href="#阻塞与非阻塞" class="headerlink" title="阻塞与非阻塞"></a>阻塞与非阻塞</h3><ul>
+<li>阻塞和非阻塞关注的是程序在等待调用结果时的状态</li>
+</ul>
+<p>1，2，3，4属于同步IO，5属于异步IO</p>
+<p>AIO异步非阻塞IO，适用于连接数多且IO时间长的架构，如相册服务器，JDK7开始支持</p>
+<p>NIO同步非阻塞IO，适用于连接数多且轻操作（IO?）的架构</p>
+<p>BIO同步则色IO，适用于连接数少且固定的架构</p>
+<p>一般来说，IO主要有两种情况（服务器）：一是来自网络的IO，二是文件的IO。windows提供异步IO，Linux提供epoll模型给网络IO，文件IO则提供AIO</p>
+<h3 id="epoll-select-poll"><a href="#epoll-select-poll" class="headerlink" title="epoll,select/poll"></a>epoll,select/poll</h3><ul>
+<li>本质上都是同步IO，自己处理IO过程，但是epoll优化了轮询操作，使用callback机制响应。</li>
+<li>额外提供Edge Triggered，用户空间可能缓存IO状态，减少epoll-wait／epoll-pwait调用</li>
+</ul>
+<p>level triggered &amp; edge triggered</p>
+<ul>
+<li>LT事件不会丢弃，只要读buffer里面有数据可以让用户读，就会不停的通知。而ET则只发在事件发生之时通知。</li>
+</ul>
+<h3 id="select缺点："><a href="#select缺点：" class="headerlink" title="select缺点："></a>select缺点：</h3><ul>
+<li>每次调用，都需要把fd集合从用户态拷贝到内核态，fd多事件开销大</li>
+<li>每次都要遍历进入内核的fd，开销也很大</li>
+<li>select支持fd数量太小，默认1024</li>
+<li>poll与select只在fd集合的结构上面有区别</li>
+</ul>
+<h3 id="epoll对select缺点的改进"><a href="#epoll对select缺点的改进" class="headerlink" title="epoll对select缺点的改进"></a>epoll对select缺点的改进</h3><ul>
+<li>新事件注册到epoll句柄中，会把所有的fd拷贝进内核，而不是在epoll_wait时重复拷贝</li>
+<li>为fd指定回调函数，设备就绪，调用回调函数唤醒等待者，并将fd加入就绪链表</li>
+<li>最大的限制很大程度上跟系统内存大小有关</li>
+<li>消息传递：mmap加速</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
+<li>select、poll都需要轮询遍历所有fd，而epoll只需要读取就绪链表</li>
+<li>select、poll每次调用都copy一次fd，并往设备队列上挂。而epoll只要copy一次fd，并只往自己的等待队列上挂一次即可</li>
+</ul>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 Gitalk -->
+<div id="gitalk-comment">
+    <!-- Gitalk 评论框 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: '6bbcfba0d2dab1924162',
+            clientSecret: '04f0787c82d281169a3cee99b95cbdb949547d4b',
+            repo: 'gitTalk',
+            owner: 'tomhaoye',
+            admin: ['tomhaoye'],
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+   gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-comment {
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/09/27/Linux添加服务到开机自动启动/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/09/27/PHP-Standard-Recommendation/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -560,6 +816,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 
