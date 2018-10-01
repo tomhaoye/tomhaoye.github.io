@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[极验滑动验证码行为模拟]]></title>
+    <url>%2F2018%2F10%2F01%2F%E6%9E%81%E9%AA%8C%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81%E7%A0%81%E8%A1%8C%E4%B8%BA%E6%A8%A1%E6%8B%9F%2F</url>
+    <content type="text"><![CDATA[经过一番折腾成功率已经比较高了（70%-90%吧【2018/10/01】），某些背景干扰元素过多缺口又刚好在色差较小的地方的时候可能会计算错误，也可能还有某些特殊的情况，GIF是旧的，具体可看MP4。 代码仅供参考学习交流，有兴趣可以拿去玩玩，鉴于本人能力有限，代码、逻辑以及解决方式上有错误在所难免，请各位大佬多多指教~另外我发现极验官网快改版了，鉴于该代码直接在极验官网上模拟，可能很快就用不了了，届时可以考虑接入api到自己本地再进行模拟测试。 仓库地址: https://github.com/tomhaoye/geetest-crack-demo 故事起源之前写了个爬虫抓取58的小区数据的代码，有人提了个issue，说小区详情数据和经纬度为空，我自己试了一把，发现请求太频繁会被强制跳转到验证码的页面去。后来试用了代理，发现一个ip没抓几条数据就被强制跳转人机校验了，然后我手动去访问网页并通过验证码的校验之后再去抓取数据，发现抓取了几千条数据也没有再被强跳了。这是什么规则=。=算了，还是先想办法能自动通过人机校验先。而58的这个页面的人机校验，是类似于极验的那种滑动验证码。emmmm，网上资料都很多，但是版本较旧，现在的极验滑动校验改进了不少地方，不过思路总是可以参考了。 开始研究。。。待续]]></content>
+      <categories>
+        <category>有趣</category>
+      </categories>
+      <tags>
+        <tag>other</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[hexo踩坑记]]></title>
     <url>%2F2018%2F09%2F27%2Fhexo%E8%B8%A9%E5%9D%91%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[hexo的搭建和使用十分的方便，搭配github page食用更佳。github上有很多绚丽的hexo主题，大家可以按需搭配。虽说hexo+github page搭建个人博客很方便快捷，但如果你需要较多的个性化定制，坑总是会踩的。本文主要遇到的各种坑以及记录简单的操作步骤，如果需要详细的安装部署教程请点击传送门离开。 安装hexo 如果你不知道或者未安装 npm ，点击此处了解以及下载。 npm i -g hexo-cli 说到npm我在后面挖到了一个坑，这个坑以前已经挖过，这里又遇到了，有必要记下来。如果你跟我一样是在使用Windows 10 + VirtualBox (VBox) + Vagrant + Laravel Homestead + 共享目录这样的环境做开发的，需要注意。 在上述环境中使用npm会有比较多意料之外的状况，大部分stackoverflow上都有解决方案，但这次遇到的error “ETXTBSY: text file is busy” on npm install弄了一段时间仍然没解决，把npm搞坏后还是换到windows环境去了。 虽然没解决，但还是推荐一下比较靠谱的解决方案。 快速搭建hexo init [folder] //初始化，新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站 cd folder //进入网站根目录，如果没有设置 folder ，则不需要该步骤 hexo g //generetor的缩写，生成静态文件。 hexo s //server的缩写，启动服务器。默认情况下，访问网址为： http://localhost:4000/。 主题。。。待续]]></content>
