@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Mon Oct 01 2018 21:54:55 GMT+0800">
-        <meta property="article:modified_time" content="Sat Oct 13 2018 01:25:30 GMT+0800">
+        <meta property="article:modified_time" content="Sun Oct 14 2018 01:10:54 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "https://blog.aikeji.online/2018/10/01/极验滑动验证码行为模拟/index.html",
     "headline": "极验滑动验证码行为模拟",
     "datePublished": "Mon Oct 01 2018 21:54:55 GMT+0800",
-    "dateModified": "Sat Oct 13 2018 01:25:30 GMT+0800",
+    "dateModified": "Sun Oct 14 2018 01:10:54 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -691,6 +691,32 @@
 </code></pre>
 <p>既然边界已经描绘出来了，接下来我们就是想办法去定位缺口了。方案二所得到的图片内容比较丰富，基本与原图是没有差别的，那我们就不能够通过方案一中最初规则去定位缺口了，因为在里面满足规则的色块很多很多，所以我们应该为方案二量身定做一套新规则。</p>
 <p>现在我们需要做的是观察描边图并找到并找到隐藏在其中的一些信息，大家可以看到：缺口附近的描边十分规整，而拼块附近的描边比较粗大；缺口描边内的黑块面积应该跟拼块描边内的黑块面积差不多；缺口跟拼块在y轴上的范围基本是一样的。接下来我们就利用刚刚观察到的这些信息进行分析，看看能不能得出一定的规律，制定出适当的规则。</p>
+<p>从上面的信息中，有的可能自身就能够成为规则，而有的则需要进行组合，也许大家能够找到更多的信息，也能制定很多的规则。而我想到的规则，也许存在不完善或者错误的的地方，但我也想在这里跟大家分享，希望大家指点指点。之前我们寻找缺口基本都是整幅图去遍历所有像素点的，这样很容易被其他的元素所干扰。所以我就想能不能先确定一个方向上（例如y轴）的范围，然后就只需要在（例如x轴上）找到满足的点或线，记录起来最后再做筛选。这里我选取了拼块的左白边作为定位y轴范围的依据，因为他开始于x轴上的第7个像素（原图），而x轴上的7之前的像素基本是没有其他元素干扰的，这让定位y轴范围变得比较方便和准确，先上个代码再来慢慢解释。</p>
+<pre><code class="python">def get_start_point(bin_img_path=&#39;&#39;):
+    img = image.open(bin_img_path)
+    # 滑块左边位置7px[6\13]处，获取滑块位置
+    _pixel = 42
+    _color_diff_list = {}
+    initial_slider_left_x_index_range = range(6, 14)
+    for initial_slider_left_x_index in initial_slider_left_x_index_range:
+        back_color_n = 0
+        slider_left = {}
+        for y_cur in range(118):
+            color_n = 0
+            for add_to_next in range(_pixel):
+                color_n += img.getpixel((initial_slider_left_x_index, y_cur + add_to_next))
+            slider_left[color_n] = y_cur
+        w_color_n_max = max(slider_left)
+        y_start_cur = slider_left[w_color_n_max]
+        print(f&#39;索引{initial_slider_left_x_index}左白值总和:{w_color_n_max}&#39;)
+        for add_to_next in range(_pixel):
+            back_color_n += img.getpixel((initial_slider_left_x_index + 1, y_start_cur + add_to_next))
+        print(f&#39;索引{initial_slider_left_x_index}右白值总和:{back_color_n}&#39;)
+        _color_diff_list[w_color_n_max - back_color_n] = initial_slider_left_x_index
+    best_point = _color_diff_list[max(_color_diff_list)]
+    print(f&#39;最佳起点:{best_point}&#39;)
+    return best_point
+</code></pre>
 <h4 id="3、将拼图移动到缺口处"><a href="#3、将拼图移动到缺口处" class="headerlink" title="3、将拼图移动到缺口处"></a>3、将拼图移动到缺口处</h4><h4 id="4、后续：关于干扰块排除的一些想法"><a href="#4、后续：关于干扰块排除的一些想法" class="headerlink" title="4、后续：关于干扰块排除的一些想法"></a>4、后续：关于干扰块排除的一些想法</h4>
         
     
