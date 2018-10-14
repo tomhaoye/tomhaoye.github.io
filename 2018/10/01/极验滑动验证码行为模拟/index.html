@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Mon Oct 01 2018 21:54:55 GMT+0800">
-        <meta property="article:modified_time" content="Sun Oct 14 2018 14:10:14 GMT+0800">
+        <meta property="article:modified_time" content="Sun Oct 14 2018 17:16:41 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "https://blog.aikeji.online/2018/10/01/极验滑动验证码行为模拟/index.html",
     "headline": "极验滑动验证码行为模拟",
     "datePublished": "Mon Oct 01 2018 21:54:55 GMT+0800",
-    "dateModified": "Sun Oct 14 2018 14:10:14 GMT+0800",
+    "dateModified": "Sun Oct 14 2018 17:16:41 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -801,7 +801,21 @@ def get_x_move_speed(distance=0, left_time=0, section=10):
 <video id="video" controls preload="none" width="800px" poster="https://raw.githubusercontent.com/tomhaoye/geetest-crack-demo/master/pic/poster.jpg"><br>      <source id="mp4" src="https://github.com/tomhaoye/geetest-crack-demo/blob/master/mp4/20181001_210311.mp4?raw=true" type="video/mp4"><br>      <p>Your user agent does not support the HTML5 Video element.</p><br></video>
 
 <p> 好了，我的整个实验就到这里就结束了，下面还有一些其他方面的思考。如果有能看到这里的童鞋，既然来了，不如在评论留下一个脚印？</p>
-<h4 id="4、后续：关于干扰块排除的想法"><a href="#4、后续：关于干扰块排除的想法" class="headerlink" title="4、后续：关于干扰块排除的想法"></a>4、后续：关于干扰块排除的想法</h4><h4 id="5、后续：关于增加定位模拟难度的想法"><a href="#5、后续：关于增加定位模拟难度的想法" class="headerlink" title="5、后续：关于增加定位模拟难度的想法"></a>5、后续：关于增加定位模拟难度的想法</h4>
+<h4 id="4、后续：关于干扰块排除的想法"><a href="#4、后续：关于干扰块排除的想法" class="headerlink" title="4、后续：关于干扰块排除的想法"></a>4、后续：关于干扰块排除的想法</h4><p>相信大家都能发现，背景图里面，很多时候会在随机的位置出现另外一个或多个”缺口”，它们的颜色相对真正的缺口来说浅一些，但是对于上面方案二的描边法来说，它们确实也是会被描绘出来，虽然我们利用拼块确定了y轴的范围，但是当这些假的”缺口”也在这个y轴范围内的时候，特别是凹凸和方向完全跟真实缺口一样的时候，我们上面的代码就没办法分辨到底哪个才是真正的缺口了。但是解决这个问题的办法也比较简单，我这里想到的思路有两种：</p>
+<ul>
+<li>得到的两个位置获取它们原图颜色，相对较深的为真</li>
+<li>所有得到的缺口位置都记录下来，先移动到第一个缺口位置，若是不成功，再移动到下一个缺口位置</li>
+</ul>
+<p>不管怎样的干扰，总不会喧宾夺主。因为毕竟是给人类辨认的，而机器，只要你制定适当的规则，它们的辨识能力能够达到远超人类的水准。</p>
+<h4 id="5、后续：关于增加定位模拟难度的想法"><a href="#5、后续：关于增加定位模拟难度的想法" class="headerlink" title="5、后续：关于增加定位模拟难度的想法"></a>5、后续：关于增加定位模拟难度的想法</h4><p>相信大家看完了实验的整个过程，在这里一定会有很多关于如何设计更加复杂、更有效防止机器模拟行为的验证码的想法，我这里也就这次实验中的滑动验证码发表一下自己的看法。</p>
+<p>可以说滑动验证码是国内一种比较新颖的人机校验方式，因为他的操作简单直观，适用于任何年龄层的互联网用户。那实际人机校验的效果如何呢？如果仔细读完上文或者对滑动验证码有研究的童鞋，应该都知道，它实际上是进行了两次校验：识别和行为，我个人认为它能够更好的保护我们的应用以及用户数据，所以现在在国内它的普及度也是相当高。而我这次的实验针对当前版本进行制定规则以实现了机器模拟的目的，但我认为滑动验证码可以通过以下的调整来比较有效增加模拟的难度：</p>
+<ul>
+<li>拼块滑动不限于x轴，可在图内任意移动</li>
+<li>拼块和缺口的形状改为非固定的多边形或不规矩形状</li>
+</ul>
+<p>最最最最后，我想说的是，验证码技术经过多年的发展现在已经相当成熟了，除了日常的数字字母验证码，这次实验的滑动验证码，相信大家也听说过无比牛b的12306验证码，还有google的recaptcha等等。虽然当今的验证码领域已经有如此多的优秀方案，但是我相信没有一个方案能够百分百的抵御机器人，你有世界上最优秀的工程师、科学家，他有这个世界上最有钱的老板啊，把你的工程师和科学家撬过来破解还不是两天的事。现代互联网技术就是在这样的攻防游戏中逐渐的发展壮大的，时代的巨轮滚滚向前，跟不上时代步伐的技术只会被碾压得粉碎。</p>
+<p>完。</p>
+
         
     
 
