@@ -46,7 +46,7 @@
     
     <title>
         
-            Linux添加服务到开机自动启动 | 
+            Redis之HyperLogLog | 
         
         Geeyeek
     </title>
@@ -57,7 +57,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="乐享编程">
-    <meta name="keywords" content="后端开发 挖坑 算法 机器学习,Linux">
+    <meta name="keywords" content="后端开发 挖坑 算法 机器学习">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -218,7 +218,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Geeyeek">
-    <meta name="msapplication-starturl" content="https://blog.aikeji.online/2018/09/27/Linux添加服务到开机自动启动/">
+    <meta name="msapplication-starturl" content="https://blog.aikeji.online/2018/11/03/Redis之HyperLogLog/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Geeyeek">
@@ -233,16 +233,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="https://blog.aikeji.online/2018/09/27/Linux添加服务到开机自动启动/">
+    <meta property="og:url" content="https://blog.aikeji.online/2018/11/03/Redis之HyperLogLog/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Linux添加服务到开机自动启动 | Geeyeek">
+    <meta property="og:title" content="Redis之HyperLogLog | Geeyeek">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="乐享编程">
-    <meta property="og:article:tag" content="Linux"> 
+    
 
     
-        <meta property="article:published_time" content="Thu Sep 27 2018 10:20:20 GMT+0800">
-        <meta property="article:modified_time" content="Thu Sep 27 2018 10:20:48 GMT+0800">
+        <meta property="article:published_time" content="Sat Nov 03 2018 00:10:24 GMT+0800">
+        <meta property="article:modified_time" content="Sat Nov 03 2018 00:10:24 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -250,7 +250,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://blog.aikeji.online/2018/09/27/Linux添加服务到开机自动启动/index.html" />
+        <link rel="canonical" href="https://blog.aikeji.online/2018/11/03/Redis之HyperLogLog/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -262,10 +262,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "https://blog.aikeji.online/2018/09/27/Linux添加服务到开机自动启动/index.html",
-    "headline": "Linux添加服务到开机自动启动",
-    "datePublished": "Thu Sep 27 2018 10:20:20 GMT+0800",
-    "dateModified": "Thu Sep 27 2018 10:20:48 GMT+0800",
+    "mainEntityOfPage": "https://blog.aikeji.online/2018/11/03/Redis之HyperLogLog/index.html",
+    "headline": "Redis之HyperLogLog",
+    "datePublished": "Sat Nov 03 2018 00:10:24 GMT+0800",
+    "dateModified": "Sat Nov 03 2018 00:10:24 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -283,7 +283,7 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",Linux后端开发 挖坑 算法 机器学习",
+    "keywords": "后端开发 挖坑 算法 机器学习",
     "description": "乐享编程",
 }
 </script>
@@ -343,15 +343,6 @@
     <!-- Left aligned menu below button -->
     
     
-    <button id="post-toc-trigger-btn"
-        class="mdl-button mdl-js-button mdl-button--icon">
-        <i class="material-icons">format_list_numbered</i>
-    </button>
-
-    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#常用命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">常用命令</span></a></li></ol>
-    </ul>
-    
 
 
 
@@ -381,7 +372,7 @@
         
     
             <p class="article-headline-p">
-                Linux添加服务到开机自动启动
+                Redis之HyperLogLog
             </p>
         </div>
 
@@ -400,7 +391,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Geeyeek</strong>
-        <span>9月 27, 2018</span>
+        <span>11月 03, 2018</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -422,22 +413,13 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAADkklEQVR42u3aS27bUBAEQN3/0s42gCOpe94HRFBcGbEl8hUXnfm8flx/XS8EOHDgwIEDBw4cOHA8mOMVX+8+9eVm8Tcnd1y/1z++GQcOHDhwHOBIbpPc/t2nEtDk0T+/jNlZcODAgQPHOY7PEZj8TXK8PG7zWJ2dBQcOHDhwPJ8jCrYgSvPvxIEDBw4c/wdHUkrl8ZmXbfm/4MCBAweOJ3AkgdcWaW3RlQ+T8m842CvFgQMHDhzLCw3P//nqfgcOHDhw4PjF0V6zcit/AfniQj6g+nIiHDhw4MCxlSMPqnyYNCuukqPm63fFcAsHDhw4cGzlyB+obeTlDb78qCtNyag5iAMHDhw4NnHkKwsrB54FbfI8bRmJAwcOHDjOceQ3SBDzRl6y1tYGbRL5OHDgwIHjDkd+pDZWk2PnixRtkG/rleLAgQMHjnLOksde3i5MoNvDzIL8y8vGgQMHDhxbOXbF2yx02wDeNabCgQMHDhznOFaWGGYDoTxQ29fzpVTDgQMHDhxXOD4fMi+Hcri2hZczDQdUOHDgwIFjK0cRSOVQatYizH/blnxvXxUOHDhw4NjKkS+xJXzto8zusrekxIEDBw4cdziSYU+7UtBeKyFaLDrgwIEDB46LHElJljQH83u1Rd1sPIYDBw4cOM5x5IOlvISbtQjXl/aGK3c4cODAgWMrRxJRszKvKKLKojFvOEaFIg4cOHDg2MrRjnbauE3i/GbbsdjvwIEDBw4cI45XfLWHn7X/8tBdGZXhwIEDB45zHHsjLX/cXaHeBnnRK8WBAwcOHCOOfCB04pBJybcSvRt6pThw4MCBYxPHykJDG3j5UvV6cYgDBw4cOO5wJE3A9WZf8YijRYr8vw44cODAgeMOR1LI7V2Yyz81e23J8AkHDhw4cJzgmMXVrFU3++YZYvRZHDhw4MBxjKMdArXLEMlftst5G9YjcODAgQPHMY5Z03B2gNkwKV+nyIdnOHDgwIFjL0d75csKycO1P88GV0UJhwMHDhw4ljlWxjwJ1qxR2MZtu0iBAwcOHDhOc+ThulK2JeHXtvlaMhw4cODAcZNjNhaqm3Hr0bjcEMSBAwcOHM/kmAVqMmrKP9sS48CBAweOZ3LkxdJs9WFGnDw/Dhw4cOC4ydE24JJP5QsQs7WGWXjjwIEDB47THG1oRSto8dLD3kWKDUGLAwcOHDgWOFw4cODAgQMHDhw4cOB42PUHtW8V3vZoG0gAAAAASUVORK5CYII=">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC0ElEQVR42u3aQXLjMAwEQP//08kDUnJmCDmrJZsnV8qW2cwB5gCvryPXCxsbGxsbGxsbG/uR7Fe8fn7q/eurv1xuK37O4p6xsbGxt2bnG3r/qU8c1s+nLe4ZGxsb+wD21abvek+yufaYkv1gY2NjY6/x8iKUXyewsbGxsT9RwN6zJ5i8mGFjY2NjT4L7NWp7XfnHWRo2Njb249l50/Q5r/+0v42NjY39YHa78uLRjv4kUdRo59jY2NibsieBUfKXtpWbx0/5+7GxsbFPYLexUVvqrr6ljYqSp10eFjY2NvbW7KRI5G2DNpaaD3omhRMbGxt7V3ZeYPIIqT3QtSGetgxjY2Nj78peG51cawlPAqP2SoONjY19MjuP9Vt8Utja9kMee2FjY2Ofxm4vGy14MliZx17Y2NjY57Dbxm279XaUJx8GyssYNjY29q7stuk7aQ/Mi9OkpGFjY2PvzU7KzITXFqo2VIpKGjY2NvbW7Panf96InYRK9x43NjY29q7sBJNsblKW3r9n7duxsbGxz2Hf1bJteUk41V6QikYvNjY29kbstfZt3iTOB33agtS2q7GxsbF3Za/96G8vDMVgTXzQediEjY2NvTd77Wd9Xqjyq0V+UVn8l2BjY2Nvys7LT77ybU2OKW8eY2NjY+/Nbq8K+afaccm7hi+LLA0bGxt7I/akYdA2butRm5sGerCxsbFPYK/FSW1I1Bat/Mh+OT5sbGzsA9g5IA+A7moVtDEWNjY29jnstRKVN1/zhsFdAdbipBI2Njb2f8tu27ftoUzCqbahW9dtbGxs7I3Y86L1NV5ro5nFqBA2Njb2AewkuP90zDQf97w8VmxsbGzsQUzfjtrk0X/RNsbGxsbGHlxF8pbAWpgVPRkbGxv7AHa+6bVGb34c80gLGxsb+zR2G9zkLdtiW2Us9af9bWxsbOwHs89Z2NjY2NjY2NjY2I9Z3xC/SUuYLuqmAAAAAElFTkSuQmCC">
     
 </ul>
 
     
 
     <!-- Tags (bookmark) -->
-    
-    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-        <i class="material-icons" role="presentation">bookmark</i>
-        <span class="visuallyhidden">bookmark</span>
-    </button>
-    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
-        <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/Linux/">Linux</a>
-    </ul>
     
 
     <!-- Share -->
@@ -453,7 +435,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Linux添加服务到开机自动启动&url=https://blog.aikeji.online/2018/09/27/Linux添加服务到开机自动启动/index.html&pic=https://blog.aikeji.online/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Redis之HyperLogLog&url=https://blog.aikeji.online/2018/11/03/Redis之HyperLogLog/index.html&pic=https://blog.aikeji.online/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -462,7 +444,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Linux添加服务到开机自动启动&url=https://blog.aikeji.online/2018/09/27/Linux添加服务到开机自动启动/index.html&via=Geeyeek" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Redis之HyperLogLog&url=https://blog.aikeji.online/2018/11/03/Redis之HyperLogLog/index.html&via=Geeyeek" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -471,7 +453,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.aikeji.online/2018/09/27/Linux添加服务到开机自动启动/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.aikeji.online/2018/11/03/Redis之HyperLogLog/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -480,7 +462,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://blog.aikeji.online/2018/09/27/Linux添加服务到开机自动启动/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://blog.aikeji.online/2018/11/03/Redis之HyperLogLog/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -492,7 +474,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Geeyeek&title=Linux添加服务到开机自动启动&summary=乐享编程&pics=https://blog.aikeji.online/img/favicon.png&url=https://blog.aikeji.online/2018/09/27/Linux添加服务到开机自动启动/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Geeyeek&title=Redis之HyperLogLog&summary=乐享编程&pics=https://blog.aikeji.online/img/favicon.png&url=https://blog.aikeji.online/2018/11/03/Redis之HyperLogLog/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -511,78 +493,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <blockquote>
-<p>Systemd 是 Linux 系统中最新的初始化系统，Systemd 服务文件以 .service 结尾。一些使用包管理工具安装的软件会自动建立 .service 服务文件，路径在 /lib/systemd/system/ 下，但自行建立及管理的文件建议放在 /etc/systemd/system/ 目录下。内容以 supervisor 为例：</p>
-</blockquote>
-<pre><code>[Unit]
-Description=Supervisor process control system for UNIX
-Documentation=http://supervisord.org
-After=network.target
-
-[Service]
-ExecStart=/usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
-ExecStop=/usr/bin/supervisorctl $OPTIONS shutdown
-ExecReload=/usr/bin/supervisorctl -c /etc/supervisor/supervisord.conf $OPTIONS reload
-KillMode=process
-Restart=on-failure
-RestartSec=50s
-
-[Install]
-WantedBy=multi-user.target
-</code></pre><p>参数说明：</p>
-<pre><code>[Unit]
-Description：描述服务
-Documentation：参考资料
-After：描述服务类别
-
-[Service]
-Type：是后台运行的形式
-ExecStart：服务的具体运行命令
-ExecReload：重启命令
-ExecStop：停止命令
-KillMode：daemon终止时所关闭的程序
-Restart：触发重启
-RestartSec：重启等待时间
-TimeoutSec：无法顺利启动强制关闭时间
-注意：[Service]的启动、重启、停止命令全部要求使用绝对路径
-
-[Install]
-运行级别下服务安装的相关设置，可设置为多用户，即系统运行级别为3
-</code></pre><p>如过想要某些服务开机启动，例如以 php-fpm 为例，编写service：</p>
-<pre><code>sudo vi /etc/systemd/system/php7.1-fpm.service
-</code></pre><pre><code>[Unit]
-Description=The PHP 7.1 FastCGI Process Manager
-Documentation=man:php-fpm7.1(8)
-After=network.target
-
-[Service]
-Type=notify
-PIDFile=/run/php/php7.1-fpm.pid
-ExecStart=/usr/sbin/php-fpm7.1 -R --nodaemonize --fpm-config /etc/php/7.1/fpm/php-fpm.conf
-ExecReload=/bin/kill -USR2 $MAINPID
-
-[Install]
-WantedBy=multi-user.target
-</code></pre><p>随后如果 php-fpm 在运行则先将其关闭，运行：</p>
-<pre><code>systemctl daemon-reload 
-systemctl start php7.1-fpm.service
-</code></pre><p>测试能够成功开启服务了，就可以将服务设置为开机启动：</p>
-<pre><code>systemctl enable php7.1-fpm.service
-</code></pre><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><pre><code>systemctl daemon-reload
-systemctl list-units --type=service
-systemctl list-unit-files --type=service
-
-systemctl start unit.service
-systemctl stop unit.service
-systemctl restart unit.service
-
-systemctl enable unit.service
-systemctl disable unit.service
-
-systemctl is-enable unit.service
-systemctl is-active unit.service
-systemctl status unit.service
-</code></pre>
+        
         
     
 
@@ -632,21 +543,13 @@ systemctl status unit.service
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/09/27/hexo踩坑记/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2018/09/27/IO模型笔记/" id="post_nav-older" class="next-content">
+        <a href="/2018/10/16/二维码生成原理及编码实现/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
