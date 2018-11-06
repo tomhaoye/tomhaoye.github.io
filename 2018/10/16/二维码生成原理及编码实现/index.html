@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Tue Oct 16 2018 23:36:43 GMT+0800">
-        <meta property="article:modified_time" content="Mon Oct 29 2018 00:12:05 GMT+0800">
+        <meta property="article:modified_time" content="Tue Nov 06 2018 21:28:51 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "https://blog.aikeji.online/2018/10/16/二维码生成原理及编码实现/index.html",
     "headline": "二维码生成原理及编码实现",
     "datePublished": "Tue Oct 16 2018 23:36:43 GMT+0800",
-    "dateModified": "Mon Oct 29 2018 00:12:05 GMT+0800",
+    "dateModified": "Tue Nov 06 2018 21:28:51 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -625,7 +625,8 @@
 </ul>
 </li>
 </ul>
-<h3 id="掩码、纠错码等"><a href="#掩码、纠错码等" class="headerlink" title="掩码、纠错码等"></a>掩码、纠错码等</h3><center><br><img src="https://raw.githubusercontent.com/tomhaoye/qrcode/master/pic/masking_pattern.png" alt="掩码类型"><br>掩码类型<br></center>
+<h3 id="掩码、纠错码等"><a href="#掩码、纠错码等" class="headerlink" title="掩码、纠错码等"></a>掩码、纠错码等</h3><p>在数据编码完成后，为了防止出现大面积的空白或黑块而导致识别困难，我们还需要做多一步操作。一共有8种掩码你可以使用，下图中包含八种掩码的图示以及公式。所谓掩码，就是和上面生成的图做异或操作，而且掩码只会作用于数据区域。最最后，我们得到的八种掩码与数据其余异或出来的数据矩阵实际上都可以作为二维码被识别，但是考虑到要让扫码器更加容易的识别，需要从八个数据矩阵中筛选出机器最容易辨别的，筛选的依据是根据惩罚值的高低，又涉及到另外一种计算规则了。</p>
+<center><br><img src="https://raw.githubusercontent.com/tomhaoye/qrcode/master/pic/masking_pattern.png" alt="掩码类型"><br>掩码类型<br></center>
 
 <p>二维码的纠错码主要是通过<code>Reed-Solomon error correction</code>来实现的。对于这个算法，可以说是相当的复杂，先上一篇文章：<a href="https://www.jianshu.com/p/8208aad537bb" target="_blank" rel="noopener">为程序员写的Reed-Solomon码解释</a></p>
 <h3 id="编码实战"><a href="#编码实战" class="headerlink" title="编码实战"></a>编码实战</h3><h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3>
