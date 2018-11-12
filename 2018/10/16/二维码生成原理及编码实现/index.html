@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Tue Oct 16 2018 23:36:43 GMT+0800">
-        <meta property="article:modified_time" content="Mon Nov 12 2018 16:36:43 GMT+0800">
+        <meta property="article:modified_time" content="Mon Nov 12 2018 21:56:47 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "https://blog.aikeji.online/2018/10/16/二维码生成原理及编码实现/index.html",
     "headline": "二维码生成原理及编码实现",
     "datePublished": "Tue Oct 16 2018 23:36:43 GMT+0800",
-    "dateModified": "Mon Nov 12 2018 16:36:43 GMT+0800",
+    "dateModified": "Mon Nov 12 2018 21:56:47 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -349,7 +349,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简要笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">简要笔记</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基础图解"><span class="post-toc-number">2.</span> <span class="post-toc-text">基础图解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据编码"><span class="post-toc-number">3.</span> <span class="post-toc-text">数据编码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#掩码、纠错码等"><span class="post-toc-number">4.</span> <span class="post-toc-text">掩码、纠错码等</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编码实战"><span class="post-toc-number">5.</span> <span class="post-toc-text">编码实战</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基础结构"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">基础结构</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#结束"><span class="post-toc-number">6.</span> <span class="post-toc-text">结束</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简要笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">简要笔记</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基础图解"><span class="post-toc-number">2.</span> <span class="post-toc-text">基础图解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据编码"><span class="post-toc-number">3.</span> <span class="post-toc-text">数据编码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#掩码、纠错码等"><span class="post-toc-number">4.</span> <span class="post-toc-text">掩码、纠错码等</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编码实战"><span class="post-toc-number">5.</span> <span class="post-toc-text">编码实战</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#骨架"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">骨架</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#版本选择"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">版本选择</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据编码-1"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">数据编码</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#结束"><span class="post-toc-number">6.</span> <span class="post-toc-text">结束</span></a></li></ol>
     </ul>
     
 
@@ -632,7 +632,7 @@
 <center><br><img src="https://raw.githubusercontent.com/tomhaoye/qrcode/master/pic/masking_pattern.png" alt="掩码类型"><br>掩码类型<br></center>
 
 <p>二维码的纠错码主要是通过<code>Reed-Solomon error correction</code>来实现的。对于这个算法，可以说是相当的复杂，在短时间内也许我们不能完全理解他的算法含义，但是可以先了解它的一些基础知识以及步骤，如果觉得必须要完完全全搞清楚，建议查看相关的论文。由于本篇文章篇幅有限，在未完全理解该算法的情况下我不可能妄自总结，所以这里先推荐一篇稍微简单的介绍文章给各位感兴趣的读者：<a href="https://www.jianshu.com/p/8208aad537bb" target="_blank" rel="noopener">为程序员写的Reed-Solomon码解释</a></p>
-<h3 id="编码实战"><a href="#编码实战" class="headerlink" title="编码实战"></a>编码实战</h3><h4 id="基础结构"><a href="#基础结构" class="headerlink" title="基础结构"></a>基础结构</h4><p>好了本节进入了编码实战阶段，我们首先需要做的是先将整个二维码生成流程理清楚，并构造好对应的函数。</p>
+<h3 id="编码实战"><a href="#编码实战" class="headerlink" title="编码实战"></a>编码实战</h3><h4 id="骨架"><a href="#骨架" class="headerlink" title="骨架"></a>骨架</h4><p>好了本节进入了编码实战阶段，我们首先需要做的是先将整个二维码生成流程理清楚，并构造好对应的函数。</p>
 <pre><code class="python">#!/usr/bin/python
 
 class Qrcode:
@@ -701,6 +701,102 @@ class Qrcode:
                 return
 </code></pre>
 <p>我的代码抽丝剥茧后剩下的骨架大概就是以上的代码，和一开始我所打造的结构有一点区别，主要还是流程没有完全梳理好所导致的。所以大家常说理解好业务流程是项目环节中很重要的一环，它影响到整个项目的可扩展性以及日后的可维护性。在我个人看来优秀的程序员并不是指代码写得多么好、结构多么清晰、使用的技术多么高大上的人，而是能够真正的理解用户的真实诉求并加以分析以及能够梳理和完善流程的人。这种人无论在哪个行业，做什么样的工作，称之为优秀都是当之无愧的。</p>
+<h4 id="版本选择"><a href="#版本选择" class="headerlink" title="版本选择"></a>版本选择</h4><p>二维码的版本最直接影响的就是二维码内容容量的多少，当然除了版本外影响容量的还有纠错等级，所以我们最先需要计算的是根据用户的传入信息量和选择的纠错级别得出应该使用哪个版本的二维码。</p>
+<pre><code class="python">def __init__(self, message, level_index=&#39;L&#39;):
+    self.level = level_map[level_index]
+    message = message.encode()
+
+    def decide_version(_message, _level_index):
+        if all(chr(i) in num_list for i in _message):
+            mode = &#39;numeric&#39;
+        else:
+            mode = &#39;byte&#39;
+        for each_version in range(40):
+            if character_amount[_level_index][each_version][mode_map[mode]] &gt; len(_message):
+                self.version = each_version + 1 if each_version + 1 &gt; self.version else self.version
+                break
+        self.length = 21 + 4 * (self.version - 1)
+        self.size = (self.length, self.length)
+        self.mode = mode
+
+    decide_version(message, level_index)
+</code></pre>
+<p>为了容易理解，我把上下文的代码也贴到上面了。我使用的是<code>python3</code>，首先我们要先把信息内容<code>encode()</code>转化为一个个的<code>byte</code>，如果你不这样做<code>python3</code>拿出来的数据会是多个<code>byte</code>的组合，因为它已经能够识别多国语言了。接下来就是用每个版本对应纠错等级下的数据容量和当前需要编码的数据量进行对比了，一直到能容纳的数据量比需求的多，就可以停止对比更高的版本了。另外在这里我还进行了编码方式的指定，关于编码方式的说明可以接着看下一章节。</p>
+<h4 id="数据编码-1"><a href="#数据编码-1" class="headerlink" title="数据编码"></a>数据编码</h4><p>数据编码这一节可以说是整个流程中最重要的、最核心的，二维码的数据识别以及纠错能力都是通过这一部分来实现的。大家可能比较奇怪为什么这么重要的一环代码量却并不多，实际上我们项目中并没有实现<code>Reed-Solomon</code>算法，而是使用了依赖库，所以该部分的代码仅仅只是进行数据切割组装以及使用依赖库中封装好的函数。当然，我也愿意为有兴趣查看依赖库源码的童鞋奉上地址：<a href="https://github.com/tomerfiliba/reedsolomon" target="_blank" rel="noopener">reedsolomon</a></p>
+<pre><code class="python">def encode(_message):
+    def get_data_codewords(__message):
+        def numeric_encode(___message):
+            diff_encode_code = &#39;&#39;
+            divided_arr = [___message[i:i + 3] for i in range(0, len(___message), 3)]
+            for _equal_or_less_than_three_digits in divided_arr:
+                respectively_len = 10 - 3 * (3 - len(_equal_or_less_than_three_digits))
+                diff_encode_code += bin(int(_equal_or_less_than_three_digits))[2:].zfill(respectively_len)
+            return diff_encode_code
+
+        def byte_encode(___message):
+            diff_encode_code = &#39;&#39;
+            for b in ___message:
+                diff_encode_code += bin(b)[2:].zfill(8)
+            return diff_encode_code
+
+        mode_encode = {
+            &#39;numeric&#39;: numeric_encode,
+            &#39;byte&#39;: byte_encode,
+        }
+        incomplete_codewords = mode_indicator_map[self.mode] + bin(len(__message))[2:].zfill(
+            character_count_indicator_map[self.version][mode_map[self.mode]]) + mode_encode[self.mode](_message)
+        distance_to_8_multiple = 8 - (len(incomplete_codewords) % 8)
+        incomplete_codewords += &#39;0&#39; * distance_to_8_multiple
+
+        codewords = incomplete_codewords
+        bytes_need = 8 * each_version_required_bytes[self.version][self.level]
+        while len(codewords) &lt; bytes_need:
+            codewords += &#39;1110110000010001&#39; if bytes_need - len(codewords) &gt;= 16 else &#39;11101100&#39;
+        _data_codewords = [int(codewords[i:i + 8], 2) for i in range(len(codewords)) if not i % 8]
+        return _data_codewords
+
+    def rs_encode(_data_codewords):
+        _encode_data, data_block, i = &#39;&#39;, [], 0
+        block_codecount = num_of_error_correction_blocks_2_error_correction_per_blocks[self.version][self.level]
+        for group1 in range(block_codecount[0]):
+            data_block.append(_data_codewords[i:i + block_codecount[1]])
+            i += block_codecount[1]
+        for group2 in range(block_codecount[2]):
+            data_block.append(_data_codewords[i:i + block_codecount[3]])
+            i += block_codecount[3]
+
+        nsym = ecc_num_version_level_map[self.version][self.level]
+        gen = rs_generator_poly(nsym)
+        ecc_num = len(gen) - 1
+        _ecc_data = []
+        for block in data_block:
+            _data_block_get_ecc_block = block + [0] * ecc_num
+            for i in range(len(block)):
+                coef = _data_block_get_ecc_block[i]
+                if coef != 0:
+                    for j in range(ecc_num + 1):
+                        _data_block_get_ecc_block[i + j] ^= gf_mul(gen[j], coef)
+            _ecc_data.append(_data_block_get_ecc_block[len(block):])
+
+        _all_block_data = &#39;&#39;.join(bin(dec)[2:].zfill(8) for block in zip(*data_block) for dec in block)
+        # 突出部分补全
+        for block in data_block:
+            if len(block) == block_codecount[3]:
+                _all_block_data += bin(block[block_codecount[3] - 1])[2:].zfill(8)
+        _all_ecc_data = &#39;&#39;.join(bin(dec)[2:].zfill(8) for block in zip(*_ecc_data) for dec in block)
+        return _all_block_data + _all_ecc_data + &#39;0&#39; * remainder_bits[self.version]
+
+    data_codewords = get_data_codewords(_message)
+    return rs_encode(data_codewords)
+</code></pre>
+<p>这一部分代码大家可以看到最主要由<code>get_data_codewords</code>和<code>rs_encode</code>组成，而<code>get_data_codewords</code>中又包含了<code>numeric_encode</code>和<code>byte_encode</code>这两种编码方式。我想大家应该记得，它们就是<a href="#数据编码">数据编码</a>章节中介绍的其中两种编码方式。之所以没有编写其他的编码方式，主要原因有三：</p>
+<ul>
+<li>不一样的编码方式实际上只是根据不同的编码所制定的规则不一样而已，万能的规则肯定是最受欢迎的</li>
+<li>当今市面上大多数主流的扫码器支持自动检查<code>byte_encode</code>的数据是否是UTF-8的编码，换言之就是基本支持所有的语言的识别</li>
+<li>其他的一些编码虽说在某种程度上能够节省一定的空间，可能能够降低二维码使用的版本使得扫码器更容易识别，但是本身过多的信息不应该通过二维码进行传播，而且如今的影像技术在识别高版本二维码上不会有太大的压力</li>
+</ul>
+<p>终上所诉，在我的代码中只保留了两种编码方式，一种是对纯数字的编码方式，另外一种则是现在可以对所有编码都适用的编码方式。</p>
+<p>说完了关于代码中的编码方式，接下来我们继续解说这段<code>get_data_codewords</code>的代码还干了什么。</p>
 <h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3>
         
     
