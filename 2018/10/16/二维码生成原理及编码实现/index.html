@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Tue Oct 16 2018 23:36:43 GMT+0800">
-        <meta property="article:modified_time" content="Fri Nov 09 2018 23:58:17 GMT+0800">
+        <meta property="article:modified_time" content="Mon Nov 12 2018 16:36:43 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "https://blog.aikeji.online/2018/10/16/二维码生成原理及编码实现/index.html",
     "headline": "二维码生成原理及编码实现",
     "datePublished": "Tue Oct 16 2018 23:36:43 GMT+0800",
-    "dateModified": "Fri Nov 09 2018 23:58:17 GMT+0800",
+    "dateModified": "Mon Nov 12 2018 16:36:43 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -349,7 +349,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简要笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">简要笔记</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基础图解"><span class="post-toc-number">2.</span> <span class="post-toc-text">基础图解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据编码"><span class="post-toc-number">3.</span> <span class="post-toc-text">数据编码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#掩码、纠错码等"><span class="post-toc-number">4.</span> <span class="post-toc-text">掩码、纠错码等</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编码实战"><span class="post-toc-number">5.</span> <span class="post-toc-text">编码实战</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#结束"><span class="post-toc-number">6.</span> <span class="post-toc-text">结束</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简要笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">简要笔记</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基础图解"><span class="post-toc-number">2.</span> <span class="post-toc-text">基础图解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据编码"><span class="post-toc-number">3.</span> <span class="post-toc-text">数据编码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#掩码、纠错码等"><span class="post-toc-number">4.</span> <span class="post-toc-text">掩码、纠错码等</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编码实战"><span class="post-toc-number">5.</span> <span class="post-toc-text">编码实战</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基础结构"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">基础结构</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#结束"><span class="post-toc-number">6.</span> <span class="post-toc-text">结束</span></a></li></ol>
     </ul>
     
 
@@ -628,11 +628,80 @@
 </ul>
 </li>
 </ul>
-<h3 id="掩码、纠错码等"><a href="#掩码、纠错码等" class="headerlink" title="掩码、纠错码等"></a>掩码、纠错码等</h3><p>在数据编码完成后，为了防止出现大面积的空白或黑块而导致识别困难，我们还需要做多一步操作。一共有8种掩码你可以使用，下图中包含八种掩码的图示以及公式。所谓掩码，就是和上面生成的图做异或操作，而且掩码只会作用于数据区域。最最后，我们得到的八种掩码与数据其余异或出来的数据矩阵实际上都可以作为二维码被识别，但是考虑到要让扫码器更加容易的识别，需要从八个数据矩阵中筛选出机器最容易辨别的，筛选的依据是根据惩罚值的高低，又涉及到另外一种计算规则了。</p>
+<h3 id="掩码、纠错码等"><a href="#掩码、纠错码等" class="headerlink" title="掩码、纠错码等"></a>掩码、纠错码等</h3><p>在数据编码完成后，为了防止出现大面积的空白或黑块而导致识别困难，我们还需要做多一步操作。一共有8种掩码你可以使用，下图中包含八种掩码的图示以及公式。所谓掩码，就是和上面生成的图做异或操作，而且掩码只会作用于数据区域。最最后，我们得到的八种掩码与数据其余异或出来的数据矩阵实际上都可以作为二维码被识别，但是考虑到要让扫码器更加容易的识别，需要从八个数据矩阵中筛选出机器最容易辨别的，筛选的依据又涉及到一套惩罚计算的规则了。</p>
 <center><br><img src="https://raw.githubusercontent.com/tomhaoye/qrcode/master/pic/masking_pattern.png" alt="掩码类型"><br>掩码类型<br></center>
 
-<p>二维码的纠错码主要是通过<code>Reed-Solomon error correction</code>来实现的。对于这个算法，可以说是相当的复杂，先上一篇文章：<a href="https://www.jianshu.com/p/8208aad537bb" target="_blank" rel="noopener">为程序员写的Reed-Solomon码解释</a></p>
-<h3 id="编码实战"><a href="#编码实战" class="headerlink" title="编码实战"></a>编码实战</h3><h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3>
+<p>二维码的纠错码主要是通过<code>Reed-Solomon error correction</code>来实现的。对于这个算法，可以说是相当的复杂，在短时间内也许我们不能完全理解他的算法含义，但是可以先了解它的一些基础知识以及步骤，如果觉得必须要完完全全搞清楚，建议查看相关的论文。由于本篇文章篇幅有限，在未完全理解该算法的情况下我不可能妄自总结，所以这里先推荐一篇稍微简单的介绍文章给各位感兴趣的读者：<a href="https://www.jianshu.com/p/8208aad537bb" target="_blank" rel="noopener">为程序员写的Reed-Solomon码解释</a></p>
+<h3 id="编码实战"><a href="#编码实战" class="headerlink" title="编码实战"></a>编码实战</h3><h4 id="基础结构"><a href="#基础结构" class="headerlink" title="基础结构"></a>基础结构</h4><p>好了本节进入了编码实战阶段，我们首先需要做的是先将整个二维码生成流程理清楚，并构造好对应的函数。</p>
+<pre><code class="python">#!/usr/bin/python
+
+class Qrcode:
+    mode = None
+    level = None
+    qrcode = None
+    version = 1
+    data_matrix = None
+    mask_id = None
+    length = 0
+    size = ()
+
+    def generate(self, path):
+        return
+
+    def resize(self, size):
+        return
+
+    def paint(self, img, fg_or_bg=0):
+        return
+
+    def _matrix_to_img(self, img_mode=&#39;1&#39;, matrix=None):
+        return
+
+    def __init__(self, message, level_index=&#39;L&#39;):
+        return
+
+        def decide_version(_message, _level_index):
+            return
+
+        def build_matrix(encode_data):
+            def build_locate_sign():
+                return
+
+            def build_time_sign():
+                return
+
+            def build_dark_sign():
+                return
+
+            def build_alignment_sign():
+                return
+
+            def level_and_mask_build(_mask_id):
+                return
+
+            def build_version_info():
+                return
+
+            def data_build(_encode_data):
+                return
+
+            def mask():
+                def mask_template(col, row, _mask_id):
+                    return
+
+                def penalty(__matrix):
+                    return
+                return
+
+        def encode(_message):
+            def get_data_codewords(__message):
+                return
+
+            def rs_encode(_data_codewords):
+                return
+</code></pre>
+<p>我的代码抽丝剥茧后剩下的骨架大概就是以上的代码，和一开始我所打造的结构有一点区别，主要还是流程没有完全梳理好所导致的。所以大家常说理解好业务流程是项目环节中很重要的一环，它影响到整个项目的可扩展性以及日后的可维护性。在我个人看来优秀的程序员并不是指代码写得多么好、结构多么清晰、使用的技术多么高大上的人，而是能够真正的理解用户的真实诉求并加以分析以及能够梳理和完善流程的人。这种人无论在哪个行业，做什么样的工作，称之为优秀都是当之无愧的。</p>
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3>
         
     
 
