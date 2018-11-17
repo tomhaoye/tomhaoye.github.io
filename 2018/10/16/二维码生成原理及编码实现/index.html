@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Tue Oct 16 2018 23:36:43 GMT+0800">
-        <meta property="article:modified_time" content="Mon Nov 12 2018 21:56:47 GMT+0800">
+        <meta property="article:modified_time" content="Sun Nov 18 2018 01:05:58 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "https://blog.aikeji.online/2018/10/16/二维码生成原理及编码实现/index.html",
     "headline": "二维码生成原理及编码实现",
     "datePublished": "Tue Oct 16 2018 23:36:43 GMT+0800",
-    "dateModified": "Mon Nov 12 2018 21:56:47 GMT+0800",
+    "dateModified": "Sun Nov 18 2018 01:05:58 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -349,7 +349,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简要笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">简要笔记</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基础图解"><span class="post-toc-number">2.</span> <span class="post-toc-text">基础图解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据编码"><span class="post-toc-number">3.</span> <span class="post-toc-text">数据编码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#掩码、纠错码等"><span class="post-toc-number">4.</span> <span class="post-toc-text">掩码、纠错码等</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编码实战"><span class="post-toc-number">5.</span> <span class="post-toc-text">编码实战</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#骨架"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">骨架</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#版本选择"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">版本选择</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据编码-1"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">数据编码</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#结束"><span class="post-toc-number">6.</span> <span class="post-toc-text">结束</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简要笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">简要笔记</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基础图解"><span class="post-toc-number">2.</span> <span class="post-toc-text">基础图解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据编码"><span class="post-toc-number">3.</span> <span class="post-toc-text">数据编码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#掩码、纠错码等"><span class="post-toc-number">4.</span> <span class="post-toc-text">掩码、纠错码等</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编码实战"><span class="post-toc-number">5.</span> <span class="post-toc-text">编码实战</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#骨架"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">骨架</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#版本选择"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">版本选择</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据编码-1"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">数据编码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#填充数据矩阵"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">填充数据矩阵</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#定位标志、黑点、定时标志"><span class="post-toc-number">5.4.1.</span> <span class="post-toc-text">定位标志、黑点、定时标志</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#校正标志"><span class="post-toc-number">5.4.2.</span> <span class="post-toc-text">校正标志</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#格式信息"><span class="post-toc-number">5.4.3.</span> <span class="post-toc-text">格式信息</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#版本信息"><span class="post-toc-number">5.4.4.</span> <span class="post-toc-text">版本信息</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#编码数据填充"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">编码数据填充</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#应用掩码并选择最佳的二维码"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">应用掩码并选择最佳的二维码</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#结束"><span class="post-toc-number">6.</span> <span class="post-toc-text">结束</span></a></li></ol>
     </ul>
     
 
@@ -796,7 +796,120 @@ class Qrcode:
 <li>其他的一些编码虽说在某种程度上能够节省一定的空间，可能能够降低二维码使用的版本使得扫码器更容易识别，但是本身过多的信息不应该通过二维码进行传播，而且如今的影像技术在识别高版本二维码上不会有太大的压力</li>
 </ul>
 <p>终上所诉，在我的代码中只保留了两种编码方式，一种是对纯数字的编码方式，另外一种则是现在可以对所有编码都适用的编码方式。</p>
-<p>说完了关于代码中的编码方式，接下来我们继续解说这段<code>get_data_codewords</code>的代码还干了什么。</p>
+<p>说完了关于代码中的编码方式，接下来我们继续解说这段<code>get_data_codewords</code>的代码还干了什么。大家可以看到被编码的数据是最后才加上的，而编码数据前面有：</p>
+<pre><code>mode_indicator_map[self.mode] + bin(len(__message))[2:].zfill(character_count_indicator_map[self.version][mode_map[self.mode]])
+</code></pre><p>其中的<code>mode_indicator_map</code>是你选择的编码模式的标识，如果是<code>numeric</code>模式需要加上<code>0001</code>， <code>alphanumeric</code>模式为<code>0010</code>， <code>byte</code>模式为<code>0100</code>， <code>kanji</code>模式为<code>1000</code>。而后面那段看起来很复杂的一串东西，实际上是数据长度的标识，先将输入的文本长度转化为二进制，然后查出不同版本下不同编码模式所需要的（文本长度）标识长度，接着用<code>0</code>去对该二进制数进行补齐缺省长度。最后加上数据编码后，如果整体数据的长度不是<code>8</code>的整数倍，还需要在数据后面用<code>0</code>进行补齐。</p>
+<p>也许你已经被上面绕来绕去弄得晕头转向了，但这仅仅只是开始:)。接着，我们的得到的二进制数据长度还不够，我们要查到当前二维码版本以及纠错级别下的二维码需要数据区域的长度为多少，如果还没有达到需要的最大长度，我们还要轮流加两个补齐码<code>11101100</code>和<code>00010001</code>，没错轮流的意思就是<code>11101100000100011110110000010001……</code>。这就是完整的编码区数据编码了，我们称之为<code>Data Codewords</code>，每一个<code>8bits</code>叫一个<code>codeword</code>，我们还要对这些数据码加上纠错信息，所以我们对数据进行每<code>8bits</code>拆分并转化为了十进制，得到了一个充满十进制数的数组。</p>
+<p>接下来就是<code>rs_encode()</code>函数的工作了，<code>num_of_error_correction_blocks_2_error_correction_per_blocks</code>这里我有一个常量命名非常的长，它代表着每个版本和纠错等级下所需纠错码的<code>block</code>数量，映射关系的格式为<code>(1, 19, 0, 0)</code>或<code>(2, 38, 2, 39)</code>，如果第三个数为<code>0</code>，说明所有的<code>block</code>所需要的<code>codeword</code>数量是一样的，反则反之，最多可能会有两组<code>block</code>。第二和第四个参数则代表每个<code>block</code>所需要的<code>codeword</code>数量。分组分<code>block</code>后就是到了计算纠错码的步骤了，如果想要理解这部分的详细步骤和原理可以参考 <a href="#掩码、纠错码等">掩码、纠错码等</a> 中我提供的链接。</p>
+<p>现在我们手上既有<code>Data Codewords</code>，也得到了对应的纠错码，最后一步就是将他们组合成我们二维码数据区域中所需要的完整的数据了。至于怎么合起来呢，还是需要点骚操作的。上面我们得到的多组多<code>block</code>的<code>Data Codewords</code>和纠错码都是二维数组，那么也就是矩阵啦，接下来我们需要做的是将矩阵转置，然后将里面元素转化为二进制并用<code>0</code>补齐到8位后一行一行的串连起来，<code>Data Codewords</code>和纠错码两个矩阵都需要进行此操作。在这里的处理中我一开始忘了分组后的<code>codeword</code>是不一样的，矩阵转置后会丢掉某一组多出的元素，所以我们需要补上这一部分的数据。</p>
+<p>到这里数据编码部分是真正的结束了，是不是有点复杂？没事多看几次就能够熟悉了:)</p>
+<h4 id="填充数据矩阵"><a href="#填充数据矩阵" class="headerlink" title="填充数据矩阵"></a>填充数据矩阵</h4><p>现在我们离二维码出生只有两步之遥了，接下来都是很简单的东西了:)</p>
+<p><a href="#基础图解">基础图解</a> 中可以看到，版本信息、格式信息、定位标志、校正标志、定时标志这些都是不依赖数据内容的（当然，它们受数据长度影响），接下来我们就构造一个二维码的矩阵，先把这些相对固定的数据填充进去。</p>
+<pre><code class="python">def build_locate_sign():
+    for i in range(8):
+        for j in range(8):
+            if i in (0, 6):
+                self.data_matrix[i][j] = self.data_matrix[-i - 1][j] = self.data_matrix[i][
+                    -j - 1] = 0 if j == 7 else 1
+            elif i in (1, 5):
+                self.data_matrix[i][j] = self.data_matrix[-i - 1][j] = self.data_matrix[i][
+                    -j - 1] = 1 if j in (0, 6) else 0
+            elif i == 7:
+                self.data_matrix[i][j] = self.data_matrix[-i - 1][j] = self.data_matrix[i][-j - 1] = 0
+            else:
+                self.data_matrix[i][j] = self.data_matrix[-i - 1][j] = self.data_matrix[i][
+                    -j - 1] = 0 if j in (1, 5, 7) else 1
+
+def build_time_sign():
+    for i in range(self.length):
+        self.data_matrix[i][6] = self.data_matrix[6][i] = 1 if i % 2 == 0 else 0
+
+def build_dark_sign():
+    for j in range(8):
+        self.data_matrix[8][j] = self.data_matrix[8][-j - 1] = self.data_matrix[j][8] = \
+            self.data_matrix[-j - 1][8] = 0
+    self.data_matrix[8][8] = 0
+    self.data_matrix[8][6] = self.data_matrix[6][8] = self.data_matrix[8][-8] = 1
+    if self.version &gt; 6:
+        for i in range(6):
+            for j in (-9, -10, -11):
+                self.data_matrix[i][j] = self.data_matrix[j][i] = 0
+
+def build_alignment_sign():
+    point_matrix = []
+    if alignment_location[self.version]:
+        for i in alignment_location[self.version]:
+            for j in alignment_location[self.version]:
+                point_matrix.append((j, i))
+    matrix_len = len(point_matrix)
+    for index in range(len(point_matrix)):
+        if index == 0 or index == sqrt(matrix_len) - 1 or index == matrix_len - (sqrt(matrix_len) - 1) - 1:
+            continue
+        else:
+            for x_offset in range(-2, 3):
+                for y_offset in range(-2, 3):
+                    self.data_matrix[point_matrix[index][0] + x_offset][point_matrix[index][1] + y_offset] \
+                        = 1 if x_offset % 2 == 0 and y_offset % 2 == 0 or abs(x_offset) + abs(
+                        y_offset) == 3 else 0
+
+def level_and_mask_build(_mask_id):
+    for format_i in range(len(format_info_str[self.level][_mask_id])):
+        self.data_matrix[format_i if format_i &lt; 6 else (
+            format_i + 1 if format_i &lt; 8 else self.length - 7 + (format_i - 8))][8] = int(
+            format_info_str[self.level][_mask_id][format_i])
+        self.data_matrix[8][format_i if format_i &lt; 6 else (
+            format_i + 1 if format_i &lt; 8 else self.length - 7 + (format_i - 8))] = int(
+            format_info_str[self.level][_mask_id][14 - format_i])
+    self.data_matrix[self.length - 8][8] = int(format_info_str[self.level][_mask_id][7])
+
+def build_version_info():
+    if self.version &gt; 6:
+        _version_info = version_info_str[self.version][::-1]
+        for num_i in range(len(_version_info)):
+            self.data_matrix[num_i // 3][num_i % 3 + self.length - 11] = int(_version_info[num_i])
+            self.data_matrix[num_i % 3 + self.length - 11][num_i // 3] = int(_version_info[num_i])
+</code></pre>
+<p>上面的代码分别就是定位标志、定时标志、黑点、校正标志、格式信息、版本信息的填充代码了。咦不对，怎么多了个<code>黑点</code>这个奇怪的东西？哈哈，这个东西其实是固定在这里的：</p>
+<center><br><img src="https://raw.githubusercontent.com/tomhaoye/qrcode/master/pic/dark_sign.png" alt="黑点"><br>神奇的黑点<br></center>
+
+<h5 id="定位标志、黑点、定时标志"><a href="#定位标志、黑点、定时标志" class="headerlink" title="定位标志、黑点、定时标志"></a>定位标志、黑点、定时标志</h5><p>定位标志大小是不会变的，只有位置会根据版本变化；黑点我想就不用多说了，就是那里的一点；而定时标志就是黑白相间连接在定位标志之间。</p>
+<center><br><img src="https://raw.githubusercontent.com/tomhaoye/qrcode/master/pic/finder_size.png" alt="定位标识图示"><br>定位标识图示<br></center>
+
+<h5 id="校正标志"><a href="#校正标志" class="headerlink" title="校正标志"></a>校正标志</h5><p>从<code>Version 2</code>才开始有校正标志的出现，它们应该出现的坐标记录在常量<code>alignment_location</code>中，例如<code>Version 2</code>中的<code>(6, 18)</code>，代表<code>x</code>轴和<code>y</code>轴分别在6和18上面相交的四个点：<code>(6,6),(6,18),(18,6),(18,18)</code>，其他版本的也是以此类推，下图是<code>Version 8</code>的图示，如果交点上已经被定位标志所占，则该点就不会有校正标志。</p>
+<center><br><img src="https://raw.githubusercontent.com/tomhaoye/qrcode/master/pic/alignment_example.png" alt="图示"><br></center>
+
+<p>而校正标志的尺寸大小就如下图所示：</p>
+<center><br><img src="https://raw.githubusercontent.com/tomhaoye/qrcode/master/pic/alignment_size.png" alt="尺寸"><br></center>
+
+<h5 id="格式信息"><a href="#格式信息" class="headerlink" title="格式信息"></a>格式信息</h5><p>接着就到格式信息出场了，格式信息一共有两条，避免其中一条被遮挡而导致读取不到信息：</p>
+<center><br><img src="https://raw.githubusercontent.com/tomhaoye/qrcode/master/pic/format_Information.png" alt="格式信息"><br></center>
+
+<p>格式信息的长度为<code>15bits</code>，每一个bit的位置如下图所示：</p>
+<center><br><img src="https://raw.githubusercontent.com/tomhaoye/qrcode/master/pic/format_Info_postion.png" alt="格式信息"><br></center>
+
+<p>这15个<code>bits</code>中，前2个<code>bits</code>用于表示纠错级别，接着3个<code>bits</code>表示掩码，最后10个<code>bits</code>用于纠错的，也是通过<code>reedsolo</code>来计算得出。最后15个bits还要与<code>101010000010010</code>做异或操作。这样就保证不会因为我们选用了<code>00</code>的纠错级别和<code>000</code>的掩码而造成整个格式信息为白色。综上所述，格式信息总共只有<code>(纠错级别*掩码样式)4*8=32</code>种可能，所以我们这里只要把他们最后的结果都列出来，我们就不用做什么计算了，根据纠错级别和掩码选就可以了:)</p>
+<h5 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h5><p>版本信息是从<code>Version 7</code>开始才需要添加的，它会出现在以下两个位置：</p>
+<center><br><img src="https://raw.githubusercontent.com/tomhaoye/qrcode/master/pic/version_information.png" alt="版本信息"><br></center>
+
+<p>版本信息的长度为<code>18bits</code>，其中<code>6bits</code>为版本号，剩下的<code>12bits</code>为纠错码。因为这个也是固定的，所以我们还是老样子，将所有版本的版本信息数据放到了<code>version_info_str</code>里面，按需获取即可。而填充的顺序如下图所示：</p>
+<center><br><img src="https://raw.githubusercontent.com/tomhaoye/qrcode/master/pic/version_information_position.png" alt="版本信息"><br></center>
+
+<h4 id="编码数据填充"><a href="#编码数据填充" class="headerlink" title="编码数据填充"></a>编码数据填充</h4><p>最后就是填充我们的得到的数据区域编码了，填充方式如下图：从右下角开始沿着红线填写我们的各个bits。如果遇到了上面的非数据区域，则跳过。</p>
+<center><br><img src="https://raw.githubusercontent.com/tomhaoye/qrcode/master/pic/data_placement.png" alt="数据区域"><br></center>
+
+<p>这一步相对来说比较简单，代码如下：</p>
+<pre><code class="python">def data_build(_encode_data):
+    up = True
+    bit = (int(i) for i in _encode_data)
+    for _block_end_x in range(self.length - 1, 0, -2):
+        _block_end_x = _block_end_x if _block_end_x &gt; 6 else _block_end_x - 1
+        for y in range(self.length - 1, -1, -1) if up else range(self.length):
+            for x in (_block_end_x, _block_end_x - 1):
+                if self.data_matrix[x][y] is None:
+                    self.data_matrix[x][y] = next(bit, 0)
+        up = not up
+</code></pre>
+<h4 id="应用掩码并选择最佳的二维码"><a href="#应用掩码并选择最佳的二维码" class="headerlink" title="应用掩码并选择最佳的二维码"></a>应用掩码并选择最佳的二维码</h4><p>记得之前说过还剩两步，但我掐指一算发现我的心算出现了错误，但这次真的是到了最后两步了:)</p>
 <h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3>
         
     
