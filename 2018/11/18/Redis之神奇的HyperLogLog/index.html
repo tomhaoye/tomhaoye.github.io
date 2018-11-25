@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Sun Nov 18 2018 14:47:57 GMT+0800">
-        <meta property="article:modified_time" content="Sun Nov 25 2018 18:42:28 GMT+0800">
+        <meta property="article:modified_time" content="Sun Nov 25 2018 18:54:30 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "https://blog.aikeji.online/2018/11/18/Redis之神奇的HyperLogLog/index.html",
     "headline": "Redis之神奇的HyperLogLog",
     "datePublished": "Sun Nov 18 2018 14:47:57 GMT+0800",
-    "dateModified": "Sun Nov 25 2018 18:42:28 GMT+0800",
+    "dateModified": "Sun Nov 25 2018 18:54:30 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -509,8 +509,8 @@
 <ul>
 <li>每个用户（user_id）每天浏览过该数据(<code>1~n</code>次)算一个单位浏览量</li>
 <li>能够统计每条数据一直以来总的浏览量</li>
-<li>能够得出15天内的按<code>UV</code>排序地区排行榜前10名</li>
-<li>能够得出15天内的按<code>UV</code>排序总排行榜前10名</li>
+<li>能够得出15天内的按浏览量排序总排行榜和地区排行榜</li>
+<li>能够得出15天内的实际的<code>UV</code>总排行榜和地区排行榜</li>
 <li>允许存在数分钟的数据更新延迟</li>
 <li>允许出现小程度误差</li>
 </ul>
@@ -544,12 +544,12 @@
 <li>PFMERGE：将多个<code>HyperLogLog</code>合并（merge）为一个<code>HyperLogLog</code>，合并后的<code>HyperLogLog</code>的基数接近于所有输入<code>HyperLogLog</code>的可见集合（observed set）的并集。合并得出的<code>HyperLogLog</code>会被储存在<code>destkey</code>键里面，如果该键并不存在，那么命令在执行之前，会先为该键创建一个空的<code>HyperLogLog</code>。</li>
 </ul>
 <p>知道了如何操作<code>HyperLogLog</code>后我们就开始用它来实现我们的需求吧。</p>
-<p>首先我使用<code>data_id + day</code>作为<code>SortedSet</code>的键记录该资源数据当天的<code>UV</code>，其中<code>day</code>是由当前时间戳除以一天的秒数然后再模<code>15</code>得出的一个<code>0~14</code>的数，即<code>day = (1543127511 // 86400) % 15</code>，然后用户浏览的时候将用户的<code>user_id</code>存进去以及设置好过期时间，最后将<code>data_id_day1</code>到<code>data_id_day15</code>的数据循环用<code>PFCOUNT</code>取出来后相加的总和是每天的<code>UV</code>总和（即理解为15天内的浏览量），简称之为<code>15UDV</code>，而将<code>data_id_day1</code>到<code>data_id_day15</code>的数据一次性使用<code>PFCOUNT</code>得出来的结果是15天的<code>UV</code>结果，简称<code>UV</code>。那么<code>15UDV</code>的用处就是上面提到的存储到<code>Mysql</code>的总浏览量，而<code>UV</code>则是用于排序，所以我们这里将此资源数据的<code>UV</code>值存入到最后用于排序的<code>SortedSet</code>里面。由于有总排行榜和城市排行榜，所以我们需要定义两种<code>SortedSet</code>：</p>
+<p>首先我使用<code>data_id + day</code>作为<code>SortedSet</code>的键记录该资源数据当天的<code>UV</code>，其中<code>day</code>是由当前时间戳除以一天的秒数然后再模<code>15</code>得出的一个<code>0~14</code>的数，即<code>day = (1543127511 // 86400) % 15</code>，然后用户浏览的时候将用户的<code>user_id</code>存进去以及设置好过期时间，最后将<code>data_id_day1</code>到<code>data_id_day15</code>的数据循环用<code>PFCOUNT</code>取出来后相加的总和是每天的<code>UV</code>总和（即理解为15天内的浏览量），简称之为<code>15UDV</code>，而将<code>data_id_day1</code>到<code>data_id_day15</code>的数据一次性使用<code>PFCOUNT</code>得出来的结果是15天的<code>UV</code>结果，简称<code>UV</code>。那么<code>15UDV</code>和<code>UV</code>是两种不同排序依据，所以我们这里将此资源数据的<code>UV</code>值存入到最后用于排序的<code>SortedSet</code>里面。由于有总排行榜和城市排行榜，所以我们需要定义两种<code>SortedSet</code>：</p>
 <ul>
 <li>rank：15天<code>UV</code>总排行榜</li>
 <li>rank_[city]：<code>city</code>替换为对应资源所在城市的15天<code>UV</code>城市排行榜</li>
 </ul>
-<p>至于<code>15UDV</code>存储到<code>Mysql</code>的步骤在之前已经说了，所以到这里所有步骤已经完成了，下面就展示一下的伪代码方便大家再理顺一下：</p>
+<p>至于<code>15UDV</code>嘛，其实跟上面<code>UV</code>也是一样的操作，就不多说了。所以到这里所有步骤已经完成了，下面就展示一下的伪代码方便大家再理顺一下：</p>
 <pre><code># 存储过程
 data_id = 1
 city = &#39;guangzhou&#39;
@@ -566,20 +566,24 @@ this.redis.exec()
 for i in range(15):
     keys = [str(data_id) + &#39;_&#39; + str(i)]
 UV = this.redis.pfcount(keys)
-# 存储到排行榜中
-rank_key = &#39;rank&#39;
-city_rank_key = rank_key + &#39;_&#39; + city
-this.redis.multi()
-this.redis.zadd(rank_key, UV, data_id)
-this.redis.zadd(city_rank_key, UV, data_id)
-this.redis.exec()
-
 # 获取15UDV
 15UDV = 0
 for i in range(15):
     udv_key = str(data_id) + &#39;_&#39; + str(i)
     15UDV += this.redis.pfcount(udv_key)
-# 存储到Mysql中
+# 存储到排行榜中
+rank_key = &#39;rank&#39;
+city_rank_key = rank_key + &#39;_&#39; + city
+udv_rank_key = &#39;udv_rank&#39;
+udv_city_rank_key = udv_rank_key + &#39;_&#39; + city
+this.redis.multi()
+this.redis.zadd(rank_key, UV, data_id)
+this.redis.zadd(city_rank_key, UV, data_id)
+this.redis.zadd(udv_rank_key, 15UDV, data_id)
+this.redis.zadd(udv_city_rank_key, 15UDV, data_id)
+this.redis.exec()
+
+# Mysql统计总浏览量
 resource = orm.table(&#39;resource&#39;).get(data_id)
 if date(resource.cache_update_time) != date(now.timestamp):
     resource.total_view_bt += resource.day_view
