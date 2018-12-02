@@ -349,7 +349,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装hexo"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装hexo</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#快速搭建"><span class="post-toc-number">2.</span> <span class="post-toc-text">快速搭建</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#主题"><span class="post-toc-number">3.</span> <span class="post-toc-text">主题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#高亮"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">高亮</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#评论系统"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">评论系统</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#没有结束"><span class="post-toc-number">4.</span> <span class="post-toc-text">没有结束</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装hexo"><span class="post-toc-number">1.</span> <span class="post-toc-text">¶安装hexo</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#快速搭建"><span class="post-toc-number">2.</span> <span class="post-toc-text">¶快速搭建</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#主题"><span class="post-toc-number">3.</span> <span class="post-toc-text">¶主题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#高亮"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">¶高亮</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#评论系统"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">¶评论系统</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#没有结束"><span class="post-toc-number">4.</span> <span class="post-toc-text">¶没有结束</span></a></li></ol>
     </ul>
     
 
@@ -514,25 +514,29 @@
         <blockquote>
 <p><code>hexo</code>的搭建和使用十分的方便，搭配<code>github page</code>食用更佳。<code>github</code>上有很多绚丽的<code>hexo</code>主题，大家可以按需搭配。虽说<code>hexo</code>+<code>github page</code>搭建个人博客很方便快捷，但如果你需要较多的个性化定制，坑总是会踩的。本文主要遇到的各种坑以及记录简单的操作步骤，如果需要详细的安装部署教程请<a href="https://www.baidu.com/s?ie=UTF-8&wd=hexo" target="_self">点击传送门离开</a>。</p>
 </blockquote>
-<h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装<code>hexo</code></h3><blockquote>
+<h3 id="安装hexo"><a class="header-anchor" href="#安装hexo">¶</a>安装<code>hexo</code></h3>
+<blockquote>
 <p>如果你不知道或者未安装 npm ，<a href="https://www.npmjs.com/" target="_blank">点击此处</a>了解以及下载。</p>
 </blockquote>
-<pre><code class="bash">npm i -g hexo-cli
+<pre><code class="language-bash">npm i -g hexo-cli
 </code></pre>
 <p>说到<code>npm</code>我在后面挖到了一个坑，这个坑以前已经挖过，这里又遇到了，有必要记下来。如果你跟我一样是在使用<code>Windows 10 + VirtualBox (VBox) + Vagrant + Laravel Homestead + 共享目录</code>这样的环境做开发的，需要注意。</p>
 <p>在上述环境中使用<code>npm</code>会有比较多意料之外的状况，大部分<code>stackoverflow</code>上都有解决方案，但这次遇到的<code>error “ETXTBSY: text file is busy” on npm install</code>弄了一段时间仍然没解决，把<code>npm</code>搞坏后还是换到<code>windows</code>环境去了。</p>
 <p>虽然没解决，但还是推荐一下比较靠谱的<a href="https://stackoverflow.com/questions/45678817/error-etxtbsy-text-file-is-busy-on-npm-install" target="_blank">解决方案</a>。</p>
-<h3 id="快速搭建"><a href="#快速搭建" class="headerlink" title="快速搭建"></a>快速搭建</h3><pre><code class="bash">hexo init [folder] //初始化，新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站
+<h3 id="快速搭建"><a class="header-anchor" href="#快速搭建">¶</a>快速搭建</h3>
+<pre><code class="language-bash">hexo init [folder] //初始化，新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站
 cd folder //进入网站根目录，如果没有设置 folder ，则不需要该步骤
 hexo g //generetor的缩写，生成静态文件。
 hexo s //server的缩写，启动服务器。默认情况下，访问网址为： http://localhost:4000/。
 </code></pre>
-<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p><code>hexo</code>有很多主题可以提供选择，而我这里则使用了<a href="https://github.com/viosey/hexo-theme-material" target="_blank" rel="noopener">material</a>这个主题，最坑的是他的文档网站ssl证书居然过期了，想看都看不了=。=那就没办法啦，咱一起逐个配置试一下，再问一问<code>Google</code>，应该也不会有啥大问题。</p>
+<h3 id="主题"><a class="header-anchor" href="#主题">¶</a>主题</h3>
+<p><code>hexo</code>有很多主题可以提供选择，而我这里则使用了<a href="https://github.com/viosey/hexo-theme-material" target="_blank" rel="noopener">material</a>这个主题，最坑的是他的文档网站ssl证书居然过期了，想看都看不了=。=那就没办法啦，咱一起逐个配置试一下，再问一问<code>Google</code>，应该也不会有啥大问题。</p>
 <p>首先我们把<code>material</code>的项目<code>clone</code>下来放到<code>hexo</code>目录下的<code>themes</code>中，根据说明为了避免配置文件被覆盖，我们需要复制一份<code>_config.template.yml</code>并命名为<code>_config.yml</code>。接下来我们的就开始定制我们自己的主题风格。<code>_config.yml</code>中大多数的配置项都有简单的说明，配置完各种基本信息后，我们想要配置一些个性化的东西，例如代码的高亮样式、选择自己喜欢熟悉的评论系统等等。</p>
-<h4 id="高亮"><a href="#高亮" class="headerlink" title="高亮"></a>高亮</h4><p>首先说说配置代码高亮样式，在备注<code>Code highlight</code>下有两个配置项</p>
+<h4 id="高亮"><a class="header-anchor" href="#高亮">¶</a>高亮</h4>
+<p>首先说说配置代码高亮样式，在备注<code>Code highlight</code>下有两个配置项</p>
 <pre><code># Code highlight
 # You can only enable one of them to avoid issues.
-# Also you need to disable highlight option in hexo&#39;s _config.yml.
+# Also you need to disable highlight option in hexo's _config.yml.
 #
 #    Prettify
 #        theme: # Available value in /source/css/prettify/[theme].min.css
@@ -551,7 +555,8 @@ hanabi:
     line_number: true
     includeDefaultColors: true
     customColors:
-</code></pre><p>上面是各种高亮的样式选择，而下面则是<code>hanabi</code>，一个很骚的高亮风格（没错就是我用着的这个）。这里需要注意的是这两个配置项你只能设置其中一个enable为<code>true</code>，而且<code>hexo</code>的<code>_config.yml</code>中有一个配置项跟它是冲突的</p>
+</code></pre>
+<p>上面是各种高亮的样式选择，而下面则是<code>hanabi</code>，一个很骚的高亮风格（没错就是我用着的这个）。这里需要注意的是这两个配置项你只能设置其中一个enable为<code>true</code>，而且<code>hexo</code>的<code>_config.yml</code>中有一个配置项跟它是冲突的</p>
 <pre><code># Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post
@@ -567,8 +572,10 @@ highlight:
   line_number: false
   auto_detect: false
   tab_replace:
-</code></pre><p>这里的<code>highlight</code>设置为<code>true</code>会让<code>hanabi</code>不起作用。如果你选用<code>prettify</code>的话，可以在路径<code>material/source/css/prettify/[theme].min.css</code>找喜欢的高亮样式，其中<code>[theme]</code>就是<code>prettify.theme</code>中填写的样式名称。</p>
-<h4 id="评论系统"><a href="#评论系统" class="headerlink" title="评论系统"></a>评论系统</h4><p>大家可以看到，集成服务里面，包含了评论系统的配置项，如此方便的配置就能够加入一个评论系统到博客里了，何乐而不为呢？</p>
+</code></pre>
+<p>这里的<code>highlight</code>设置为<code>true</code>会让<code>hanabi</code>不起作用。如果你选用<code>prettify</code>的话，可以在路径<code>material/source/css/prettify/[theme].min.css</code>找喜欢的高亮样式，其中<code>[theme]</code>就是<code>prettify.theme</code>中填写的样式名称。</p>
+<h4 id="评论系统"><a class="header-anchor" href="#评论系统">¶</a>评论系统</h4>
+<p>大家可以看到，集成服务里面，包含了评论系统的配置项，如此方便的配置就能够加入一个评论系统到博客里了，何乐而不为呢？</p>
 <pre><code># Comment Systems
 # Available value of &quot;use&quot;:
 #     disqus | disqus_click | changyan | livere | gitment | gitalk | valine | wildfire
@@ -582,7 +589,7 @@ comment:
     changyan_thread_key_type: path
     livere_data_uid:
     gitment_repo:   # git repo of the hexo
-    gitment_owner:  # git repo&#39;s owner
+    gitment_owner:  # git repo's owner
     gitment_client_id:  # github app client id
     gitment_client_secret :  # github app client secret
     valine_leancloud_appId:  # leancloud application app id
@@ -608,23 +615,26 @@ comment:
     wildfire_firebase_messaging_sender_id:
     wildfire_theme: light # light or dark
     wildfire_locale: zh-CN # en or zh-CN
-</code></pre><p>大家可以看到，集成的评论系统有：<code>disqus</code>，<code>disqus_click</code>，<code>changyan</code>，<code>livere</code>，<code>gitment</code>，<code>gitalk</code>，<code>valine</code>，<code>wildfire</code>，大家喜欢哪个就就配置对应的配置项就可以了。例如我使用的<code>gitalk</code>，只需要在个人设置中选择开发者设置，然后选择<code>Oauth Apps</code>，新建一个授权应用，将得到的<code>Client ID</code>和<code>Client Secret</code>填到上面的<code>gitalk_</code>前缀配置项中，<code>gitalk_repo</code>填写你的应用名称，<code>gitalk_owner</code>填写你的账号名即可。</p>
+</code></pre>
+<p>大家可以看到，集成的评论系统有：<code>disqus</code>，<code>disqus_click</code>，<code>changyan</code>，<code>livere</code>，<code>gitment</code>，<code>gitalk</code>，<code>valine</code>，<code>wildfire</code>，大家喜欢哪个就就配置对应的配置项就可以了。例如我使用的<code>gitalk</code>，只需要在个人设置中选择开发者设置，然后选择<code>Oauth Apps</code>，新建一个授权应用，将得到的<code>Client ID</code>和<code>Client Secret</code>填到上面的<code>gitalk_</code>前缀配置项中，<code>gitalk_repo</code>填写你的应用名称，<code>gitalk_owner</code>填写你的账号名即可。</p>
 <p>当然配置不是重点，这篇文章主要是记录踩过的坑，没趴下过的地方我也不会特别提出来。我完完整整的配置好了我的的<code>gitalk</code>评论系统后，先新建了一片文章并打开链接，评论系统自动请求并在<code>github</code>的仓库里面新增了一个<code>issue</code>，据我猜测这个<code>issue</code>就是用来记录当前文章的所有评论的。果不其然，我在发表了一条评论，<code>issue</code>里面便新增了留言一段记录。嗯，一切都十分的顺利，于是我又新建了一篇名字比较长的文章并打开链接，咦？怎么请求发生了错误？后来在<code>Google</code>查了半天，终于发现<code>gitalk</code>的初始化<code>id</code>参数最长只能传50个字符，而它默认是直接拿当前的<code>url</code>作为参数的，所以请求会返回客户端错误。知道了问题所在解决就比较简单了，只需要在<code>theme/material/layout/_widget/comment/gitalk/main.ejs</code>中加入：</p>
 <pre><code>&lt;script&gt;
     var gitalk = new Gitalk({
-            clientID: &#39;&lt;%= theme.comment.gitalk_client_id %&gt;&#39;,
-            clientSecret: &#39;&lt;%= theme.comment.gitalk_client_secret %&gt;&#39;,
-            repo: &#39;&lt;%= theme.comment.gitalk_repo %&gt;&#39;,
-            owner: &#39;&lt;%= theme.comment.gitalk_owner %&gt;&#39;,
-            admin: [&#39;&lt;%= theme.comment.gitalk_owner %&gt;&#39;],
+            clientID: '&lt;%= theme.comment.gitalk_client_id %&gt;',
+            clientSecret: '&lt;%= theme.comment.gitalk_client_secret %&gt;',
+            repo: '&lt;%= theme.comment.gitalk_repo %&gt;',
+            owner: '&lt;%= theme.comment.gitalk_owner %&gt;',
+            admin: ['&lt;%= theme.comment.gitalk_owner %&gt;'],
             id: document.title.substr(0,50),
             // facebook-like distraction free mode
             distractionFreeMode: false
         })
-   gitalk.render(&#39;gitalk-container&#39;)
+   gitalk.render('gitalk-container')
 &lt;/script&gt;
-</code></pre><p>这里我是将<code>title</code>截取最多50个字符，大家也可以结合自身情况传入自己需要的参数。</p>
-<h3 id="没有结束"><a href="#没有结束" class="headerlink" title="没有结束"></a>没有结束</h3><p>由于博客还在搭建美化中，该文章会持续更新。。。</p>
+</code></pre>
+<p>这里我是将<code>title</code>截取最多50个字符，大家也可以结合自身情况传入自己需要的参数。</p>
+<h3 id="没有结束"><a class="header-anchor" href="#没有结束">¶</a>没有结束</h3>
+<p>由于博客还在搭建美化中，该文章会持续更新。。。</p>
 
         
     

@@ -538,7 +538,8 @@
 <p>认真的思考过后发现存在较多的问题，那到底还有没有其他比较好的方案可以使用呢？或许我们可以开阔一下视野，不要局限于我们常用的数据类型上。后来我是想起了之前比较热门的一篇文章：<code>如何判断一个数是否在40亿个整数中？</code>，这篇文章讲到了<code>bitmap</code>的使用，而<code>bitmap</code>也是<code>Redis</code>最新支持的数据类型之一，于是我就去阅读关于<code>Redis</code>新支持的两种数据类型的文章了。看完之后豁然开朗，发现<code>bitmap</code>和<code>HyperLogLog</code>都比较满足我们对效率、空间和简单编码的要求，最后就采用了<code>HyperLogLog</code>的数据类型去实现我们的需求。</p>
 <p>先简单的介绍一下<code>HyperLogLog</code>的特性和操作，首先<code>HyperLogLog</code>是用来做基数统计的，基数统计指的是指统计一个集合中不同的元素的个数，下面摘录一段源于<code>《HyperLogLog the analysis of a near-optimal cardinality estimation algorithm》</code>的简述：</p>
 <blockquote>
-<p>在理想状态下，将一堆数据hash至[0,1]，每两点距离相等，1/间距 即可得出这堆数据的基数。然而实际情况往往不能如愿，只能通过一些修正不断的逼近这个实际的基数。实际采用的方式一是分桶，二是取kmax。分桶将数据分为m组，每组取第k个位置的值，所有组中得到最大的kmax，(k-1)/kmax得到估计的基数。<br>HyperLogLog算法的另一个主观上的理解可以用抛硬币的方式来理解。以当硬币抛出反面为一次过程，当你抛n次硬币全为正面的概率为1/2^n。当你经历过k(k很大时)次这样的过程，硬币不出现反面的概率基本为0。假设反面为1，正面为0，每抛一次记录1或者0，当记录上显示为0000000…001时，这种可以归结为小概率事件，基本不会发生。转换到基数的想法就是，可以通过第一个1出现前0的个数n来统计基数，基数大致为2^(n+1)时。硬币当中可以统计为(1/2<em>1+1/4</em>2+1/8*3…)，大致可以这么去想。</p>
+<p>在理想状态下，将一堆数据hash至[0,1]，每两点距离相等，1/间距 即可得出这堆数据的基数。然而实际情况往往不能如愿，只能通过一些修正不断的逼近这个实际的基数。实际采用的方式一是分桶，二是取kmax。分桶将数据分为m组，每组取第k个位置的值，所有组中得到最大的kmax，(k-1)/kmax得到估计的基数。<br>
+HyperLogLog算法的另一个主观上的理解可以用抛硬币的方式来理解。以当硬币抛出反面为一次过程，当你抛n次硬币全为正面的概率为1/2<sup>n。当你经历过k(k很大时)次这样的过程，硬币不出现反面的概率基本为0。假设反面为1，正面为0，每抛一次记录1或者0，当记录上显示为0000000…001时，这种可以归结为小概率事件，基本不会发生。转换到基数的想法就是，可以通过第一个1出现前0的个数n来统计基数，基数大致为2</sup>(n+1)时。硬币当中可以统计为(1/2<em>1+1/4</em>2+1/8*3…)，大致可以这么去想。</p>
 </blockquote>
 <p>有兴趣深入了解的童鞋可以<code>Google</code>一下上面的论文，下面我们回归到如何在<code>Redis</code>中操作<code>HyperLogLog</code>上来。<code>Redis</code>中一共有三种操作<code>HyperLogLog</code>的方法：</p>
 <ul>
@@ -555,11 +556,11 @@
 <p>至于<code>15UDV</code>嘛，其实跟上面<code>UV</code>也是一样的操作，就不多说了。所以到这里所有步骤已经完成了，下面就展示一下的伪代码方便大家再理顺一下：</p>
 <pre><code># 存储过程
 data_id = 1
-city = &#39;guangzhou&#39;
-user_id = &#39;ove1d291d2912ed1ad91e2&#39;
+city = 'guangzhou'
+user_id = 'ove1d291d2912ed1ad91e2'
 day = (now.timestamp // 86400) % 15
 15day_after = now.date.timestamp + 15*86400
-key = str(data_id) + &#39;_&#39; + str(day)
+key = str(data_id) + '_' + str(day)
 this.redis.multi()
 this.redis.pfadd(key, user_id)
 this.redis.expireat(key, 15day_after)
@@ -567,18 +568,18 @@ this.redis.exec()
 
 # 获取UV
 for i in range(15):
-    keys = [str(data_id) + &#39;_&#39; + str(i)]
+	keys = [str(data_id) + '_' + str(i)]
 UV = this.redis.pfcount(keys)
 # 获取15UDV
 15UDV = 0
 for i in range(15):
-    udv_key = str(data_id) + &#39;_&#39; + str(i)
-    15UDV += this.redis.pfcount(udv_key)
+	udv_key = str(data_id) + '_' + str(i)
+	15UDV += this.redis.pfcount(udv_key)
 # 存储到排行榜中
-rank_key = &#39;rank&#39;
-city_rank_key = rank_key + &#39;_&#39; + city
-udv_rank_key = &#39;udv_rank&#39;
-udv_city_rank_key = udv_rank_key + &#39;_&#39; + city
+rank_key = 'rank'
+city_rank_key = rank_key + '_' + city
+udv_rank_key = 'udv_rank'
+udv_city_rank_key = udv_rank_key + '_' + city
 this.redis.multi()
 this.redis.zadd(rank_key, UV, data_id)
 this.redis.zadd(city_rank_key, UV, data_id)
@@ -587,14 +588,15 @@ this.redis.zadd(udv_city_rank_key, 15UDV, data_id)
 this.redis.exec()
 
 # Mysql统计总浏览量
-resource = orm.table(&#39;resource&#39;).get(data_id)
+resource = orm.table('resource').get(data_id)
 if date(resource.cache_update_time) != date(now.timestamp):
-    resource.total_view_bt += resource.day_view
+	resource.total_view_bt += resource.day_view
 resource.day_view = this.redis.pfcount(key)
 resource.cache_update_time = now.timestamp
 resource.total_view = resource.total_view_bt + resource.day_view
 resource.save()
-</code></pre><p>完。</p>
+</code></pre>
+<p>完。</p>
 
         
     

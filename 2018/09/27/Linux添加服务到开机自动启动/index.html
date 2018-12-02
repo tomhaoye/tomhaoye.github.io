@@ -349,7 +349,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#常用命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">常用命令</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#常用命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">¶常用命令</span></a></li></ol>
     </ul>
     
 
@@ -529,7 +529,8 @@ RestartSec=50s
 
 [Install]
 WantedBy=multi-user.target
-</code></pre><p>参数说明：</p>
+</code></pre>
+<p>参数说明：</p>
 <pre><code>[Unit]
 Description：描述服务
 Documentation：参考资料
@@ -548,9 +549,11 @@ TimeoutSec：无法顺利启动强制关闭时间
 
 [Install]
 运行级别下服务安装的相关设置，可设置为多用户，即系统运行级别为3
-</code></pre><p>如过想要某些服务开机启动，例如以 php-fpm 为例，编写service：</p>
+</code></pre>
+<p>如过想要某些服务开机启动，例如以 php-fpm 为例，编写service：</p>
 <pre><code>sudo vi /etc/systemd/system/php7.1-fpm.service
-</code></pre><pre><code>[Unit]
+</code></pre>
+<pre><code>[Unit]
 Description=The PHP 7.1 FastCGI Process Manager
 Documentation=man:php-fpm7.1(8)
 After=network.target
@@ -563,12 +566,16 @@ ExecReload=/bin/kill -USR2 $MAINPID
 
 [Install]
 WantedBy=multi-user.target
-</code></pre><p>随后如果 php-fpm 在运行则先将其关闭，运行：</p>
+</code></pre>
+<p>随后如果 php-fpm 在运行则先将其关闭，运行：</p>
 <pre><code>systemctl daemon-reload 
 systemctl start php7.1-fpm.service
-</code></pre><p>测试能够成功开启服务了，就可以将服务设置为开机启动：</p>
+</code></pre>
+<p>测试能够成功开启服务了，就可以将服务设置为开机启动：</p>
 <pre><code>systemctl enable php7.1-fpm.service
-</code></pre><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><pre><code>systemctl daemon-reload
+</code></pre>
+<h3 id="常用命令"><a class="header-anchor" href="#常用命令">¶</a>常用命令</h3>
+<pre><code>systemctl daemon-reload
 systemctl list-units --type=service
 systemctl list-unit-files --type=service
 
@@ -583,6 +590,7 @@ systemctl is-enable unit.service
 systemctl is-active unit.service
 systemctl status unit.service
 </code></pre>
+
         
     
 
