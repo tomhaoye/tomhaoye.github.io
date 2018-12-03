@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Thu Sep 27 2018 22:12:44 GMT+0800">
-        <meta property="article:modified_time" content="Tue Oct 16 2018 00:33:21 GMT+0800">
+        <meta property="article:modified_time" content="Mon Dec 03 2018 21:15:35 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "https://blog.aikeji.online/2018/09/27/hexo踩坑记/index.html",
     "headline": "hexo踩坑记",
     "datePublished": "Thu Sep 27 2018 22:12:44 GMT+0800",
-    "dateModified": "Tue Oct 16 2018 00:33:21 GMT+0800",
+    "dateModified": "Mon Dec 03 2018 21:15:35 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -349,7 +349,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装hexo"><span class="post-toc-number">1.</span> <span class="post-toc-text">¶安装hexo</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#快速搭建"><span class="post-toc-number">2.</span> <span class="post-toc-text">¶快速搭建</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#主题"><span class="post-toc-number">3.</span> <span class="post-toc-text">¶主题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#高亮"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">¶高亮</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#评论系统"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">¶评论系统</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#没有结束"><span class="post-toc-number">4.</span> <span class="post-toc-text">¶没有结束</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装hexo"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装hexo</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#快速搭建"><span class="post-toc-number">2.</span> <span class="post-toc-text">快速搭建</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#主题"><span class="post-toc-number">3.</span> <span class="post-toc-text">主题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#高亮"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">高亮</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#评论系统"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">评论系统</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#emoji表情渲染"><span class="post-toc-number">4.</span> <span class="post-toc-text">Emoji表情渲染</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#没有结束"><span class="post-toc-number">5.</span> <span class="post-toc-text">没有结束</span></a></li></ol>
     </ul>
     
 
@@ -514,7 +514,7 @@
         <blockquote>
 <p><code>hexo</code>的搭建和使用十分的方便，搭配<code>github page</code>食用更佳。<code>github</code>上有很多绚丽的<code>hexo</code>主题，大家可以按需搭配。虽说<code>hexo</code>+<code>github page</code>搭建个人博客很方便快捷，但如果你需要较多的个性化定制，坑总是会踩的。本文主要遇到的各种坑以及记录简单的操作步骤，如果需要详细的安装部署教程请<a href="https://www.baidu.com/s?ie=UTF-8&wd=hexo" target="_self">点击传送门离开</a>。</p>
 </blockquote>
-<h3 id="安装hexo"><a class="header-anchor" href="#安装hexo">¶</a>安装<code>hexo</code></h3>
+<h3 id="安装hexo"><a class="header-anchor" href="#安装hexo"></a>安装<code>hexo</code></h3>
 <blockquote>
 <p>如果你不知道或者未安装 npm ，<a href="https://www.npmjs.com/" target="_blank">点击此处</a>了解以及下载。</p>
 </blockquote>
@@ -523,16 +523,16 @@
 <p>说到<code>npm</code>我在后面挖到了一个坑，这个坑以前已经挖过，这里又遇到了，有必要记下来。如果你跟我一样是在使用<code>Windows 10 + VirtualBox (VBox) + Vagrant + Laravel Homestead + 共享目录</code>这样的环境做开发的，需要注意。</p>
 <p>在上述环境中使用<code>npm</code>会有比较多意料之外的状况，大部分<code>stackoverflow</code>上都有解决方案，但这次遇到的<code>error “ETXTBSY: text file is busy” on npm install</code>弄了一段时间仍然没解决，把<code>npm</code>搞坏后还是换到<code>windows</code>环境去了。</p>
 <p>虽然没解决，但还是推荐一下比较靠谱的<a href="https://stackoverflow.com/questions/45678817/error-etxtbsy-text-file-is-busy-on-npm-install" target="_blank">解决方案</a>。</p>
-<h3 id="快速搭建"><a class="header-anchor" href="#快速搭建">¶</a>快速搭建</h3>
+<h3 id="快速搭建"><a class="header-anchor" href="#快速搭建"></a>快速搭建</h3>
 <pre><code class="language-bash">hexo init [folder] //初始化，新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站
 cd folder //进入网站根目录，如果没有设置 folder ，则不需要该步骤
 hexo g //generetor的缩写，生成静态文件。
 hexo s //server的缩写，启动服务器。默认情况下，访问网址为： http://localhost:4000/。
 </code></pre>
-<h3 id="主题"><a class="header-anchor" href="#主题">¶</a>主题</h3>
+<h3 id="主题"><a class="header-anchor" href="#主题"></a>主题</h3>
 <p><code>hexo</code>有很多主题可以提供选择，而我这里则使用了<a href="https://github.com/viosey/hexo-theme-material" target="_blank" rel="noopener">material</a>这个主题，最坑的是他的文档网站ssl证书居然过期了，想看都看不了=。=那就没办法啦，咱一起逐个配置试一下，再问一问<code>Google</code>，应该也不会有啥大问题。</p>
 <p>首先我们把<code>material</code>的项目<code>clone</code>下来放到<code>hexo</code>目录下的<code>themes</code>中，根据说明为了避免配置文件被覆盖，我们需要复制一份<code>_config.template.yml</code>并命名为<code>_config.yml</code>。接下来我们的就开始定制我们自己的主题风格。<code>_config.yml</code>中大多数的配置项都有简单的说明，配置完各种基本信息后，我们想要配置一些个性化的东西，例如代码的高亮样式、选择自己喜欢熟悉的评论系统等等。</p>
-<h4 id="高亮"><a class="header-anchor" href="#高亮">¶</a>高亮</h4>
+<h4 id="高亮"><a class="header-anchor" href="#高亮"></a>高亮</h4>
 <p>首先说说配置代码高亮样式，在备注<code>Code highlight</code>下有两个配置项</p>
 <pre><code># Code highlight
 # You can only enable one of them to avoid issues.
@@ -574,7 +574,7 @@ highlight:
   tab_replace:
 </code></pre>
 <p>这里的<code>highlight</code>设置为<code>true</code>会让<code>hanabi</code>不起作用。如果你选用<code>prettify</code>的话，可以在路径<code>material/source/css/prettify/[theme].min.css</code>找喜欢的高亮样式，其中<code>[theme]</code>就是<code>prettify.theme</code>中填写的样式名称。</p>
-<h4 id="评论系统"><a class="header-anchor" href="#评论系统">¶</a>评论系统</h4>
+<h4 id="评论系统"><a class="header-anchor" href="#评论系统"></a>评论系统</h4>
 <p>大家可以看到，集成服务里面，包含了评论系统的配置项，如此方便的配置就能够加入一个评论系统到博客里了，何乐而不为呢？</p>
 <pre><code># Comment Systems
 # Available value of &quot;use&quot;:
@@ -633,7 +633,37 @@ comment:
 &lt;/script&gt;
 </code></pre>
 <p>这里我是将<code>title</code>截取最多50个字符，大家也可以结合自身情况传入自己需要的参数。</p>
-<h3 id="没有结束"><a class="header-anchor" href="#没有结束">¶</a>没有结束</h3>
+<h3 id="emoji表情渲染"><a class="header-anchor" href="#emoji表情渲染"></a>Emoji表情渲染</h3>
+<p><code>Hexo</code>默认的<code>markdown</code>渲染引擎不支持<code>emoji</code>表情的渲染，为了美化博客，我们可以更换一个支持<code>emoji</code>的渲染引擎，并添加一个<code>emoji</code>插件。方法很简单，只需要键入以下三行命令：</p>
+<pre><code>npm un hexo-renderer-marked --save
+npm i hexo-renderer-markdown-it --save
+npm install markdown-it-emoji --save
+</code></pre>
+<p>全部安装成功后在<code>Hexo</code>的<code>_config.yml</code>配置文件中加入以下的配置：</p>
+<pre><code>## markdown 渲染引擎配置，默认是hexo-renderer-marked，这个插件渲染速度更快，且有新特性
+markdown:
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: '“”‘’'
+  plugins:
+    - markdown-it-footnote
+    - markdown-it-sup
+    - markdown-it-sub
+    - markdown-it-abbr
+    - markdown-it-emoji
+  anchors:
+    level: 2
+    collisionSuffix: 'v'
+    permalink: true
+    permalinkClass: header-anchor
+    permalinkSymbol: ''
+</code></pre>
+<p>在<a href="https://www.webpagefx.com/tools/emoji-cheat-sheet/" target="_blank" rel="noopener">emojy-cheet-sheet</a>中找到你想要的表情编码，例如笑脸对应的<code>emoji</code>编码是<code>:smile:</code>，清除旧文件并重新构建后在你的文章中就可以会出现😄了。</p>
+<h3 id="没有结束"><a class="header-anchor" href="#没有结束"></a>没有结束</h3>
 <p>由于博客还在搭建美化中，该文章会持续更新。。。</p>
 
         

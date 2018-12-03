@@ -349,7 +349,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-0-autoloading-standard"><span class="post-toc-number">1.</span> <span class="post-toc-text">¶PSR-0(AutoLoading Standard)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-1-basic-coding-standard"><span class="post-toc-number">2.</span> <span class="post-toc-text">¶PSR-1(Basic Coding Standard)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-2-coding-style-guide"><span class="post-toc-number">3.</span> <span class="post-toc-text">¶PSR-2(Coding Style Guide)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-3-logger-interface"><span class="post-toc-number">4.</span> <span class="post-toc-text">¶PSR-3(Logger Interface)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-4-improved-autoloading"><span class="post-toc-number">5.</span> <span class="post-toc-text">¶PSR-4(Improved AutoLoading)</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-0-autoloading-standard"><span class="post-toc-number">1.</span> <span class="post-toc-text">PSR-0(AutoLoading Standard)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-1-basic-coding-standard"><span class="post-toc-number">2.</span> <span class="post-toc-text">PSR-1(Basic Coding Standard)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-2-coding-style-guide"><span class="post-toc-number">3.</span> <span class="post-toc-text">PSR-2(Coding Style Guide)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-3-logger-interface"><span class="post-toc-number">4.</span> <span class="post-toc-text">PSR-3(Logger Interface)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-4-improved-autoloading"><span class="post-toc-number">5.</span> <span class="post-toc-text">PSR-4(Improved AutoLoading)</span></a></li></ol>
     </ul>
     
 
@@ -512,7 +512,7 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <p>非官方规范。</p>
-<h2 id="psr-0-autoloading-standard"><a class="header-anchor" href="#psr-0-autoloading-standard">¶</a>PSR-0(AutoLoading Standard)</h2>
+<h2 id="psr-0-autoloading-standard"><a class="header-anchor" href="#psr-0-autoloading-standard"></a>PSR-0(AutoLoading Standard)</h2>
 <p>(14年10月21日起标记为deprecated，由PSR-4代替)</p>
 <ul>
 <li>完全合格的命名空间和类名必须有以下结构</li>
@@ -531,7 +531,7 @@
 <li>符合命名标志的命名空间和类名必须以&quot;.php&quot;结尾来加载</li>
 <li>VendorName、命名空间、类名可以由大小写字母组成，其中命名空间和类名是大小写敏感的以保证多系统兼容</li>
 </ul>
-<h2 id="psr-1-basic-coding-standard"><a class="header-anchor" href="#psr-1-basic-coding-standard">¶</a>PSR-1(Basic Coding Standard)</h2>
+<h2 id="psr-1-basic-coding-standard"><a class="header-anchor" href="#psr-1-basic-coding-standard"></a>PSR-1(Basic Coding Standard)</h2>
 <ul>
 <li>源文件必须只使用以下这两种标签</li>
 </ul>
@@ -545,7 +545,7 @@
 <li>类中的常量必须只由大写字母和下划线组成</li>
 <li>方法名必须使用camelCase写法</li>
 </ul>
-<h2 id="psr-2-coding-style-guide"><a class="header-anchor" href="#psr-2-coding-style-guide">¶</a>PSR-2(Coding Style Guide)</h2>
+<h2 id="psr-2-coding-style-guide"><a class="header-anchor" href="#psr-2-coding-style-guide"></a>PSR-2(Coding Style Guide)</h2>
 <ul>
 <li>代码必须遵循PSR-1</li>
 <li>代码必须使用4个空格进行缩进，而不是制表符</li>
@@ -558,7 +558,7 @@
 <li>结构控制关键字左花括号必须同一行，右花括号必须放在代码主体下一行</li>
 <li>控制结构的左花括号之后不可有空格，右花括号之前也不可有空格</li>
 </ul>
-<h2 id="psr-3-logger-interface"><a class="header-anchor" href="#psr-3-logger-interface">¶</a>PSR-3(Logger Interface)</h2>
+<h2 id="psr-3-logger-interface"><a class="header-anchor" href="#psr-3-logger-interface"></a>PSR-3(Logger Interface)</h2>
 <ul>
 <li>LoggerInterface暴露八个接口用来记录八个等级(debug,info,notice,warning,error,critical,alert,emergency)的日志</li>
 <li>第九个方法是log，接受日志等级操作为第一个参数。用一个日志等级常量来调用这个方法必须和直接调用指定等级方法的结果一致。用一格本规范中来定义且不为具体实现所知的日志等级来调用该方法必须跑出一个</li>
@@ -566,7 +566,7 @@
 <pre><code>PSR\Log\InvalidArgumentException
 </code></pre>
 <p>不推荐使用自定义的日志等级，除非你非常确认当前类库对其支持。</p>
-<h2 id="psr-4-improved-autoloading"><a class="header-anchor" href="#psr-4-improved-autoloading">¶</a>PSR-4(Improved AutoLoading)</h2>
+<h2 id="psr-4-improved-autoloading"><a class="header-anchor" href="#psr-4-improved-autoloading"></a>PSR-4(Improved AutoLoading)</h2>
 <p>(兼容PSR-0)</p>
 <ul>
 <li>术语［类］是一个泛称，它包含类、接口、trait及其他类似结构</li>
