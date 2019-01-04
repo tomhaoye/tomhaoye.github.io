@@ -46,7 +46,7 @@
     
     <title>
         
-            归档 | 
+            PHP Standard Recommendation | 
         
         Geeyeek
     </title>
@@ -57,7 +57,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="乐享编程">
-    <meta name="keywords" content="后端开发 挖坑 算法 机器学习">
+    <meta name="keywords" content="后端开发 挖坑 算法 机器学习,PHP">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -218,7 +218,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Geeyeek">
-    <meta name="msapplication-starturl" content="https://blog.aikeji.online/archives/">
+    <meta name="msapplication-starturl" content="https://blog.aikeji.online/2018/06/27/PHP-Standard-Recommendation/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Geeyeek">
@@ -233,13 +233,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="https://blog.aikeji.online/archives/">
+    <meta property="og:url" content="https://blog.aikeji.online/2018/06/27/PHP-Standard-Recommendation/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="归档 | Geeyeek">
+    <meta property="og:title" content="PHP Standard Recommendation | Geeyeek">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="乐享编程">
-    
+    <meta property="og:article:tag" content="PHP"> 
 
+    
+        <meta property="article:published_time" content="Wed Jun 27 2018 10:17:53 GMT+0800">
+        <meta property="article:modified_time" content="Fri Jan 04 2019 23:05:01 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -247,13 +250,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://blog.aikeji.online/archives/index.html" />
+        <link rel="canonical" href="https://blog.aikeji.online/2018/06/27/PHP-Standard-Recommendation/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://blog.aikeji.online/2018/06/27/PHP-Standard-Recommendation/index.html",
+    "headline": "PHP Standard Recommendation",
+    "datePublished": "Wed Jun 27 2018 10:17:53 GMT+0800",
+    "dateModified": "Fri Jan 04 2019 23:05:01 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Geeyeek",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "欢迎来访Geeyeek的博客"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Geeyeek",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",PHP后端开发 挖坑 算法 机器学习",
+    "description": "乐享编程",
+}
+</script>
 
 
     
@@ -287,664 +320,357 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-0-autoloading-standard"><span class="post-toc-number">1.</span> <span class="post-toc-text">PSR-0(AutoLoading Standard)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-1-basic-coding-standard"><span class="post-toc-number">2.</span> <span class="post-toc-text">PSR-1(Basic Coding Standard)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-2-coding-style-guide"><span class="post-toc-number">3.</span> <span class="post-toc-text">PSR-2(Coding Style Guide)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-3-logger-interface"><span class="post-toc-number">4.</span> <span class="post-toc-text">PSR-3(Logger Interface)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-4-improved-autoloading"><span class="post-toc-number">5.</span> <span class="post-toc-text">PSR-4(Improved AutoLoading)</span></a></li></ol>
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2019/01/01/深入Redis系列（一）之字符串/">深入Redis系列（一）之字符串</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2019/01/01/深入Redis系列（一）之字符串/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Geeyeek's avatar">
-            </div>
-            <div>
-                <strong>Geeyeek</strong>
-                <span>1月 01, 2019</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/源码/">源码</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/11/18/Redis之神奇的HyperLogLog/">Redis之神奇的HyperLogLog</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-这篇笔记想码很久了，于是今天码完上一篇二维码的文章后立马先占个坑，免得后面又被其他题材冲掉了。
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/11/18/Redis之神奇的HyperLogLog/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Geeyeek's avatar">
-            </div>
-            <div>
-                <strong>Geeyeek</strong>
-                <span>11月 18, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/笔记/">笔记</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/10/16/二维码生成原理及编码实现/">二维码生成原理及编码实现</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-一年前挖的坑，现在来补，希望不会太晚。先把压舱底的笔记放上来以表我会填完坑的决心。当前还在整理和重写旧代码阶段，下面先把一...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/10/16/二维码生成原理及编码实现/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Geeyeek's avatar">
-            </div>
-            <div>
-                <strong>Geeyeek</strong>
-                <span>10月 16, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/有趣/">有趣</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/09/27/hexo踩坑记/">hexo踩坑记</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-hexo的搭建和使用十分的方便，搭配github page食用更佳。
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/09/27/hexo踩坑记/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Geeyeek's avatar">
-            </div>
-            <div>
-                <strong>Geeyeek</strong>
-                <span>9月 27, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/挖坑/">挖坑</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/09/01/极验滑动验证码行为模拟/">极验滑动验证码行为模拟</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-为了能看到具体的效果，使用了selenium+chrome进行实验，如...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/09/01/极验滑动验证码行为模拟/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Geeyeek's avatar">
-            </div>
-            <div>
-                <strong>Geeyeek</strong>
-                <span>9月 01, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/有趣/">有趣</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/06/27/PHP-Standard-Recommendation/">PHP Standard Recommendation</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            非官方规范。
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/06/27/PHP-Standard-Recommendation/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Geeyeek's avatar">
-            </div>
-            <div>
-                <strong>Geeyeek</strong>
-                <span>6月 27, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/规范/">规范</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/05/27/IO模型笔记/">IO模型笔记</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            IO Model
-常见IO模型
-
-blocking IO
-nonblocking IO
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/05/27/IO模型笔记/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Geeyeek's avatar">
-            </div>
-            <div>
-                <strong>Geeyeek</strong>
-                <span>5月 27, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/笔记/">笔记</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/04/27/Linux添加服务到开机自动启动/">Linux添加服务到开机自动启动</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-Systemd 是 Linux 系统中最新的初始化系统，Systemd 服务文件以 .service 结尾。一些使用包管理...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/04/27/Linux添加服务到开机自动启动/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Geeyeek's avatar">
-            </div>
-            <div>
-                <strong>Geeyeek</strong>
-                <span>4月 27, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/操作系统/">操作系统</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/03/26/hello-world/">Hello World</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-欢迎来到我的博客
-
-public class HelloWorld...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/03/26/hello-world/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Geeyeek's avatar">
-            </div>
-            <div>
-                <strong>Geeyeek</strong>
-                <span>3月 26, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/闲聊/">闲聊</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/09/15/2017年9-11月游记——贵州/">2017年9-11月游记——贵州</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-读万卷书，走万里路
-
-
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/09/15/2017年9-11月游记——贵州/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Geeyeek's avatar">
-            </div>
-            <div>
-                <strong>Geeyeek</strong>
-                <span>9月 15, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-              <!-- Category -->
-              <span class="post_entry-category">
-                  <a class="post_category-link" href="/categories/闲聊/">闲聊</a>
-              </span>
-            
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                PHP Standard Recommendation
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Geeyeek</strong>
+        <span>6月 27, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC6ElEQVR42u3aUW7bQAwEUN//0u0BUsszXKmRV09fgSNbfA4Qgpx9/Xnk9cLGxsbGxsbGxsa+JfsVXz/fdfw5/3jwm9d//vb4icOasbGxsbdmf/jXHxRx/Gk5+Bi5VDM2Njb2A9jvGkByT1LiMebcerCxsbGxV8rNB4b2TmxsbGzsKxpY/qXkK6d2+MHGxsbGzhc0benH97fN79d2adjY2Ni3Z7djwx1+/q/5NjY2NvaN2e2VPz6PE9pXhpVjY2Njb8puGe0hm3xsSJ47ux8bGxv7yexZG1tpde1Xk0QL2NjY2E9gr4Sssy9x1qjyiKLYpWFjY2NvwV45WJPc2Tak9otbyrexsbGxv5ydFNqu/pM722M67SdjY2NjP5OdDxvtan422JwbAGNjY2M/gZ0s92dDy1mhQh4VDPs2NjY29heyZ+Hr7MErB3ryGKDYpWFjY2NvwU7i3na5k78rGW/yp9RLJWxsbOzt2LOmVY8EC7Fu0ure1o+NjY29KXt9edSS2mNA+QKraGDY2NjYm7JnMWo+xrSHePKxZ7hLw8bGxt6IPTsW2ba0pND1w5fRkR1sbGzsjdgrS6UZYFh0/NvLd2nY2NjYt2S3jeS0UuJ4OG+lRdCLjY2NvQU7KS5f4uf3t+FuPg4Ng15sbGzsL2fPAtpoKT9aDLVLpeRPiI2Njf0c9lkLoDZmWGmQ0Z8EGxsbe2t2svppAW0kPIuKL1wqYWNjY38hez30zVdU0fBQHrj84MLGxsZ+JDtZ3MzGmFlUsNIssbGxsXdlzwaDpKkUQ0L5OSeMItjY2NgbsWctIW9XK6NFG+h+qBkbGxt7a/asaeWjyGypdHkDw8bGxt6Ovb4eStpeHui2zXW4S8PGxsZ+MLs90LMSErfUCxsYNjY29hbslag4fz0/oJO8FxsbG/sJ7GT107aT2dGcNoqIasbGxsbemj1b3AwfXx6vzFvjhfk2NjY29o3Zz7mwsbGxsbGxsbGxb3P9BVzdNDZvoYxpAAAAAElFTkSuQmCC">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/PHP/">PHP</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=PHP Standard Recommendation&url=https://blog.aikeji.online/2018/06/27/PHP-Standard-Recommendation/index.html&pic=https://blog.aikeji.online/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=PHP Standard Recommendation&url=https://blog.aikeji.online/2018/06/27/PHP-Standard-Recommendation/index.html&via=Geeyeek" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.aikeji.online/2018/06/27/PHP-Standard-Recommendation/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://blog.aikeji.online/2018/06/27/PHP-Standard-Recommendation/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Geeyeek&title=PHP Standard Recommendation&summary=乐享编程&pics=https://blog.aikeji.online/img/favicon.png&url=https://blog.aikeji.online/2018/06/27/PHP-Standard-Recommendation/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
     
 </div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>非官方规范。</p>
+<h2 id="psr-0-autoloading-standard"><a class="header-anchor" href="#psr-0-autoloading-standard"></a>PSR-0(AutoLoading Standard)</h2>
+<p>(14年10月21日起标记为deprecated，由PSR-4代替)</p>
+<ul>
+<li>完全合格的命名空间和类名必须有以下结构</li>
+</ul>
+<pre><code> &quot;\&lt;vendor name&gt;\(&lt;Namespace&gt;)*&lt;Class Name&gt;&quot;
+</code></pre>
+<ul>
+<li>每个命名空间必须有顶级命名空间</li>
+</ul>
+<pre><code>(&quot;Vendor Name&quot;)
+</code></pre>
+<ul>
+<li>每个命名空间可以有任意多个子命名空间</li>
+<li>每个命名空间在被从文件系统加载时必须被转换为操作系统的路径分隔符</li>
+<li>每个&quot;_“字符在类名中被转换为DIRECTORY_SEPARATOR。”_&quot;在命名空间中没有明确含义</li>
+<li>符合命名标志的命名空间和类名必须以&quot;.php&quot;结尾来加载</li>
+<li>VendorName、命名空间、类名可以由大小写字母组成，其中命名空间和类名是大小写敏感的以保证多系统兼容</li>
+</ul>
+<h2 id="psr-1-basic-coding-standard"><a class="header-anchor" href="#psr-1-basic-coding-standard"></a>PSR-1(Basic Coding Standard)</h2>
+<ul>
+<li>源文件必须只使用以下这两种标签</li>
+</ul>
+<pre><code>&lt;?php 和 &lt;?=
+</code></pre>
+<ul>
+<li>源文件中php代码的编码格式必须只适用不带BOM的UTF－8（BOM——字节顺序标记）</li>
+<li>一个源文件建议只用来做声明（类、函数、常量等）或者只用来做一些引起副作用的操作（如输出信息，修改配置文件等），但不应该同时做这两件事</li>
+<li>命名空间和类必须遵守PSR-0</li>
+<li>类名必须使用StudlyCaps写法</li>
+<li>类中的常量必须只由大写字母和下划线组成</li>
+<li>方法名必须使用camelCase写法</li>
+</ul>
+<h2 id="psr-2-coding-style-guide"><a class="header-anchor" href="#psr-2-coding-style-guide"></a>PSR-2(Coding Style Guide)</h2>
+<ul>
+<li>代码必须遵循PSR-1</li>
+<li>代码必须使用4个空格进行缩进，而不是制表符</li>
+<li>一行代码的长度不应该有硬限制，软限制为120个字符，建议每行小于80</li>
+<li>在命名空间声明下必须空一行，use下同理</li>
+<li>类的左、右花括号必须各自成一行</li>
+<li>方法的左右花括号都必须各自成一行</li>
+<li>所有属性、方法必须有可见性声明；abstract和final必须在可见性声明前，static必须在可见性声明后</li>
+<li>在结构控制的关键字后必须空一格；函数调用后面不可有空格</li>
+<li>结构控制关键字左花括号必须同一行，右花括号必须放在代码主体下一行</li>
+<li>控制结构的左花括号之后不可有空格，右花括号之前也不可有空格</li>
+</ul>
+<h2 id="psr-3-logger-interface"><a class="header-anchor" href="#psr-3-logger-interface"></a>PSR-3(Logger Interface)</h2>
+<ul>
+<li>LoggerInterface暴露八个接口用来记录八个等级(debug,info,notice,warning,error,critical,alert,emergency)的日志</li>
+<li>第九个方法是log，接受日志等级操作为第一个参数。用一个日志等级常量来调用这个方法必须和直接调用指定等级方法的结果一致。用一格本规范中来定义且不为具体实现所知的日志等级来调用该方法必须跑出一个</li>
+</ul>
+<pre><code>PSR\Log\InvalidArgumentException
+</code></pre>
+<p>不推荐使用自定义的日志等级，除非你非常确认当前类库对其支持。</p>
+<h2 id="psr-4-improved-autoloading"><a class="header-anchor" href="#psr-4-improved-autoloading"></a>PSR-4(Improved AutoLoading)</h2>
+<p>(兼容PSR-0)</p>
+<ul>
+<li>术语［类］是一个泛称，它包含类、接口、trait及其他类似结构</li>
+<li>完全限定类名应该如下范例</li>
+</ul>
+<pre><code>&lt;NamespaceName&gt;(&lt;SubNamespace&gt;)*&lt;ClassName&gt;
+</code></pre>
+<ul>
+<li>
+<ul>
+<li>完全合规类名必须有一格顶级命名空间</li>
+<li>完全合规类名可有多个子命名空间</li>
+<li>完全合规类名应该有一格终止类名</li>
+<li>下划线在完全合规类名中是没有特殊含义的</li>
+<li>字母在完全合规类名中可以是任何大小写组合</li>
+<li>所有类名必须以大小写敏感的方式引用</li>
+</ul>
+</li>
+<li>当完全合规类名载入文件时：
+<ul>
+<li>在完全合规类名中，连续的一个或几个子命名空间构成的命名空间前缀（不包括顶级命名空间分隔符），至少对应一格基础目录</li>
+<li>在［命名空间前缀］后的连续子命名空间名称对应一个［基础目录］下的子目录，其中的命名空间分隔符标示目录分隔符。子目录名称必须和子命名空间名大小写匹配</li>
+<li>终止类名对应一个以.php结尾的文件。文件名必须和终止类名大小写匹配</li>
+</ul>
+</li>
+<li>自动载入器的实现不可以抛出任何异常，不可以引发任何等级的错误，也不应该有返回值</li>
+</ul>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 Gitalk -->
+<div id="gitalk-comment">
+    <!-- Gitalk 评论框 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+            clientID: '6bbcfba0d2dab1924162',
+            clientSecret: '04f0787c82d281169a3cee99b95cbdb949547d4b',
+            repo: 'gitTalk',
+            owner: 'tomhaoye',
+            admin: ['tomhaoye'],
+            id: document.title.substr(0,50),
+            // facebook-like distraction free mode
+            distractionFreeMode: false
+        })
+   gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-comment {
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/09/01/极验滑动验证码行为模拟/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/05/27/IO模型笔记/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     

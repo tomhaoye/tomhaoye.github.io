@@ -46,7 +46,7 @@
     
     <title>
         
-            PHP Standard Recommendation | 
+            深入Redis系列（一）之字符串 | 
         
         Geeyeek
     </title>
@@ -57,7 +57,7 @@
 
     <meta name="format-detection" content="telephone=no"/>
     <meta name="description" itemprop="description" content="乐享编程">
-    <meta name="keywords" content="后端开发 挖坑 算法 机器学习,PHP">
+    <meta name="keywords" content="后端开发 挖坑 算法 机器学习,Redis">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -218,7 +218,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Geeyeek">
-    <meta name="msapplication-starturl" content="https://blog.aikeji.online/2018/09/27/PHP-Standard-Recommendation/">
+    <meta name="msapplication-starturl" content="https://blog.aikeji.online/2019/01/01/深入Redis系列（一）之字符串/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Geeyeek">
@@ -233,16 +233,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="https://blog.aikeji.online/2018/09/27/PHP-Standard-Recommendation/">
+    <meta property="og:url" content="https://blog.aikeji.online/2019/01/01/深入Redis系列（一）之字符串/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="PHP Standard Recommendation | Geeyeek">
+    <meta property="og:title" content="深入Redis系列（一）之字符串 | Geeyeek">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="乐享编程">
-    <meta property="og:article:tag" content="PHP"> 
+    <meta property="og:article:tag" content="Redis"> 
 
     
-        <meta property="article:published_time" content="Thu Sep 27 2018 10:17:53 GMT+0800">
-        <meta property="article:modified_time" content="Thu Sep 27 2018 10:18:29 GMT+0800">
+        <meta property="article:published_time" content="Tue Jan 01 2019 22:36:53 GMT+0800">
+        <meta property="article:modified_time" content="Fri Jan 04 2019 23:05:20 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -250,7 +250,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://blog.aikeji.online/2018/09/27/PHP-Standard-Recommendation/index.html" />
+        <link rel="canonical" href="https://blog.aikeji.online/2019/01/01/深入Redis系列（一）之字符串/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -262,10 +262,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "https://blog.aikeji.online/2018/09/27/PHP-Standard-Recommendation/index.html",
-    "headline": "PHP Standard Recommendation",
-    "datePublished": "Thu Sep 27 2018 10:17:53 GMT+0800",
-    "dateModified": "Thu Sep 27 2018 10:18:29 GMT+0800",
+    "mainEntityOfPage": "https://blog.aikeji.online/2019/01/01/深入Redis系列（一）之字符串/index.html",
+    "headline": "深入Redis系列（一）之字符串",
+    "datePublished": "Tue Jan 01 2019 22:36:53 GMT+0800",
+    "dateModified": "Fri Jan 04 2019 23:05:20 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -283,7 +283,7 @@
             "url": "/img/favicon.png"
         }
     },
-    "keywords": ",PHP后端开发 挖坑 算法 机器学习",
+    "keywords": ",Redis后端开发 挖坑 算法 机器学习",
     "description": "乐享编程",
 }
 </script>
@@ -343,15 +343,6 @@
     <!-- Left aligned menu below button -->
     
     
-    <button id="post-toc-trigger-btn"
-        class="mdl-button mdl-js-button mdl-button--icon">
-        <i class="material-icons">format_list_numbered</i>
-    </button>
-
-    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-0-autoloading-standard"><span class="post-toc-number">1.</span> <span class="post-toc-text">PSR-0(AutoLoading Standard)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-1-basic-coding-standard"><span class="post-toc-number">2.</span> <span class="post-toc-text">PSR-1(Basic Coding Standard)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-2-coding-style-guide"><span class="post-toc-number">3.</span> <span class="post-toc-text">PSR-2(Coding Style Guide)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-3-logger-interface"><span class="post-toc-number">4.</span> <span class="post-toc-text">PSR-3(Logger Interface)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#psr-4-improved-autoloading"><span class="post-toc-number">5.</span> <span class="post-toc-text">PSR-4(Improved AutoLoading)</span></a></li></ol>
-    </ul>
-    
 
 
 
@@ -381,7 +372,7 @@
         
     
             <p class="article-headline-p">
-                PHP Standard Recommendation
+                深入Redis系列（一）之字符串
             </p>
         </div>
 
@@ -400,7 +391,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Geeyeek</strong>
-        <span>9月 27, 2018</span>
+        <span>1月 01, 2019</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -422,7 +413,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC40lEQVR42u3aW27DMAwEwNz/0u0BCqe7ols40vgrcB7mqEAJcfX6OvJ6YWNjY2NjY2NjYz+S/Yqvn9+6unP17s/77S+MasbGxsbemv3Lv/6Lz+SL0t6/Qk5qxsbGxj6BfdUA3heRA9ola+v5pQViY2NjY8ebinzzkG8tJjVjY2NjY08A7+9PhkrY2NjY2GsDmvdN5X1xxQAoWNx/naVhY2NjP56dbwae8/pf821sbGzsB7PbK4lg8yM7a3cWK8fGxsbelJ03hrUjNfm2IXnu2uexsbGxz2S3LW0tVGgHT+0GCRsbG/sEdj6+yZcmb4Fto0pqKIZK2NjY2Bux7yXNG1KyNO3TsbGxsXdlTw5TzqPZyULUgzBsbGzsTdmTBpaEwe22J//NeviFjY2NfQB7EgC3h2/WQoW26WJjY2OfwG5D07bcfOjftsPbhkrY2NjYH87Om00yAMq/lf9aEjxHcQI2Njb2Mey8YSxuCQaxbtLqLuvHxsbG3pSdD4/yzcZk25CHzXVIjI2Njb0p+95C28M9LWkSNmNjY2Pvym4PX85D2WShJ4cvoyM72NjY2Buxk0FSPni6a7HyCouhGDY2NvbW7LWCbigljofbgLnYgWFjY2N/OHttWNMuyjzcTcBFA8PGxsbejp03mCRUSO5MSHn8gI2NjX0aOx8ArYXEkyNBeaO6LRXBxsbG/ih2HhJMkF9L1yT6xcbGxj6NvbYQa4sVbR6W2mexFcHGxsbelP2+bbzKKw8V2nfzURQ2Njb23uy1jUHeftq4t40objiphI2Njf3h7LWW0A561rYWbaD7S1XY2NjYW7PbppXDJkOlP29g2NjY2Nux24M7yfBoLTCej66KWRo2Njb2wex8Udae0sYVi0EvNjY29pHs+pHlsZ72gE400sLGxsY+gJ2MfvJm07aiNjBuFxQbGxt7b/bkGGXbutrjle0f4E/ybWxsbOwHs8+5sLGxsbGxsbGxsR9zfQN6C+KVsWEuUQAAAABJRU5ErkJggg==">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ4AAAEOCAAAAABd2qZ5AAADlElEQVR42u3aS27bQBAFQN3/0slWgAP6vW4OLTjFlSGTo5niotWf1x/X2/VCgAMHDhw4cODAgQPHB3O84uv9/q/PJp+8f/6PbY2evb7/+iw4cODAgeMcxzeh6OsSl1g56DXHNVOyz+gsOHDgwIHjGEd+gGTTe8r8B8HqLDhw4MCB40c58rC3SauS14ADBw4cOH4fR7LdvPC3KSniwIEDB47P5Mi/sg237T3DBtLztVIcOHDgwHFgoOHT/v7h+Q4cOHDg+O852muWVrVlwVlxcHgiHDhw4MBxK0fS8slHDTYNobyJ1f5QuCGjxYEDBw4cMUfSBGpbQUmYnIXn5BXmrS8cOHDgwHGCIx9NSALqXeMI+WptUocDBw4cOE5zJKlRkiwlG2rvbF/SzSkcDhw4cOBYFAc3yVtCkz/b3rNJKXHgwIEDxwmOdnN5+2efaCXrzMqLOHDgwIHjNEf7xe2zbQsqTyM3CSEOHDhw4DjBsV+6LdjNRhmS8uXwcxw4cODAcZgjHymYDbflZDlfHsJx4MCBA8dpjiR8Fi2cAKIdmGiDaJ744cCBAweOcxyzFlF+pKQUuCkabppPOHDgwIHjXo79aEK7Wr7mHjRKUHHgwIEDx60cM5pZQM2LgPt0rhitwIEDBw4chznaElveZNokbLOkMfopgAMHDhw4DnO0Awr5wMEscM6GKlYDDThw4MCBYz0qNyvGtSnfHj3HKoqJOHDgwIHjAEdSYsuTt81IXBvC21E8HDhw4MBxmiMJYJty3iy5agcg2uE5HDhw4MBxmiNJh9qgGKVPoyC9eWE4cODAgeN5jtm4w6ztNBtHmLWg6lE5HDhw4MAx4sgTpFlKlh8sL1kOi4B5rRQHDhw4cNzEkZfk8tDbjhrMgvRmOAMHDhw4cNzLsQljbbDcjCDkSWNeFsSBAwcOHE9yJCGqLSa2THnxcTZshwMHDhw4TnBsWkH5oEM7irdvRBV7wIEDBw4ct3KcG2tI0rlZetYOVQx/d+DAgQMHjhHHXcF1Nh7RBu9k/ToA48CBAweOAxxtw+Y6jK1KdYvWVM6EAwcOHDie4chH0K4P0HLnq60Cal4rxYEDBw4cD3LkR900jdr/zsqCOHDgwIHjMznuGmXYB9r8fhw4cODA8QxHXsJrt5I3jfJ0MW+SfROYceDAgQPHAY7ZF+THzu+fjSzMVsaBAwcOHCc4XDhw4MCBAwcOHDhw4Piw6y/uIz6n7bBAlwAAAABJRU5ErkJggg==">
     
 </ul>
 
@@ -436,7 +427,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/PHP/">PHP</a>
+        <a class="post_tag-link" href="/tags/Redis/">Redis</a>
     </ul>
     
 
@@ -453,7 +444,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=PHP Standard Recommendation&url=https://blog.aikeji.online/2018/09/27/PHP-Standard-Recommendation/index.html&pic=https://blog.aikeji.online/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=深入Redis系列（一）之字符串&url=https://blog.aikeji.online/2019/01/01/深入Redis系列（一）之字符串/index.html&pic=https://blog.aikeji.online/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -462,7 +453,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=PHP Standard Recommendation&url=https://blog.aikeji.online/2018/09/27/PHP-Standard-Recommendation/index.html&via=Geeyeek" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=深入Redis系列（一）之字符串&url=https://blog.aikeji.online/2019/01/01/深入Redis系列（一）之字符串/index.html&via=Geeyeek" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -471,7 +462,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.aikeji.online/2018/09/27/PHP-Standard-Recommendation/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.aikeji.online/2019/01/01/深入Redis系列（一）之字符串/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -480,7 +471,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://blog.aikeji.online/2018/09/27/PHP-Standard-Recommendation/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://blog.aikeji.online/2019/01/01/深入Redis系列（一）之字符串/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -492,7 +483,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Geeyeek&title=PHP Standard Recommendation&summary=乐享编程&pics=https://blog.aikeji.online/img/favicon.png&url=https://blog.aikeji.online/2018/09/27/PHP-Standard-Recommendation/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=Geeyeek&title=深入Redis系列（一）之字符串&summary=乐享编程&pics=https://blog.aikeji.online/img/favicon.png&url=https://blog.aikeji.online/2019/01/01/深入Redis系列（一）之字符串/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -511,90 +502,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>非官方规范。</p>
-<h2 id="psr-0-autoloading-standard"><a class="header-anchor" href="#psr-0-autoloading-standard"></a>PSR-0(AutoLoading Standard)</h2>
-<p>(14年10月21日起标记为deprecated，由PSR-4代替)</p>
-<ul>
-<li>完全合格的命名空间和类名必须有以下结构</li>
-</ul>
-<pre><code> &quot;\&lt;vendor name&gt;\(&lt;Namespace&gt;)*&lt;Class Name&gt;&quot;
-</code></pre>
-<ul>
-<li>每个命名空间必须有顶级命名空间</li>
-</ul>
-<pre><code>(&quot;Vendor Name&quot;)
-</code></pre>
-<ul>
-<li>每个命名空间可以有任意多个子命名空间</li>
-<li>每个命名空间在被从文件系统加载时必须被转换为操作系统的路径分隔符</li>
-<li>每个&quot;_“字符在类名中被转换为DIRECTORY_SEPARATOR。”_&quot;在命名空间中没有明确含义</li>
-<li>符合命名标志的命名空间和类名必须以&quot;.php&quot;结尾来加载</li>
-<li>VendorName、命名空间、类名可以由大小写字母组成，其中命名空间和类名是大小写敏感的以保证多系统兼容</li>
-</ul>
-<h2 id="psr-1-basic-coding-standard"><a class="header-anchor" href="#psr-1-basic-coding-standard"></a>PSR-1(Basic Coding Standard)</h2>
-<ul>
-<li>源文件必须只使用以下这两种标签</li>
-</ul>
-<pre><code>&lt;?php 和 &lt;?=
-</code></pre>
-<ul>
-<li>源文件中php代码的编码格式必须只适用不带BOM的UTF－8（BOM——字节顺序标记）</li>
-<li>一个源文件建议只用来做声明（类、函数、常量等）或者只用来做一些引起副作用的操作（如输出信息，修改配置文件等），但不应该同时做这两件事</li>
-<li>命名空间和类必须遵守PSR-0</li>
-<li>类名必须使用StudlyCaps写法</li>
-<li>类中的常量必须只由大写字母和下划线组成</li>
-<li>方法名必须使用camelCase写法</li>
-</ul>
-<h2 id="psr-2-coding-style-guide"><a class="header-anchor" href="#psr-2-coding-style-guide"></a>PSR-2(Coding Style Guide)</h2>
-<ul>
-<li>代码必须遵循PSR-1</li>
-<li>代码必须使用4个空格进行缩进，而不是制表符</li>
-<li>一行代码的长度不应该有硬限制，软限制为120个字符，建议每行小于80</li>
-<li>在命名空间声明下必须空一行，use下同理</li>
-<li>类的左、右花括号必须各自成一行</li>
-<li>方法的左右花括号都必须各自成一行</li>
-<li>所有属性、方法必须有可见性声明；abstract和final必须在可见性声明前，static必须在可见性声明后</li>
-<li>在结构控制的关键字后必须空一格；函数调用后面不可有空格</li>
-<li>结构控制关键字左花括号必须同一行，右花括号必须放在代码主体下一行</li>
-<li>控制结构的左花括号之后不可有空格，右花括号之前也不可有空格</li>
-</ul>
-<h2 id="psr-3-logger-interface"><a class="header-anchor" href="#psr-3-logger-interface"></a>PSR-3(Logger Interface)</h2>
-<ul>
-<li>LoggerInterface暴露八个接口用来记录八个等级(debug,info,notice,warning,error,critical,alert,emergency)的日志</li>
-<li>第九个方法是log，接受日志等级操作为第一个参数。用一个日志等级常量来调用这个方法必须和直接调用指定等级方法的结果一致。用一格本规范中来定义且不为具体实现所知的日志等级来调用该方法必须跑出一个</li>
-</ul>
-<pre><code>PSR\Log\InvalidArgumentException
-</code></pre>
-<p>不推荐使用自定义的日志等级，除非你非常确认当前类库对其支持。</p>
-<h2 id="psr-4-improved-autoloading"><a class="header-anchor" href="#psr-4-improved-autoloading"></a>PSR-4(Improved AutoLoading)</h2>
-<p>(兼容PSR-0)</p>
-<ul>
-<li>术语［类］是一个泛称，它包含类、接口、trait及其他类似结构</li>
-<li>完全限定类名应该如下范例</li>
-</ul>
-<pre><code>&lt;NamespaceName&gt;(&lt;SubNamespace&gt;)*&lt;ClassName&gt;
-</code></pre>
-<ul>
-<li>
-<ul>
-<li>完全合规类名必须有一格顶级命名空间</li>
-<li>完全合规类名可有多个子命名空间</li>
-<li>完全合规类名应该有一格终止类名</li>
-<li>下划线在完全合规类名中是没有特殊含义的</li>
-<li>字母在完全合规类名中可以是任何大小写组合</li>
-<li>所有类名必须以大小写敏感的方式引用</li>
-</ul>
-</li>
-<li>当完全合规类名载入文件时：
-<ul>
-<li>在完全合规类名中，连续的一个或几个子命名空间构成的命名空间前缀（不包括顶级命名空间分隔符），至少对应一格基础目录</li>
-<li>在［命名空间前缀］后的连续子命名空间名称对应一个［基础目录］下的子目录，其中的命名空间分隔符标示目录分隔符。子目录名称必须和子命名空间名大小写匹配</li>
-<li>终止类名对应一个以.php结尾的文件。文件名必须和终止类名大小写匹配</li>
-</ul>
-</li>
-<li>自动载入器的实现不可以抛出任何异常，不可以引发任何等级的错误，也不应该有返回值</li>
-</ul>
-
+        
         
     
 
@@ -644,21 +552,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/09/27/IO模型笔记/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2018/09/26/hello-world/" id="post_nav-older" class="next-content">
+        <a href="/2018/11/18/Redis之神奇的HyperLogLog/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
@@ -750,7 +650,7 @@
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/10/">十月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/01/">一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a>
+                <a class="sidebar_archives-link" href="/archives/2019/01/">一月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/10/">十月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/06/">六月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/04/">四月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">1</span></a>
             </ul>
         </li>
         
