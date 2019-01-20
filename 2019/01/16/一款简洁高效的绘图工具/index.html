@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Wed Jan 16 2019 23:17:27 GMT+0800">
-        <meta property="article:modified_time" content="Sat Jan 19 2019 22:27:39 GMT+0800">
+        <meta property="article:modified_time" content="Sun Jan 20 2019 19:49:11 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "https://blog.aikeji.online/2019/01/16/一款简洁高效的绘图工具/index.html",
     "headline": "一款简洁高效的绘图工具",
     "datePublished": "Wed Jan 16 2019 23:17:27 GMT+0800",
-    "dateModified": "Sat Jan 19 2019 22:27:39 GMT+0800",
+    "dateModified": "Sun Jan 20 2019 19:49:11 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -537,13 +537,13 @@
 </ol>
 <p>接下来我就展示如何使用各种布局去构造一些数据结构图解。</p>
 <pre><code>digraph G{
-	a;
-	b;
-	c;
-	d;
+    a;
+    b;
+    c;
+    d;
 
-	a -&gt; b -&gt; c;
-	b -&gt; d;
+    a -&gt; b -&gt; c;
+    b -&gt; d;
 }
 </code></pre>
 <p>上面的语句非常的简单，下面就是由此生成的图：</p>
@@ -552,26 +552,89 @@
 </center>
 <p>图示非常的简单明了，代码也如此，我想不需要解说什么。接下来我们来进行稍微复杂一点的操作。</p>
 <pre><code>digraph G {
-size =&quot;4,4&quot;;
-main [shape=box]; /* this is a comment */
-main -&gt; parse [weight=8];
-parse -&gt; execute;
-main -&gt; init [style=dotted];
-main -&gt; cleanup;
-execute -&gt; { make_string; printf}
-init -&gt; make_string;
-edge [color=red]; // so is this
-main -&gt; printf [style=bold,label=&quot;100 times&quot;];
-make_string [label=&quot;make a\nstring&quot;];
-node [shape=box,style=filled,color=&quot;.7 .3 1.0&quot;];
-execute -&gt; compare;
+    size =&quot;4,4&quot;;
+    main [shape=box]; /* this is a comment */
+    main -&gt; parse [weight=8];
+    parse -&gt; execute;
+    main -&gt; init [style=dotted];
+    main -&gt; cleanup;
+    execute -&gt; { make_string; printf}
+    init -&gt; make_string;
+    edge [color=red]; // so is this
+    main -&gt; printf [style=bold,label=&quot;100 times&quot;];
+    make_string [label=&quot;make a\nstring&quot;];
+    node [shape=box,style=filled,color=&quot;.7 .3 1.0&quot;];
+    execute -&gt; compare;
 }
 </code></pre>
 <p>这次我们的代码貌似复杂了不少，先不着急看代码做了什么，先看看得到的图是怎样的：</p>
 <center>
 <img src="/2019/01/16/一款简洁高效的绘图工具/2.png">
 </center>
-<p>现在先假设我们完全不懂语法（实际上也是这样😂），我们可以通过调节参数来看一下每个参数是用来做啥的。<code>size</code>参数是用来调节输出的图片大小（英寸）的，如果因为觉得图片元素太多而图片太小看起来很费劲的话，就可以使用该参数将图片放大。而<code>[shape=box]</code>这句则是指定了元素的形状，如果不指定，就会默认椭圆。随后我们调整了<code>[weight=8]</code>参数，发现没有它的话，<code>main -&gt; parse</code>之间的连线会变斜，查看了官方文档后发现，<code>[weight]</code>参数默认是1，如果你需要让它在排版的时候连线正直的话，就需要调整<code>[weight]</code>值。<code>[style=dotted]</code>是将连线改为虚线。我们还发现了一对多关系还可以用<code>{}</code>输出，而不需要写多行关系。使用<code>edge [color=red]</code>能够使得连线颜色改变，但是改变的地方是从你声明了<code>edge</code>之后的部分。还可以使用<code>[style=bold,label=&quot;100 times&quot;]</code>对连线进行加粗，以及添加注解。最后在声明了<code>node [shape=box,style=filled,color=&quot;.7 .3 1.0&quot;]</code>之后的<code>compare</code>元素，我们可以看到它改变了形状以及填充了颜色。</p>
+<p>现在先假设我们完全不懂语法（实际上也是这样😂），我们可以通过调节参数来看一下每个参数是用来做啥的。<code>size</code>参数是用来调节输出的图片大小（英寸）的，如果因为觉得图片节点太多而图片太小看起来很费劲的话，就可以使用该参数将图片放大。而<code>[shape=box]</code>这句则是指定了节点的形状，如果不指定，就会默认椭圆。随后我们调整了<code>[weight=8]</code>参数，发现没有它的话，<code>main -&gt; parse</code>之间的连线会变斜，查看了官方文档后发现，<code>[weight]</code>参数默认是1，如果你需要让它在排版的时候连线正直的话，就需要调整<code>[weight]</code>值。<code>[style=dotted]</code>是将连线改为虚线。我们还发现了一对多关系还可以用<code>{}</code>输出，而不需要写多行关系。使用<code>edge [color=red]</code>能够使得连线颜色改变，但是改变的地方是从你声明了<code>edge</code>之后的部分。还可以使用<code>[style=bold,label=&quot;100 times&quot;]</code>对连线进行加粗，以及添加注解。最后在声明了<code>node [shape=box,style=filled,color=&quot;.7 .3 1.0&quot;]</code>之后的<code>compare</code>节点，我们可以看到它改变了形状以及填充了颜色。</p>
+<p>上面我们只对节点和连线进行了样式上的修改，接下来我们再看稍微复杂一点的节点：</p>
+<pre><code>digraph structs {
+    node [shape=record];
+    struct1 [shape=record,label=&quot;&lt;f0&gt; left|&lt;f1&gt; mid\ dle|&lt;f2&gt; right&quot;];
+    struct2 [shape=record,label=&quot;&lt;f0&gt; one|&lt;f1&gt; two&quot;];
+    struct3 [shape=record,label=&quot;hello\nworld |{ b |{c|&lt;here&gt; d|e}| f}| g | h&quot;];
+    struct1 -&gt; struct2;
+    struct1 -&gt; struct3;
+}
+</code></pre>
+<p>这片代码看起来貌似不是很直白，那我们还是先看看结果图是怎样的：</p>
+<center>
+<img src="/2019/01/16/一款简洁高效的绘图工具/3.png">
+</center>
+<p>看到了图之后，是不是觉得豁然开朗，其实<code>label</code>就是用来修改整个节点的内容的，使用<code>|</code>进行节点分割，支持<code>\n</code>、<code>\r</code>等制表符，还支持类似<code>html</code>的标签。但是上面的一些标签仅仅用作了标识，而没有实际使用，下面我们再来使用<code>html</code>来让节点变得更加丰富。</p>
+<pre><code>digraph html {
+    abc [shape=none, margin=0, label=&lt;
+    &lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;1&quot; CELLSPACING=&quot;0&quot; CELLPADDING=&quot;4&quot;&gt;
+    &lt;TR&gt;&lt;TD ROWSPAN=&quot;3&quot;&gt;&lt;FONT COLOR=&quot;red&quot;&gt;hello&lt;/FONT&gt;&lt;BR/&gt;world&lt;/TD&gt;
+    &lt;TD COLSPAN=&quot;3&quot;&gt;b&lt;/TD&gt;
+    &lt;TD ROWSPAN=&quot;3&quot; BGCOLOR=&quot;lightgrey&quot;&gt;g&lt;/TD&gt;
+    &lt;TD ROWSPAN=&quot;3&quot;&gt;h&lt;/TD&gt;
+    &lt;/TR&gt;
+    &lt;TR&gt;&lt;TD&gt;c&lt;/TD&gt;
+    &lt;TD PORT=&quot;here&quot;&gt;d&lt;/TD&gt;
+    &lt;TD&gt;e&lt;/TD&gt;
+    &lt;/TR&gt;
+    &lt;TR&gt;&lt;TD COLSPAN=&quot;3&quot;&gt;f&lt;/TD&gt;
+    &lt;/TR&gt;
+    &lt;/TABLE&gt;&gt;];
+}
+</code></pre>
+<p>这里我们就直接把一个<code>table</code>放到了<code>label</code>里面去了，实际上是不是跟<code>html</code>的<code>table</code>一样呢：</p>
+<center>
+<img src="/2019/01/16/一款简洁高效的绘图工具/4.png">
+</center>
+<p>把<code>html</code>片段用浏览器打开对比一下，可以说真的没差了。</p>
+<p>既然复杂的节点我们已经会编写了，但是复杂的节点意味着节点之间的关系可以多种多样，那么如何将节点之间的关联关系对应清楚呢？我们不妨先观察下图：</p>
+<center>
+<img src="/2019/01/16/一款简洁高效的绘图工具/5.png">
+</center>
+<p>大家可以看到图中每个节点的两翼部分分别指向对应的节点的字母部分，如果按我们之前的知识，我们只能做到字母部分之间相互指向，那么我们就来看看这里的代码有什么不同：</p>
+<pre><code>digraph g {
+    node [shape = record,height=.1];
+    node0[label = &quot;&lt;f0&gt; |&lt;f1&gt; G|&lt;f2&gt; &quot;];
+    node1[label = &quot;&lt;f0&gt; |&lt;f1&gt; E|&lt;f2&gt; &quot;];
+    node2[label = &quot;&lt;f0&gt; |&lt;f1&gt; B|&lt;f2&gt; &quot;];
+    node3[label = &quot;&lt;f0&gt; |&lt;f1&gt; F|&lt;f2&gt; &quot;];
+    node4[label = &quot;&lt;f0&gt; |&lt;f1&gt; R|&lt;f2&gt; &quot;];
+    node5[label = &quot;&lt;f0&gt; |&lt;f1&gt; H|&lt;f2&gt; &quot;];
+    node6[label = &quot;&lt;f0&gt; |&lt;f1&gt; Y|&lt;f2&gt; &quot;];
+    &quot;node0&quot;:f2 -&gt; &quot;node4&quot;:f1;
+    &quot;node0&quot;:f0 -&gt; &quot;node1&quot;:f1;
+    &quot;node1&quot;:f0 -&gt; &quot;node2&quot;:f1;
+    &quot;node1&quot;:f2 -&gt; &quot;node3&quot;:f1;
+    &quot;node4&quot;:f2 -&gt; &quot;node6&quot;:f1;
+    &quot;node4&quot;:f0 -&gt; &quot;node5&quot;:f1;
+}
+</code></pre>
+<p>emmm，看起来也很好理解，使用<code>&quot;节点名&quot;:html标签名</code>这样就能够定位到节点的每个部分了。即使你想要指向的部分在很深入的地方，只要声明对了，就没有它达不到的地方：</p>
+<center>
+<img src="/2019/01/16/一款简洁高效的绘图工具/6.png">
+</center>
 
         
     
