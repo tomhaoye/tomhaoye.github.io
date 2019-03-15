@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Thu Mar 14 2019 23:31:13 GMT+0800">
-        <meta property="article:modified_time" content="Fri Mar 15 2019 01:08:22 GMT+0800">
+        <meta property="article:modified_time" content="Sat Mar 16 2019 01:21:16 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "https://blog.aikeji.online/2019/03/14/你真的会写冒泡排序吗？/index.html",
     "headline": "你真的会写冒泡排序吗？",
     "datePublished": "Thu Mar 14 2019 23:31:13 GMT+0800",
-    "dateModified": "Fri Mar 15 2019 01:08:22 GMT+0800",
+    "dateModified": "Sat Mar 16 2019 01:21:16 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -534,8 +534,8 @@ print_r($arr);
 <pre><code class="language-php">&lt;?php
 $arr = [7, 6, 8, 9, 0, 1, 5, 4, 3, 2];
 $n = count($arr);
-$changeFlag = false;
 for ($j = 1; $j &lt; $n; $j++) {
+    $changeFlag = false;
     for ($i = 0; $i &lt; $n - $j; $i++) {
         if ($arr[$i + 1] &lt; $arr[$i]) {
             $changeFlag = true;
@@ -563,7 +563,42 @@ print_r($arr);
 <center>
 <img src="/2019/03/14/你真的会写冒泡排序吗？/5.png">
 </center>
-<p>。。。待续</p>
+<p>你的记忆是鱼的记忆吗？突然你恍然大悟，说道：你的意思是面试官可能跟鱼一样只有7秒记忆，就算我把刚刚的代码再写一遍，面试官也看不出来？</p>
+<center>
+<img src="/2019/03/14/你真的会写冒泡排序吗？/6.gif">
+</center>
+<p>醒醒，你再不出去面试官就要来厕所找你了。你心里着急道：可是还没想还有啥办法啊！</p>
+<p>老办法是不能再写一遍，但是可以按老思路再将老办法优化一下啊。你回想一下刚刚的老办法是等到某次遍历之后的发现完全没有<code>flag</code>达成才退出循环，但是过程中你不知道它到底在哪些地方达成了<code>flag</code>。一旦你能够得知它在哪些地方达成了<code>flag</code>，那么就可以让它避免弯路，直接踏上通往成功的捷径了。</p>
+<p>你回到了面试间，心里嘀咕着些什么，抓起了笔开始写代码，这次你特意将字写得特别大，不知道是为了掩饰内心的捉急，还是为了掩饰特别宽的行距。</p>
+<p>面试官似乎看出了什么，说道：用我的手提电脑吧，<code>IDE</code>、终端随便用，别给我百度就行。</p>
+<p>表示感激之后，你立马将上一个优化版本的代码写到<code>IDE</code>里面，随后便是<code>echo</code>、<code>print_r</code>等到处飞。很快你就摸索出来了一些门路，发现有几次循环正在排序的数组内只有最前面的几个元素需要比较排序，后面大部分的元素已经是有序的了，但是结束比较排序的下标却将后面已经排好序的元素也囊括在内了。你会心一笑，暗道原来捷径就在这里。</p>
+<pre><code class="language-php">&lt;?php
+
+$arr = [6, 3, 54, 6, 23, 4, 26, 7, 18, 1, 4, 5, 67, 48, 9];
+shuffle($arr);
+$n = count($arr);
+$lastChangePos = $n - 1;
+for($j = 1; $j &lt; $n; $j++){
+        $changeFlag = false;
+        for($i = 0; $i &lt; $lastChangePos; $i++) {
+                if($arr[$i] &gt; $arr[$i+1]) {
+                        $changeFlag = $i;
+                        $arr[$i] += $arr[$i+1];
+                        $arr[$i+1] = $arr[$i] - $arr[$i+1];
+                        $arr[$i] = $arr[$i] - $arr[$i+1];
+                }
+        }
+        $lastChangePos = $changeFlag;
+        if(!$lastChangePos) {
+                break;
+        }
+}
+print_r($arr);
+</code></pre>
+<p>写完代码，感觉到行云流水一气呵成的快感，正准备给面试官讲解，突然你心里咯噔一下：咦！万一前面乱序的比后面有序的元素大，那不是漏掉了？</p>
+<p>尽管心里一直在喊冷静，但你依然十分紧张，此时你发现面试官脸上出现了笑容：嗯，不错，这道题目就先这样吧，我们继续下面的问题……</p>
+<p>面试完后，你简单的回想刚刚的问题，才发现是自己吓自己，即使前面乱序的部分有比后面有序的部分大的元素，但是上一次循环最后交换的位置肯定在乱序元素之后，因为冒泡排序就是先将乱序部分中最大（小）的元素先给顶置上去的，所以下一次循环的时候乱序中的大元素就会跟有序中的小元素进行比较排序了。</p>
+<p>回家后的你觉得意犹未尽，小小的冒泡排序到底还能玩出什么花样？于是你又抓起了笔，当然，这些都是后话了……</p>
 
         
     
