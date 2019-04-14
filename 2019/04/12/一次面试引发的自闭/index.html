@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Fri Apr 12 2019 21:59:54 GMT+0800">
-        <meta property="article:modified_time" content="Sun Apr 14 2019 01:42:27 GMT+0800">
+        <meta property="article:modified_time" content="Sun Apr 14 2019 21:14:54 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "https://blog.aikeji.online/2019/04/12/一次面试引发的自闭/index.html",
     "headline": "一次面试引发的自闭",
     "datePublished": "Fri Apr 12 2019 21:59:54 GMT+0800",
-    "dateModified": "Sun Apr 14 2019 01:42:27 GMT+0800",
+    "dateModified": "Sun Apr 14 2019 21:14:54 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -519,8 +519,34 @@
 比前面所有都大，换句话来说是什么？
 </code></pre>
 <p>这……这我都知道啊，慢着，最后那句啥意思？到最后我都没有想明白最后那个提示是啥意思，是的，现在也没想明白。但是想不明白也要解决，既然想不明白面试官的提示，那就自己另辟蹊径呗。</p>
-<p>这题目其实一开始我理解错了，因为原题里面是没有<code>所有</code>这个字眼的，跟面试官确认之后发现题意是如上所述那样，但是其实现在想来，先确认每个元素是否跟前后两个元素满足上述条件，也不妨是一种方案，但实际上往深入一想，在这两种描述所得到的最后结果其实是完全等价的，因为你只要将符合条件的所有元素都拿出来，那么它们就是已经排好序的一个数组。那么我们先按这样的思路写一下代码：</p>
-<pre><code class="language-php"></code></pre>
+<p>这题目其实一开始我理解错了，因为原题里面是没有<code>所有</code>这个字眼的，跟面试官确认之后发现题意是如上所述那样，但是我想了一下，先确认每个元素是否跟前后两个元素满足上述条件，然后再对每次得到的结果集重复上述步骤直到结果集元素数量不再减少，也不妨是一种方案，再往深一想，这两种描述所得到的最后结果其实都是已经排好序的一个数组。但实际上这样的思路是有问题的，不过我们还是看一下代码，再进行分析：</p>
+<pre><code class="language-php">############## 错误示例 ###############
+$array = [21, 11, 34, 42, 31, 66, 78, 70, 89, 121, 111];
+
+function getResult(array $arr) {
+    $lastCount = 0;
+    while(count($arr) != $lastCount) {
+        $lastKey = -1;
+        $lastNum = -INF;
+        $lastCount = count($arr);
+        foreach ($arr as $key =&gt; $value) {
+            if ($value &lt;= $lastNum) {
+                unset($arr[$key]);
+                if ($lastKey &gt; -1) {
+                    unset($arr[$lastKey]);
+                }
+            }
+            $lastKey = $key;
+            $lastNum = $value;
+        }
+    }
+    return $arr;
+}
+
+print_r(getResult($array));
+</code></pre>
+<p>大家可以看到我们这部分的代码是嵌套循环的，当外部循环发现元素数量不再改变的时候，就跳出循环，返回结果。那么这样的一个计算方法的时间复杂度和空间复杂度是在哪个级别呢，我们来慢慢分析一下。</p>
+<p>首先，最好的情况，数组内所有的元素都满足题目要求，则外层循环只执行一次，里层遍历数组一次，所以最理想的情况的时间复杂度是<code>O(N)</code>。接下来我们想想一些极端情况，例如除了最后一个元素，前面所有的元素都是排好序的，但是偏偏最后一个元素就是最小的，这种情况下，最后一个元素会先被消除掉，所以后面再比较就都符合题意了，所以这种解法实际上是有问题的，我们给代码写上<code>错误示例</code>的标识。</p>
 
         
     
