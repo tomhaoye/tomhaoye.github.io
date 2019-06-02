@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Sun May 26 2019 17:06:54 GMT+0800">
-        <meta property="article:modified_time" content="Sat Jun 01 2019 22:35:22 GMT+0800">
+        <meta property="article:modified_time" content="Sun Jun 02 2019 16:20:43 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "https://blog.aikeji.online/2019/05/26/记一次风骚的SQL调优/index.html",
     "headline": "记一次风骚的SQL调优",
     "datePublished": "Sun May 26 2019 17:06:54 GMT+0800",
-    "dateModified": "Sat Jun 01 2019 22:35:22 GMT+0800",
+    "dateModified": "Sun Jun 02 2019 16:20:43 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -526,7 +526,7 @@ CREATE TABLE `son` (
 <p>当时的慢<code>SQL</code>其实也非常的简单，大概就是这个样子的：</p>
 <pre><code class="language-SQL">select count(0) FROM test_father WHERE son_id in (SELECT id from test_son);
 </code></pre>
-<p>当时的数据量并不是很大，<code>father</code>表符合条件的数据大概是两到三万，<code>son</code>表总数据不到一万，最后查询得到的结果是<code>6000</code>左右，即是大概有<code>6000</code>条记录满足条件，但是查询时间大概要6秒，我在自己电脑上面大概模拟了一下数据量，也出现了慢查的情况，不过由于减少了其他的列或者总数据量有差别的原因，总的查询时间大概是<code>4</code>秒多，而我的<code>MySQL</code>版本是<code>5.7.16</code>。</p>
+<p>当时的数据量并不是很大，<code>father</code>表符合条件的数据大概是两到三万，<code>son</code>表总数据不到一万，最后查询得到的结果是<code>6000</code>左右，即是大概有<code>6000</code>条记录满足条件，但是查询时间大概要<code>6</code>秒，我在自己电脑上面大概模拟了一下数据量，也出现了慢查的情况，不过由于减少了其他的列或者总数据量有差别的原因，总的查询时间大概是<code>4</code>秒多，而我的<code>MySQL</code>版本是<code>5.7.16</code>。</p>
 <center>
 <img src="/2019/05/26/记一次风骚的SQL调优/slowLog.png">
 </center>
@@ -538,8 +538,26 @@ CREATE TABLE `son` (
 <img src="/2019/05/26/记一次风骚的SQL调优/notIn.png">
 </center>
 <p>不是说反向查询对索引的利用并不友好的吗，怎么在没有索引的情况下<code>NOT IN</code>比<code>IN</code>快这么多？</p>
-<hr>
-<p>今天出去跑了一天，晚上才有时间更一点，明天继续~</p>
+<p>一开始我尝试使用<code>explain</code>查看过第一个语句，发现查询语句<code>MySQL</code>优化成了半连接查询，关于连接查询，大家都知道如果能利用索引的话，耗费的时间大概是<code>A</code>表满足条件的记录数乘以<code>B</code>表索引的搜索时间（基本可以认为是常数时间），而<code>A</code>表是哪张表，是由满足条件的记录数决定的，记录数越少的，就会被上拉成为<code>A</code>表把数据加载到内存中，然后再拿出每条数据与<code>B</code>表关联的列数据去<code>B</code>表查询，因为索引的关系，每条记录查询的次数一般不会超过<code>4</code>次。</p>
+<p>而如果是不能利用索引的情况呢，<code>A</code>表还是那张记录数少的表，但是<code>B</code>表由于不能利用到索引，所以是需要全表遍历的，而<code>MySQL</code>为了减少<code>IO</code>的次数，会有一个<code>join buffer</code>的数据缓存区缓存<code>B</code>表的数据，当然如果你设置的<code>join buffer</code>大小太小以至于不能完全装下<code>B</code>表所有数据的话，跟每条<code>A</code>表数据比对的时候都要轮流替换<code>join buffer</code>中<code>B</code>表的数据。</p>
+<center>
+<img src="/2019/05/26/记一次风骚的SQL调优/explain1.png">
+</center>
+<p>那时候的我就以为这个慢查询的主要原因就在于<code>MySQL</code>将它优化成了半连接查询，而我们的<code>father</code>表又没有建立好索引，而且当时数据库<code>join buffer</code>的参数设置也只是使用了默认值，所以导致这个<code>SQL</code>执行非常耗时。</p>
+<p>由于各种条件限制，不能立刻给线上数据库加索引或者修改<code>join buffer</code>参数大小，于是乎当时的想法就是想办法让<code>MySQL</code>不将这个查询优化为连接查询，而最简单又容易转化数据的办法就是反向查询了，也就是图二中展示耗时<code>0</code>秒的查询。</p>
+<p>我后来也用<code>explain</code>查看了<code>NOT IN</code>子查询的执行过程，但是没有太大的收获，只能看得出它确实是直接执行了子查询，也就是没有优化成连接查询：</p>
+<center>
+<img src="/2019/05/26/记一次风骚的SQL调优/explain2.png">
+</center>
+<p>后面使用了的<code>optimizer_tracer</code>观察了它的优化流程，也没能很好的理解这个<code>NOT IN</code>之所以“快”的原因。后来在一些学习资料上面阅读到了在一些情况下，<code>MySQL</code>会建立不同类型的临时表（依据数据量和参数设置）并自动建立索引这样的机制。</p>
+<p>所以后来天真的我得出的结论就是，上面的<code>NOT IN</code>语句<code>MySQL</code>会给<code>father</code>表建立临时表并对<code>son_id</code>建立索引，所以使得<code>IO</code>次数大概是 <strong><em><code>son</code>表记录数乘以常数</em></strong> ，大概是连接查询的 <strong><em><code>son</code>表记录数乘以<code>father</code>表记录数</em></strong> 的万分之一左右（两个表满足条件的记录数都是五位数），考虑到<code>join buffer</code>的因素，实际<code>IO</code>次数比应该是百分之一到千分之一，也就是上面<code>NOT IN</code>比<code>IN</code>快数百倍的原因。</p>
+<p>但是真正的原因真的是这样吗？过了一段时间我又在别的电脑模拟了当时的情景，由于已经过去比较久了，流程记得不太清楚，漏了某些我认为不重要的步骤，结果得出来也十分的意外，相仿的数据量，相似的表结构，简化了的语句，并没有构成慢查询，无论是<code>IN</code>还是<code>NOT IN</code>，查询时间都是毫秒级别。</p>
+<p>这就引起了我强烈的好奇心，不断的复盘，想起了一些自己漏掉的步骤：</p>
+<ul>
+<li><code>son</code>表并不是一开始就只有一万的数据，而是导入了第三方的百万条数据</li>
+<li>由于需求变更，<code>son</code>表只保留了最新的一万条左右的数据，其余的数据全被<code>delete</code>掉了</li>
+</ul>
+<p>好了这里先留个悬念，下周回来再更~</p>
 
         
     
