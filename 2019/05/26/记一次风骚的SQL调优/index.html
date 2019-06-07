@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Sun May 26 2019 17:06:54 GMT+0800">
-        <meta property="article:modified_time" content="Sun Jun 02 2019 16:20:43 GMT+0800">
+        <meta property="article:modified_time" content="Fri Jun 07 2019 23:25:19 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "https://blog.aikeji.online/2019/05/26/记一次风骚的SQL调优/index.html",
     "headline": "记一次风骚的SQL调优",
     "datePublished": "Sun May 26 2019 17:06:54 GMT+0800",
-    "dateModified": "Sun Jun 02 2019 16:20:43 GMT+0800",
+    "dateModified": "Fri Jun 07 2019 23:25:19 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -557,7 +557,12 @@ CREATE TABLE `son` (
 <li><code>son</code>表并不是一开始就只有一万的数据，而是导入了第三方的百万条数据</li>
 <li>由于需求变更，<code>son</code>表只保留了最新的一万条左右的数据，其余的数据全被<code>delete</code>掉了</li>
 </ul>
-<p>好了这里先留个悬念，下周回来再更~</p>
+<p>整理了漏掉的这些步骤之后，我再重新模拟了多遍当时的场景，终于重现了慢查询，而且发现了<code>son</code>表中的一些异常，而我认为这些异常正是导致慢查询的真凶。</p>
+<p>大家可以看看关于<code>son</code>表的一些统计数据：</p>
+<center>
+<img src="/2019/05/26/记一次风骚的SQL调优/sonSta.png">
+</center>
+<p>表里面明明有一万条记录，但是却行数是<code>0</code>；<code>father</code>表记录和数据都比<code>son</code>表多不少，但是<code>father</code>表的<code>Data Length</code>却只有<code>1M</code>多。虽说<code>innodb</code>是不准确的统计，但也没有这么这么夸张吧，到底是什么原因导致统计到<code>0</code>行数据以及数据长度差异如此大呢，我们可能要深入探索一下<code>innodb</code>的数据统计方法~</p>
 
         
     
