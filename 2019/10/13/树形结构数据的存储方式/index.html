@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Sun Oct 13 2019 13:11:36 GMT+0800">
-        <meta property="article:modified_time" content="Sat Oct 19 2019 19:40:10 GMT+0800">
+        <meta property="article:modified_time" content="Sun Oct 20 2019 00:50:45 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "https://blog.aikeji.online/2019/10/13/树形结构数据的存储方式/index.html",
     "headline": "树形结构数据的存储方式",
     "datePublished": "Sun Oct 13 2019 13:11:36 GMT+0800",
-    "dateModified": "Sat Oct 19 2019 19:40:10 GMT+0800",
+    "dateModified": "Sun Oct 20 2019 00:50:45 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -585,9 +585,52 @@
 </code></pre>
 <p>没错使用的就是模糊查询，由于没有使用左通配符，索引还是能用的，这种方式下查询所有的父节点也非常方便，因为完整的路径已经查出来了，那么利用分隔符获得所有父节点的<code>id</code>再使用<code>in</code>查询就成了。</p>
 <p>当然这种方式局限性也非常的大，例如在你需要更改节点<code>2</code>的<code>path</code>为<code>2</code>，那么你还必须将节点<code>3</code>的<code>path</code>更新为<code>2/3</code>，关联的节点越多，需要更新的记录数就越多，删除节点同理；另外，由于<code>path</code>是存储每个节点的完整路径，所以一旦树的高度非常的高，那么<code>path</code>所存储的数据量就会很大，占用十分多的存储空间。</p>
-<p>最后书里面还提到了一点就是<code>path</code>格式异常的问题，因为<code>path</code>在修改的插入的时候需要不少的解析操作，比较容易写多或者写少斜杠，所以为了避免出现格式异常，就需要程序做到比较完善的校验规则。</p>
+<p>最后书里面还提到了一点就是脏数据的问题，因为这种存储方式在修改的插入的时候需要更改非常多的记录，另外还需要对<code>path</code>进行解析，比较容易出现格式异常、更改记录失败或者使用大事务，所以为了避免出现脏数据，就需要程序做到比较完善的校验规则。</p>
 <h4 id="nested-sets"><a class="header-anchor" href="#nested-sets"></a>Nested Sets</h4>
+<p>接下来这种存储方式比较复杂，那么我先写下一个吧。</p>
 <h4 id="closure-table"><a class="header-anchor" href="#closure-table"></a>Closure Table</h4>
+<p>这四种方法里面唯一一个需要两张表的存储方式，就是这个<code>Closure Table</code>了，老规矩我们先上表设计为敬。</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Level1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Level2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Level3</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>sid</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>这种存储方式实际上就是使用另外一个表去表示关联关系。</p>
 <h3 id="总结"><a class="header-anchor" href="#总结"></a>总结</h3>
 
         
