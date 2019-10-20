@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Sun Oct 13 2019 13:11:36 GMT+0800">
-        <meta property="article:modified_time" content="Sun Oct 20 2019 12:09:13 GMT+0800">
+        <meta property="article:modified_time" content="Sun Oct 20 2019 23:25:05 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "https://blog.aikeji.online/2019/10/13/树形结构数据的存储方式/index.html",
     "headline": "树形结构数据的存储方式",
     "datePublished": "Sun Oct 13 2019 13:11:36 GMT+0800",
-    "dateModified": "Sun Oct 20 2019 12:09:13 GMT+0800",
+    "dateModified": "Sun Oct 20 2019 23:25:05 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -583,7 +583,9 @@
 <p>这种方式就是将每个节点的完整路径存储下来，那么我们查询子所有的节点就需要如下SQL：</p>
 <pre><code class="language-SQL">select * from table where path like '1/%';
 </code></pre>
-<p>没错使用的就是模糊查询，由于没有使用左通配符，索引还是能用的，这种方式下查询所有的父节点也非常方便，因为完整的路径已经查出来了，那么利用分隔符获得所有父节点的<code>id</code>再使用<code>in</code>查询就成了。</p>
+<p>没错使用的就是模糊查询，由于没有使用左通配符，索引还是能用的，这种方式下查询所有的父节点也非常方便，因为完整的路径已经查出来了，那么利用分隔符获得所有父节点的<code>id</code>再使用<code>in</code>查询就成了。当然反向<code>like</code>也行：</p>
+<pre><code class="language-SQL">select * from table where '1/2/3' like path || '%';
+</code></pre>
 <p>当然这种方式局限性也非常的大，例如在你需要更改节点<code>2</code>的<code>path</code>为<code>2</code>，那么你还必须将节点<code>3</code>的<code>path</code>更新为<code>2/3</code>，关联的节点越多，需要更新的记录数就越多，删除节点同理；另外，由于<code>path</code>是存储每个节点的完整路径，所以一旦树的高度非常的高，那么<code>path</code>所存储的数据量就会很大，占用十分多的存储空间。</p>
 <p>最后书里面还提到了一点就是脏数据的问题，因为这种存储方式在修改的插入的时候需要更改非常多的记录，另外还需要对<code>path</code>进行解析，比较容易出现格式异常、更改记录失败或者使用大事务，所以为了避免出现脏数据，就需要程序做到比较完善的校验规则。</p>
 <h4 id="nested-sets"><a class="header-anchor" href="#nested-sets"></a>Nested Sets</h4>
@@ -634,7 +636,19 @@
 </tr>
 </tbody>
 </table>
-<p>这种存储方式实际上就是使用另外一个表去表示关联关系。</p>
+<p>这种存储方式实际上就是使用另外一个表去表示关联关系。<code>fid</code>是当前父节点的<code>id</code>，<code>sid</code>则是子节点的<code>id</code>，换言之每个节点都会关联上它所有的子节点。</p>
+<p>所以查询子节点和父节点的方式也是一目了然：</p>
+<pre><code class="language-SQL"># 查询相关子节点
+select * from table_level where id in (select sid in table_relation where fid = 1);
+# 查询相关父节点
+select * from table_level where id in (select fid in table_relation where sid = 3);
+</code></pre>
+<p>删除节点以及删除子树也非常的简单：</p>
+<pre><code class="language-SQL"># 删除节点
+delete from table_level where sid = 3;
+# 删除子树
+delete from table_level where sid in (select sid from table_level where fid = 2);
+</code></pre>
 <h3 id="总结"><a class="header-anchor" href="#总结"></a>总结</h3>
 
         
