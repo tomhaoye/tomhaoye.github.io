@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Sun Oct 13 2019 13:11:36 GMT+0800">
-        <meta property="article:modified_time" content="Sat Nov 02 2019 19:49:18 GMT+0800">
+        <meta property="article:modified_time" content="Sun Dec 01 2019 20:49:27 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "https://blog.aikeji.online/2019/10/13/树形结构数据的存储方式/index.html",
     "headline": "树形结构数据的存储方式",
     "datePublished": "Sun Oct 13 2019 13:11:36 GMT+0800",
-    "dateModified": "Sat Nov 02 2019 19:49:18 GMT+0800",
+    "dateModified": "Sun Dec 01 2019 20:49:27 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -664,7 +664,7 @@ delete from table_path where sid = 3;
 # 删除子树
 delete from table_path where sid in (select sid from table_path where fid = 2);
 </code></pre>
-<p>看上去这种存储方式</p>
+<p>看上去这种存储方式似乎是没有明显的短板，但当你觉得维护两个表的成本比较大的时候，那么这就也算是这种存储方式的短板吧。</p>
 <h3 id="总结"><a class="header-anchor" href="#总结"></a>总结</h3>
 
         
