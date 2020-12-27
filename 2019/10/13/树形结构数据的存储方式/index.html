@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Sun Oct 13 2019 13:11:36 GMT+0800">
-        <meta property="article:modified_time" content="Sun Dec 27 2020 10:56:12 GMT+0800">
+        <meta property="article:modified_time" content="Sun Dec 27 2020 11:27:06 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "https://blog.aikeji.online/2019/10/13/树形结构数据的存储方式/index.html",
     "headline": "树形结构数据的存储方式",
     "datePublished": "Sun Oct 13 2019 13:11:36 GMT+0800",
-    "dateModified": "Sun Dec 27 2020 10:56:12 GMT+0800",
+    "dateModified": "Sun Dec 27 2020 11:27:06 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -728,7 +728,7 @@ delete from table_path where sid = 3;
 # 删除子树
 delete from table_path where sid in (select sid from table_path where fid = 2);
 </code></pre>
-<p>看上去这种存储方式似乎是没有明显的短板，但当你觉得维护两个表的成本比较大的时候，那么这就也算是这种存储方式的短板吧。</p>
+<p><code>Closure Table</code> 是最通用的设计，也是唯一允许一个节点属于多个树的设计。 它需要一个附加表来存储关系，此设计在对深层次进行编码时还使用了大量行，因此增加了空间消耗。</p>
 <h3 id="总结"><a class="header-anchor" href="#总结"></a>总结</h3>
 
         
