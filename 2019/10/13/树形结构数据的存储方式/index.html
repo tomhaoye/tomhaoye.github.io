@@ -242,7 +242,7 @@
 
     
         <meta property="article:published_time" content="Sun Oct 13 2019 13:11:36 GMT+0800">
-        <meta property="article:modified_time" content="Mon Feb 03 2020 12:36:32 GMT+0800">
+        <meta property="article:modified_time" content="Sun Dec 27 2020 10:56:12 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -265,7 +265,7 @@
     "mainEntityOfPage": "https://blog.aikeji.online/2019/10/13/树形结构数据的存储方式/index.html",
     "headline": "树形结构数据的存储方式",
     "datePublished": "Sun Oct 13 2019 13:11:36 GMT+0800",
-    "dateModified": "Mon Feb 03 2020 12:36:32 GMT+0800",
+    "dateModified": "Sun Dec 27 2020 10:56:12 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Geeyeek",
@@ -589,7 +589,71 @@
 <p>当然这种方式局限性也非常的大，例如在你需要更改节点<code>2</code>的<code>path</code>为<code>2</code>，那么你还必须将节点<code>3</code>的<code>path</code>更新为<code>2/3</code>，关联的节点越多，需要更新的记录数就越多，删除节点同理；另外，由于<code>path</code>是存储每个节点的完整路径，所以一旦树的高度非常的高，那么<code>path</code>所存储的数据量就会很大，占用十分多的存储空间。</p>
 <p>最后书里面还提到了一点就是脏数据的问题，因为这种存储方式在修改的插入的时候需要更改非常多的记录，另外还需要对<code>path</code>进行解析，比较容易出现格式异常、更改记录失败或者使用大事务，所以为了避免出现脏数据，就需要程序做到比较完善的校验规则。</p>
 <h4 id="nested-sets"><a class="header-anchor" href="#nested-sets"></a>Nested Sets</h4>
-<p>接下来这种存储方式比较复杂，那么我先写下一个吧。</p>
+<p>这种解决方案存储与属于其后代集的每个节点（而不是该节点的直接父级）有关的信息。 可以通过用两个数字对树中的每个节点进行编码来表示此信息，我们可以将其称为<code>nsleft</code>和<code>nsright</code>。</p>
+<p>这种存储方式的表结构如下：</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>nsleft</th>
+<th>nsright</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>14</td>
+<td>node1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>7</td>
+<td>node2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>node3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>node4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>8</td>
+<td>13</td>
+<td>node5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>9</td>
+<td>10</td>
+<td>node6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>11</td>
+<td>12</td>
+<td>node7</td>
+</tr>
+</tbody>
+</table>
+<p>每个节点通过以下方式获得<code>nsleft</code>和<code>nsright</code>：<code>nsleft</code>小于所有节点的子代数，而<code>nsright</code>大于所有节点的子代数。关于如何分配这些值，一种比较简单方法是沿着树的深度优先遍历，当下降时，递增的分配<code>nsleft</code>，而当上升时，递增的分配<code>nsright</code>。</p>
+<p>为每个节点分配了这些编号后，就可以使用它们来查找任何给定节点的祖先和后代。 例如，我们可以通过搜索编号在当前节点的<code>nsleft</code>和<code>nsright</code>之间的节点来检索<code>id</code>为<code>2</code>的节点及其后代。</p>
+<pre><code class="language-SQL">SELECT t1.* FROM table t1 JOIN table t2 ON t2.nsleft BETWEEN t1.nsleft AND t1.nsright WHERE t1.id = 2;
+</code></pre>
+<p>可以通过搜索编号跨越当前节点编号的节点来检索<code>id</code>为<code>6</code>的节点及其祖先。</p>
+<pre><code class="language-SQL">SELECT t1.* FROM table t1 JOIN table t2 ON t1.nsleft BETWEEN t2.nsleft AND t2.nsright WHERE t1.id = 6;
+</code></pre>
+<p>这种设计的主要优势在于，当删除一个非叶子节点时，其后代会自动被视为已删除节点的父节点的直接子节点。 尽管插图中显示的每个节点的左右数字具有形成连续序列的值，并且与相邻的兄弟节点和父节点相比，差异始终为<code>1</code>，但是对于该设计来说，保留层次结构并不是必需的。 因此，当删除节点导致数值不连续时，也并不会中断树结构。</p>
+<p>这种存储模型最适合用于快速地对子树执行查询，而不利于对单个节点进行操作。 因为插入和移动节点很复杂，且需要重新编号<code>nsleft</code>和<code>nsright</code>。 如果频繁对树插入节点的话，则这种设计是十分不理想的。</p>
 <h4 id="closure-table"><a class="header-anchor" href="#closure-table"></a>Closure Table</h4>
 <p>这四种方法里面唯一一个需要两张表的存储方式，就是这个<code>Closure Table</code>了，老规矩我们先上表设计为敬。</p>
 <table>
